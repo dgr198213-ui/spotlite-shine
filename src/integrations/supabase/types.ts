@@ -14,16 +14,107 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          category: Database["public"]["Enums"]["artist_category"] | null
+          city: string | null
+          cover_url: string | null
+          created_at: string
+          display_name: string
+          id: string
+          is_published: boolean
+          plan: Database["public"]["Enums"]["artist_plan"]
+          price_from: number | null
+          rating: number | null
+          reviews_count: number
+          slug: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          category?: Database["public"]["Enums"]["artist_category"] | null
+          city?: string | null
+          cover_url?: string | null
+          created_at?: string
+          display_name: string
+          id: string
+          is_published?: boolean
+          plan?: Database["public"]["Enums"]["artist_plan"]
+          price_from?: number | null
+          rating?: number | null
+          reviews_count?: number
+          slug?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          category?: Database["public"]["Enums"]["artist_category"] | null
+          city?: string | null
+          cover_url?: string | null
+          created_at?: string
+          display_name?: string
+          id?: string
+          is_published?: boolean
+          plan?: Database["public"]["Enums"]["artist_plan"]
+          price_from?: number | null
+          rating?: number | null
+          reviews_count?: number
+          slug?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "artist" | "organizer"
+      artist_category:
+        | "musica"
+        | "teatro"
+        | "magia"
+        | "comedia"
+        | "danza"
+        | "dj"
+        | "circo"
+        | "arte"
+        | "foto_video"
+      artist_plan: "spark" | "spotlight" | "headliner"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +241,20 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "artist", "organizer"],
+      artist_category: [
+        "musica",
+        "teatro",
+        "magia",
+        "comedia",
+        "danza",
+        "dj",
+        "circo",
+        "arte",
+        "foto_video",
+      ],
+      artist_plan: ["spark", "spotlight", "headliner"],
+    },
   },
 } as const
