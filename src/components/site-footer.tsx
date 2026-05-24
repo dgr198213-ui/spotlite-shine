@@ -1,0 +1,54 @@
+import { Link } from "@tanstack/react-router";
+import { Sparkles } from "lucide-react";
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-32 border-t border-border bg-card/40">
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <div className="grid gap-10 md:grid-cols-4">
+          <div>
+            <div className="flex items-center gap-2 font-display text-xl font-bold">
+              <Sparkles className="h-5 w-5 text-gold" />
+              Spotlite
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              La plataforma donde artistas encuentran su público y eventos encuentran talento excepcional.
+            </p>
+          </div>
+          <FooterCol title="Artistas" items={[
+            { label: "Crear perfil", to: "/registro" },
+            { label: "Precios", to: "/precios" },
+            { label: "Explorar", to: "/explorar" },
+          ]} />
+          <FooterCol title="Eventos" items={[
+            { label: "Buscar artistas", to: "/explorar" },
+            { label: "Cómo contratar", to: "/precios" },
+          ]} />
+          <FooterCol title="Soporte" items={[
+            { label: "Términos", to: "/" },
+            { label: "Privacidad", to: "/" },
+          ]} />
+        </div>
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
+          <span>© {new Date().getFullYear()} Spotlite. Hecho con ♥ para artistas de España.</span>
+          <span>Versión 2.0</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function FooterCol({ title, items }: { title: string; items: { label: string; to: string }[] }) {
+  return (
+    <div>
+      <h4 className="font-display text-sm font-semibold">{title}</h4>
+      <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+        {items.map((it) => (
+          <li key={it.label}>
+            <Link to={it.to} className="transition-colors hover:text-foreground">{it.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
