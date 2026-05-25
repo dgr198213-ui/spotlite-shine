@@ -57,9 +57,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Spotlite — Tu escenario, tu audiencia, tu momento" },
+      { title: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
       { name: "description", content: "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones." },
-      { property: "og:title", content: "Spotlite — Tu escenario, tu audiencia, tu momento" },
+      { property: "og:title", content: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
       { property: "og:description", content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -12,7 +12,7 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
-    meta: [{ title: "Acceder — Spotlite" }],
+    meta: [{ title: "Acceder — Spot&Shows" }],
   }),
   component: LoginPage,
 });

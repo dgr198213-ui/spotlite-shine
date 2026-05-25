@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/registro")({
   head: () => ({
-    meta: [{ title: "Crear cuenta — Spotlite" }],
+    meta: [{ title: "Crear cuenta — Spot&Shows" }],
   }),
   component: SignupPage,
 });

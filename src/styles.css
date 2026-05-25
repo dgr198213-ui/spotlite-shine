@@ -39,7 +39,7 @@
 :root {
   --radius: 0.875rem;
 
-  /* Spotlite — deep purple stage with warm gold spotlight */
+  /* Spot&Shows — deep purple stage with warm gold spotlight */
   --background: oklch(0.18 0.07 300);
   --foreground: oklch(0.98 0.01 90);
 

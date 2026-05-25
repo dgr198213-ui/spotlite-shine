@@ -11,7 +11,7 @@ import artist3 from "@/assets/artist-3.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Spotlite — Tu escenario, tu audiencia, tu momento" },
+      { title: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
       { name: "description", content: "Conecta con eventos y consigue tu próximo escenario. Sin comisiones, perfil profesional en 5 minutos." },
     ],
   }),

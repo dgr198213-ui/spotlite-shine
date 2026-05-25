@@ -7,7 +7,7 @@ import { Check, Sparkles, Star, Crown } from "lucide-react";
 export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
-      { title: "Precios — Spotlite" },
+      { title: "Precios — Spot&Shows" },
       { name: "description", content: "Planes Spark, Spotlight y Headliner. Sin comisiones por contrato. Cobra directamente, fija tus condiciones." },
     ],
   }),

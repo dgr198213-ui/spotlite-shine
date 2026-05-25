@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/perfil")({
-  head: () => ({ meta: [{ title: "Mi perfil — Spotlite" }] }),
+  head: () => ({ meta: [{ title: "Mi perfil — Spot&Shows" }] }),
   component: ProfileEditPage,
 });
 

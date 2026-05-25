@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div>
             <div className="flex items-center gap-2 font-display text-xl font-bold">
               <Sparkles className="h-5 w-5 text-gold" />
-              Spotlite
+              Spot&Shows
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
               La plataforma donde artistas encuentran su público y eventos encuentran talento excepcional.
@@ -30,7 +30,7 @@ export function SiteFooter() {
           ]} />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Spotlite. Hecho con ♥ para artistas de España.</span>
+          <span>© {new Date().getFullYear()} Spot&Shows. Hecho con ♥ para artistas de España.</span>
           <span>Versión 2.0</span>
         </div>
       </div>
