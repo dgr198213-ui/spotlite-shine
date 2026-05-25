@@ -99,6 +99,7 @@ function HomePage() {
             </button>
           ))}
         </div>
+        </div>
       </section>
 
       {/* Cómo funciona */}
