@@ -41,7 +41,18 @@ function HomePage() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+      <section className="relative overflow-hidden">
+        <video
+          src="/hero-bg.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 [mask-image:linear-gradient(to_bottom,black_60%,transparent)]"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-background/40 backdrop-blur-[2px]" aria-hidden />
+        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-muted-foreground backdrop-blur">
