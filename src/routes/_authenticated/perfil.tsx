@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { MediaGallery } from "@/components/media-gallery";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/perfil")({
@@ -138,6 +139,12 @@ function ProfileEditPage() {
             {busy ? "Guardando…" : "Guardar cambios"}
           </Button>
         </form>
+
+        {user && profile && (
+          <section className="mt-10 rounded-2xl border border-border gradient-card p-6 shadow-card">
+            <MediaGallery userId={user.id} plan={(profile.plan ?? "spark") as "spark" | "spotlight" | "headliner"} />
+          </section>
+        )}
       </main>
     </div>
   );
