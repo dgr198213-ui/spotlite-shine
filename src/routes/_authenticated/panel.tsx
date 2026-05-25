@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Eye, Video, MessageCircle, Star, Pencil } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/panel")({
-  head: () => ({ meta: [{ title: "Mi panel — Spotlite" }] }),
+  head: () => ({ meta: [{ title: "Mi panel — Spot&Shows" }] }),
   component: DashboardPage,
 });
 
