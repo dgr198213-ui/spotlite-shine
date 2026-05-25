@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      media: {
+        Row: {
+          created_at: string
+          duration_seconds: number | null
+          id: string
+          position: number
+          storage_path: string | null
+          type: Database["public"]["Enums"]["media_type"]
+          url: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          position?: number
+          storage_path?: string | null
+          type: Database["public"]["Enums"]["media_type"]
+          url: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          position?: number
+          storage_path?: string | null
+          type?: Database["public"]["Enums"]["media_type"]
+          url?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -115,6 +148,7 @@ export type Database = {
         | "arte"
         | "foto_video"
       artist_plan: "spark" | "spotlight" | "headliner"
+      media_type: "image" | "video"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -255,6 +289,7 @@ export const Constants = {
         "foto_video",
       ],
       artist_plan: ["spark", "spotlight", "headliner"],
+      media_type: ["image", "video"],
     },
   },
 } as const
