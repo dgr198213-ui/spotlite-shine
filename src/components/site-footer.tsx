@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export function SiteFooter() {
@@ -11,6 +12,10 @@ export function SiteFooter() {
             <p className="mt-3 text-sm text-muted-foreground">
               La plataforma donde artistas encuentran su público y eventos encuentran talento excepcional.
             </p>
+            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+              <Mail className="h-3.5 w-3.5" />
+              <a href="mailto:hola@spotandshows.com" className="hover:text-foreground">hola@spotandshows.com</a>
+            </div>
           </div>
           <FooterCol title="Artistas" items={[
             { label: "Crear perfil", to: "/registro" },
@@ -21,9 +26,11 @@ export function SiteFooter() {
             { label: "Buscar artistas", to: "/explorar" },
             { label: "Cómo contratar", to: "/precios" },
           ]} />
-          <FooterCol title="Soporte" items={[
-            { label: "Términos", to: "/" },
-            { label: "Privacidad", to: "/" },
+          <FooterCol title="Legal" items={[
+            { label: "Términos", to: "/terminos" },
+            { label: "Privacidad", to: "/privacidad" },
+            { label: "Cookies", to: "/cookies" },
+            { label: "Aviso Legal", to: "/aviso-legal" },
           ]} />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
