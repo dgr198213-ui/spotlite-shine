@@ -41,7 +41,7 @@ function DashboardPage() {
             <p className="mt-2 text-sm text-muted-foreground">Aquí tienes un resumen de tu actividad reciente.</p>
           </div>
           <Button asChild variant="gold" className="rounded-full">
-            <Link to="/_authenticated/perfil">
+            <Link to="/perfil">
               <Pencil className="mr-1 h-4 w-4" /> Editar perfil
             </Link>
           </Button>
@@ -61,7 +61,7 @@ function DashboardPage() {
               Añade foto, biografía y categoría para empezar a recibir solicitudes.
             </p>
             <Button asChild variant="gold" className="mt-4 rounded-full">
-              <Link to="/_authenticated/perfil">Completar ahora</Link>
+              <Link to="/perfil">Completar ahora</Link>
             </Button>
           </Panel>
           <Panel title="Tu plan actual">
