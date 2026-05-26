@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="sticky top-4 z-50 mx-auto w-[min(1180px,calc(100%-2rem))]">
       <div className="flex items-center justify-between rounded-full border border-border bg-card/70 px-5 py-3 backdrop-blur-xl shadow-card">
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <img src={logo} alt="Spot&Shows" className="h-8 w-auto" />
+          <img src={logo} alt="Spot&Shows" className="h-12 w-auto md:h-14" />
           <span className="sr-only">Spot&Shows</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
