@@ -117,13 +117,38 @@ function PricingPage() {
     if (plan.ctaAction === "subscribe" && plan.planId) {
       setLoading(plan.planId);
       try {
-        // In a real implementation, this would call a server function
-        // For now, we'll show a message
-        toast.info("La integración de Stripe está en configuración. Contacta a soporte.");
-        // TODO: Implement actual Stripe checkout
+        // Call the checkout endpoint
+        const response = await fetch("/api/stripe/checkout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            planId: plan.planId,
+            successUrl: `${window.location.origin}/panel?session_id={CHECKOUT_SESSION_ID}`,
+            cancelUrl: `${window.location.origin}/precios`,
+          }),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || "Error al crear sesión de checkout");
+        }
+
+        const { url } = await response.json();
+        if (url) {
+          // Redirect to Stripe checkout
+          window.location.href = url;
+        } else {
+          toast.error("No se pudo obtener la URL de checkout");
+        }
       } catch (error) {
         console.error("Subscription error:", error);
-        toast.error("Error al procesar la suscripción. Intenta de nuevo.");
+        toast.error(
+          error instanceof Error
+            ? error.message
+            : "Error al procesar la suscripción. Intenta de nuevo."
+        );
       } finally {
         setLoading(null);
       }
