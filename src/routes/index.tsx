@@ -2,11 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Music, Drama, Wand2, Mic2, Sparkles as SparklesIcon, Disc3, Palette, Camera, ArrowRight, Star, CheckCircle2 } from "lucide-react";
+import { Music, Drama, Wand2, Mic2, Sparkles as SparklesIcon, Disc3, Palette, Camera, ArrowRight, Star, CheckCircle2, Check, Clock, Crown } from "lucide-react";
 import heroImg from "@/assets/hero-stage.jpg";
 import artist1 from "@/assets/artist-1.jpg";
 import artist2 from "@/assets/artist-2.jpg";
 import artist3 from "@/assets/artist-3.jpg";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -147,6 +148,127 @@ function HomePage() {
             </article>
           ))}
         </div>
+      </section>
+
+      {/* Vídeos showcase */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-muted-foreground backdrop-blur">
+            <SparklesIcon className="h-3.5 w-3.5 text-gold" /> En directo
+          </span>
+          <h2 className="mt-5 font-display text-4xl md:text-5xl">Así se ven los escenarios en Spot&Shows</h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            Una muestra del tipo de vídeos que los artistas podrán publicar en sus perfiles con el plan Standard.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {["/showcase-1.mp4", "/showcase-2.mp4"].map((src) => (
+            <div key={src} className="group relative overflow-hidden rounded-2xl border border-border gradient-card shadow-card">
+              <video
+                src={src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                className="aspect-video h-full w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Planes */}
+      <section id="planes" className="mx-auto max-w-6xl px-6 py-20">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-gold backdrop-blur">
+            <SparklesIcon className="h-3.5 w-3.5" /> Lanzamiento Beta
+          </span>
+          <h2 className="mt-5 font-display text-4xl md:text-5xl">Planes para artistas</h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            Somos solo intermediarios: publicamos eventos gratuitos y cobramos una suscripción a los artistas. Sin comisiones por contrato.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {[
+            {
+              icon: SparklesIcon,
+              name: "Spot&Shows Free",
+              badge: "Beta · Disponible",
+              price: "0€",
+              desc: "Empieza con nosotros durante el lanzamiento",
+              popular: true,
+              features: ["1 fotografía de presentación", "Descripción y biografía", "Precio orientativo", "Exigencias técnicas", "Visible para organizadores"],
+              cta: "Crear cuenta gratis",
+            },
+            {
+              icon: Star,
+              name: "Spot&Shows Standard",
+              badge: "Próximamente",
+              price: "6€",
+              desc: "Para destacar de verdad",
+              comingSoon: true,
+              features: ["1 vídeo de hasta 8 s", "Galería ampliada", "Promoción en nuestra web", "Promoción en redes sociales", "Destacado en búsquedas"],
+              cta: "Disponible pronto",
+            },
+            {
+              icon: Crown,
+              name: "Spot&Shows Pro",
+              badge: "Próximamente",
+              price: "—",
+              desc: "Para artistas profesionales",
+              comingSoon: true,
+              features: ["Vídeos ilimitados", "Galería completa", "Badge verificado", "Multi-proyecto", "Soporte prioritario"],
+              cta: "Disponible pronto",
+            },
+          ].map((p) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.name}
+                className={`relative flex flex-col rounded-2xl border p-7 transition-all ${
+                  p.popular
+                    ? "border-gold/50 gradient-card shadow-glow hover:-translate-y-1"
+                    : "border-border bg-card/30 opacity-80"
+                }`}
+              >
+                <span
+                  className={`absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                    p.popular ? "gradient-gold text-gold-foreground" : "border border-border bg-background text-muted-foreground"
+                  }`}
+                >
+                  {p.comingSoon && <Clock className="mr-1 inline h-3 w-3" />}
+                  {p.badge}
+                </span>
+                <div className="flex items-center gap-2">
+                  <img src={logo} alt="" className="h-7 w-auto" />
+                  <Icon className={`h-5 w-5 ${p.comingSoon ? "text-muted-foreground" : "text-gold"}`} />
+                </div>
+                <h3 className="mt-4 font-display text-2xl">{p.name}</h3>
+                <p className="text-sm text-muted-foreground">{p.desc}</p>
+                <div className="mt-4 font-display text-5xl">{p.price}<span className="text-sm text-muted-foreground">{p.price !== "—" ? "/mes" : ""}</span></div>
+                <ul className="mt-6 flex-1 space-y-2.5 text-sm">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${p.comingSoon ? "text-muted-foreground" : "text-gold"}`} />
+                      <span className={p.comingSoon ? "text-muted-foreground" : ""}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                {p.comingSoon ? (
+                  <Button variant="outline" disabled className="mt-7 w-full rounded-full">{p.cta}</Button>
+                ) : (
+                  <Button asChild variant="gold" className="mt-7 w-full rounded-full">
+                    <Link to="/registro">{p.cta}</Link>
+                  </Button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <p className="mt-8 text-center text-sm text-muted-foreground">
+          <Link to="/precios" className="underline-offset-4 hover:underline">Ver detalles completos de los planes →</Link>
+        </p>
       </section>
 
       {/* CTA final */}

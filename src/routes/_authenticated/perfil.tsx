@@ -87,14 +87,14 @@ function ProfileEditPage() {
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Perfil guardado");
-    navigate({ to: "/_authenticated/panel" });
+    navigate({ to: "/panel" });
   };
 
   return (
     <div className="min-h-dvh gradient-hero">
       <SiteHeader />
       <main className="mx-auto max-w-2xl px-6 pt-12 pb-20">
-        <Link to="/_authenticated/panel" className="text-sm text-muted-foreground hover:text-foreground">← Volver al panel</Link>
+        <Link to="/panel" className="text-sm text-muted-foreground hover:text-foreground">← Volver al panel</Link>
         <h1 className="mt-4 font-display text-4xl">Editar mi perfil</h1>
         <p className="mt-2 text-sm text-muted-foreground">Tu perfil público es lo que ven los organizadores. Cuídalo.</p>
 
