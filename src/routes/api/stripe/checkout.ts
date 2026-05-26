@@ -3,8 +3,8 @@ import { stripeServer } from "@/integrations/stripe/server";
 import { getAuth } from "@/lib/auth-context";
 
 const STRIPE_PLANS: Record<string, string> = {
-  spotlight: process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID || "price_spotlight",
-  headliner: process.env.VITE_STRIPE_HEADLINER_PRICE_ID || "price_headliner",
+  spotlight: process.env.STRIPE_SPOTLIGHT_PRICE_ID || "price_spotlight",
+  headliner: process.env.STRIPE_HEADLINER_PRICE_ID || "price_headliner",
 };
 
 export async function POST({ request }: { request: Request }) {

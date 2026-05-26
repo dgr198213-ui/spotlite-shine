@@ -27,3 +27,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 export const useAuth = () => useContext(AuthCtx);
+
+/**
+ * Server-side helper to get current user from request headers
+ */
+export async function getAuth() {
+  const { getRequest } = await import("@tanstack/react-start/server");
+  const { createClient } = await import("@supabase/supabase-js");
+
+  const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
+  const SUPABASE_PUBLISHABLE_KEY = process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY;
+
+  const request = getRequest();
+  const authHeader = request?.headers.get("authorization");
+
+  if (!authHeader?.startsWith("Bearer ")) {
+    return { user: null };
+  }
+
+  const token = authHeader.split(" ")[1];
+  const supabase = createClient(SUPABASE_URL!, SUPABASE_PUBLISHABLE_KEY!);
+  const { data: { user } } = await supabase.auth.getUser(token);
+
+  return { user };
+}
+
