@@ -48,6 +48,7 @@ function ProfileEditPage() {
     category: "" as string,
     city: "",
     bio: "",
+    requirements: "",
     price_from: "",
     is_published: false,
   });
@@ -60,6 +61,7 @@ function ProfileEditPage() {
         category: profile.category ?? "",
         city: profile.city ?? "",
         bio: profile.bio ?? "",
+        requirements: (profile as { requirements?: string | null }).requirements ?? "",
         price_from: profile.price_from?.toString() ?? "",
         is_published: profile.is_published ?? false,
       });
@@ -74,12 +76,13 @@ function ProfileEditPage() {
       .from("profiles")
       .update({
         display_name: form.display_name,
-        category: (form.category || null) as any,
+        category: (form.category || null) as never,
         city: form.city || null,
         bio: form.bio || null,
+        requirements: form.requirements || null,
         price_from: form.price_from ? Number(form.price_from) : null,
         is_published: form.is_published,
-      })
+      } as never)
       .eq("id", user.id);
     setBusy(false);
     if (error) return toast.error(error.message);
@@ -118,13 +121,26 @@ function ProfileEditPage() {
           </div>
 
           <div className="space-y-2">
-            <Label>Biografía</Label>
-            <Textarea rows={5} value={form.bio} onChange={(e) => setForm({ ...form, bio: e.target.value })} placeholder="Cuéntale al mundo quién eres y qué haces único…" />
+            <Label>Descripción / biografía artística</Label>
+            <Textarea rows={5} value={form.bio} onChange={(e) => setForm({ ...form, bio: e.target.value })} placeholder="Cuéntale al cliente quién eres, qué estilo tienes, tu trayectoria y qué te hace único…" />
+            <p className="text-xs text-muted-foreground">Lo primero que leerá el organizador. Sé claro y directo.</p>
           </div>
 
           <div className="space-y-2">
-            <Label>Precio desde (€)</Label>
+            <Label>Exigencias del artista (rider técnico, hospitality, condiciones)</Label>
+            <Textarea
+              rows={4}
+              value={form.requirements}
+              onChange={(e) => setForm({ ...form, requirements: e.target.value })}
+              placeholder="Ej: equipo de sonido propio incluido, necesito 2 monitores, camerino con agua, alojamiento si la actuación es a +100 km, etc."
+            />
+            <p className="text-xs text-muted-foreground">Todo lo que el cliente debe saber antes de contratarte.</p>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Precio orientativo desde (€)</Label>
             <Input type="number" min={0} value={form.price_from} onChange={(e) => setForm({ ...form, price_from: e.target.value })} placeholder="350" />
+            <p className="text-xs text-muted-foreground">Spot&Shows no cobra comisión: tú cobras directamente del cliente.</p>
           </div>
 
           <div className="flex items-center justify-between rounded-xl border border-border bg-card/40 p-4">
