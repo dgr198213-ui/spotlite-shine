@@ -33,10 +33,10 @@ const CATS = [
 ] as const;
 
 const PERKS = [
-  "Perfil profesional con galería de fotos y vídeo",
+  "Perfil profesional con foto, descripción y precio",
   "Sin permanencia ni comisiones por contrato",
   "Aparece en el explorador de talento",
-  "Cancela o mejora a Spotlight cuando quieras",
+  "Acceso prioritario al plan Standard cuando se abra",
 ];
 
 function SignupPage() {
@@ -120,15 +120,15 @@ function SignupPage() {
       <main className="mx-auto grid max-w-6xl gap-12 px-6 pt-12 pb-20 md:grid-cols-[1.1fr_1fr] md:pt-20">
         {/* Columna marketing */}
         <aside className="hidden md:block">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-muted-foreground backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-gold" /> Plan Spark · Gratis
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-gold backdrop-blur">
+            <Sparkles className="h-3.5 w-3.5" /> Spot&Shows Free · Beta gratuita
           </span>
           <h1 className="mt-6 font-display text-5xl leading-[1.05]">
             Tu próximo escenario,<br />
             <span className="text-gradient-gold">a un clic.</span>
           </h1>
           <p className="mt-5 max-w-md text-muted-foreground">
-            Únete a la comunidad de artistas que ya están conectando con eventos en toda España. Crea tu perfil y empieza a recibir propuestas hoy.
+            Estamos lanzando Spot&Shows. Durante la beta, los artistas se publican <strong className="text-foreground">gratis</strong>. Nosotros somos solo intermediarios: tú cobras directamente del cliente.
           </p>
           <ul className="mt-8 space-y-3">
             {PERKS.map((p) => (
@@ -139,9 +139,12 @@ function SignupPage() {
             ))}
           </ul>
           <div className="mt-10 rounded-2xl border border-gold/30 bg-card/40 p-5 text-sm">
-            <p className="font-display text-base">Plan Spark incluye</p>
+            <p className="font-display text-base">Tu plan Free (Beta) incluye</p>
             <p className="mt-2 text-muted-foreground">
-              4 fotos, 1 vídeo de hasta 8 segundos, biografía, ciudad y precio desde. Suficiente para empezar.
+              1 fotografía, descripción, precio orientativo, exigencias técnicas, ciudad y disciplina. Lo justo para empezar fuerte.
+            </p>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Próximamente · Standard 6€/mes con vídeo de hasta 8 s y promoción en redes.
             </p>
           </div>
         </aside>

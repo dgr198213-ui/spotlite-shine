@@ -8,8 +8,8 @@ import { toast } from "sonner";
 type Plan = "spark" | "spotlight" | "headliner";
 
 const LIMITS: Record<Plan, { videos: number; images: number; videoSeconds: number }> = {
-  spark: { videos: 1, images: 4, videoSeconds: 8 },
-  spotlight: { videos: 5, images: 20, videoSeconds: 60 },
+  spark: { videos: 0, images: 1, videoSeconds: 0 },
+  spotlight: { videos: 1, images: 6, videoSeconds: 8 },
   headliner: { videos: 100, images: 100, videoSeconds: 600 },
 };
 
@@ -120,13 +120,17 @@ export function MediaGallery({ userId, plan }: Props) {
     qc.invalidateQueries({ queryKey: ["media", userId] });
   };
 
+  const isBeta = plan === "spark";
+
   return (
     <div className="space-y-6">
       <header className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="font-display text-2xl">Tu galería</h2>
+          <h2 className="font-display text-2xl">Tu fotografía</h2>
           <p className="text-sm text-muted-foreground">
-            Plan {plan === "spark" ? "Spark (gratis)" : plan} · {limits.images} imágenes · {limits.videos} vídeo(s) ≤ {limits.videoSeconds}s
+            {isBeta
+              ? `Spot&Shows Free (Beta) · 1 imagen de presentación`
+              : `${limits.images} imágenes · ${limits.videos} vídeo(s) ≤ ${limits.videoSeconds}s`}
           </p>
         </div>
         <div className="flex gap-2">
@@ -146,35 +150,37 @@ export function MediaGallery({ userId, plan }: Props) {
           />
           <Button
             type="button"
-            variant="outline"
+            variant="gold"
             size="sm"
             className="rounded-full"
             disabled={uploading !== null || images.length >= limits.images}
             onClick={() => imgInput.current?.click()}
           >
             {uploading === "image" ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : <ImagePlus className="mr-1 h-4 w-4" />}
-            Imagen ({images.length}/{limits.images})
+            {images.length >= limits.images ? "Imagen subida" : `Subir imagen (${images.length}/${limits.images})`}
           </Button>
-          <Button
-            type="button"
-            variant="gold"
-            size="sm"
-            className="rounded-full"
-            disabled={uploading !== null || videos.length >= limits.videos}
-            onClick={() => vidInput.current?.click()}
-          >
-            {uploading === "video" ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : <Video className="mr-1 h-4 w-4" />}
-            Vídeo ({videos.length}/{limits.videos})
-          </Button>
+          {!isBeta && limits.videos > 0 && (
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="rounded-full"
+              disabled={uploading !== null || videos.length >= limits.videos}
+              onClick={() => vidInput.current?.click()}
+            >
+              {uploading === "video" ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : <Video className="mr-1 h-4 w-4" />}
+              Vídeo ({videos.length}/{limits.videos})
+            </Button>
+          )}
         </div>
       </header>
 
-      {plan === "spark" && (
+      {isBeta && (
         <div className="flex items-start gap-2 rounded-xl border border-gold/30 bg-card/40 p-3 text-xs text-muted-foreground">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
           <span>
-            Plan gratuito: 1 vídeo de máximo 8 segundos. ¿Necesitas más?{" "}
-            <a href="/precios" className="text-gold hover:underline">Mejora a Spotlight</a>.
+            Estás en la <strong className="text-foreground">versión Beta gratuita</strong>: 1 fotografía + descripción + precio + exigencias. Los vídeos llegarán muy pronto con el plan{" "}
+            <a href="/precios" className="text-gold hover:underline">Spot&Shows Standard (6€/mes)</a>.
           </span>
         </div>
       )}
