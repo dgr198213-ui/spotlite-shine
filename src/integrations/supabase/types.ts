@@ -61,6 +61,7 @@ export type Database = {
           plan: Database["public"]["Enums"]["artist_plan"]
           price_from: number | null
           rating: number | null
+          requirements: string | null
           reviews_count: number
           slug: string | null
           updated_at: string
@@ -78,6 +79,7 @@ export type Database = {
           plan?: Database["public"]["Enums"]["artist_plan"]
           price_from?: number | null
           rating?: number | null
+          requirements?: string | null
           reviews_count?: number
           slug?: string | null
           updated_at?: string
@@ -95,6 +97,7 @@ export type Database = {
           plan?: Database["public"]["Enums"]["artist_plan"]
           price_from?: number | null
           rating?: number | null
+          requirements?: string | null
           reviews_count?: number
           slug?: string | null
           updated_at?: string
