@@ -65,12 +65,32 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
 
 ## 🚢 Despliegue en Vercel
 
-La plataforma está optimizada para funcionar en Vercel. Asegúrate de configurar las variables de entorno en el panel de Vercel antes de desplegar.
+La plataforma está optimizada para funcionar en Vercel con **SSR (Server-Side Rendering)**. Vercel está configurado automáticamente a través de `vercel.json` para manejar las rutas correctamente.
+
+### Configuración automática (recomendado)
+
+El archivo `vercel.json` ya está configurado con:
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist/client` (para assets estáticos)
+- **Server Function**: `api/index.ts` (para SSR)
+- **Rewrites**: Todas las rutas se redirigen al servidor para SSR
+
+### Pasos para desplegar:
 
 1. Conecta tu repositorio de GitHub a Vercel.
-2. Configura el `Build Command` como `npm run build`.
-3. Configura el `Output Directory` como `dist`.
-4. Añade todas las variables de entorno requeridas.
+2. Vercel detectará automáticamente `vercel.json` y aplicará la configuración.
+3. Asegúrate de añadir todas las variables de entorno requeridas en el panel de Vercel.
+
+### Variables de entorno necesarias:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_PUBLISHABLE_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `STRIPE_PRICE_ID_BASIC`
+- `STRIPE_PRICE_ID_PREMIUM`
 
 ## ⚖️ Legal y Privacidad
 
