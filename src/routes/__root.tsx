@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/auth-context";
 import { supabase } from "@/integrations/supabase/client";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 
@@ -110,6 +111,7 @@ function RootComponent() {
       <AuthProvider>
         <Outlet />
         <Toaster richColors position="top-center" />
+        <SpeedInsights />
       </AuthProvider>
     </QueryClientProvider>
   );
