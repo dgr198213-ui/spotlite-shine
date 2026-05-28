@@ -1,13 +1,14 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-// Import the server handler from the built dist
-let serverHandler: any;
+let serverHandler:
+  | { fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response }
+  | undefined;
 
 async function getServerHandler() {
   if (!serverHandler) {
     try {
       const mod = await import("../dist/server/index.js");
-      serverHandler = mod.default;
+      serverHandler = mod.default || mod;
     } catch (error) {
       console.error("Failed to load server handler:", error);
       throw error;
@@ -16,34 +17,51 @@ async function getServerHandler() {
   return serverHandler;
 }
 
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const handler = await getServerHandler();
+    const protocol = req.headers["x-forwarded-proto"] || "https";
+    const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
+    const url = new URL(req.url || "/", `${protocol}://${host}`);
 
-    // Create a proper Request object for the handler
-    const url = new URL(req.url || "/", `http://${req.headers.host}`);
+    const headers = new Headers();
+    for (const [key, value] of Object.entries(req.headers)) {
+      if (value) {
+        headers.set(key, Array.isArray(value) ? value.join(", ") : value);
+      }
+    }
+
     const request = new Request(url, {
       method: req.method,
-      headers: new Headers(req.headers as Record<string, string>),
-      body: req.method !== "GET" && req.method !== "HEAD" ? JSON.stringify(req.body) : undefined,
+      headers,
+      body:
+        req.method !== "GET" && req.method !== "HEAD" && req.body
+          ? typeof req.body === "string"
+            ? req.body
+            : JSON.stringify(req.body)
+          : undefined,
     });
 
-    // Call the server handler
     const response = await handler.fetch(request, {}, {});
 
-    // Set response headers
     response.headers.forEach((value, key) => {
-      res.setHeader(key, value);
+      if (!["transfer-encoding", "connection", "keep-alive"].includes(key.toLowerCase())) {
+        res.setHeader(key, value);
+      }
     });
 
-    // Set status code
     res.status(response.status);
 
-    // Send the response body
-    const body = await response.text();
-    res.send(body);
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      const json = await response.json();
+      res.json(json);
+    } else {
+      const body = await response.text();
+      res.send(body);
+    }
   } catch (error) {
     console.error("Server error:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+}
