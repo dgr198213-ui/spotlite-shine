@@ -94,7 +94,8 @@ export function SubscriptionManager() {
           <div>
             <h3 className="font-semibold">Sin suscripción activa</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Estás usando el plan Spark (gratuito). Actualiza a Spotlight o Headliner para acceder a más funcionalidades.
+              Estás usando el plan Spark (gratuito). Actualiza a Spotlight o Headliner para acceder
+              a más funcionalidades.
             </p>
           </div>
         </div>
@@ -117,9 +118,7 @@ export function SubscriptionManager() {
               {isActive && <CheckCircle className="h-5 w-5 text-green-500" />}
               {isPastDue && <AlertCircle className="h-5 w-5 text-red-500" />}
             </div>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {planDetails.price}€ al mes
-            </p>
+            <p className="mt-1 text-sm text-muted-foreground">{planDetails.price}€ al mes</p>
           </div>
         </div>
 
@@ -137,7 +136,9 @@ export function SubscriptionManager() {
           {subscription.cancel_at && (
             <div className="flex justify-between text-red-500">
               <span className="text-muted-foreground">Cancelación programada:</span>
-              <span className="font-medium">{new Date(subscription.cancel_at).toLocaleDateString("es-ES")}</span>
+              <span className="font-medium">
+                {new Date(subscription.cancel_at).toLocaleDateString("es-ES")}
+              </span>
             </div>
           )}
         </div>
@@ -149,12 +150,7 @@ export function SubscriptionManager() {
         )}
 
         {isActive && !subscription.cancel_at && (
-          <Button
-            variant="outline"
-            onClick={handleCancel}
-            disabled={canceling}
-            className="w-full"
-          >
+          <Button variant="outline" onClick={handleCancel} disabled={canceling} className="w-full">
             {canceling ? "Cancelando..." : "Cancelar suscripción"}
           </Button>
         )}

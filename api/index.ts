@@ -19,7 +19,7 @@ async function getServerHandler() {
 export default async (req: VercelRequest, res: VercelResponse) => {
   try {
     const handler = await getServerHandler();
-    
+
     // Create a proper Request object for the handler
     const url = new URL(req.url || "/", `http://${req.headers.host}`);
     const request = new Request(url, {

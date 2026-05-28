@@ -15,7 +15,7 @@ export async function POST({ request }: { request: Request }) {
       return json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await request.json() as {
+    const body = (await request.json()) as {
       planId: string;
       successUrl: string;
       cancelUrl: string;
@@ -37,7 +37,7 @@ export async function POST({ request }: { request: Request }) {
       auth.user.id,
       priceId,
       successUrl,
-      cancelUrl
+      cancelUrl,
     );
 
     return json({ sessionId, url });

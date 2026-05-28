@@ -36,9 +36,12 @@ function DashboardPage() {
           <div>
             <p className="text-sm text-muted-foreground">Panel</p>
             <h1 className="font-display text-4xl md:text-5xl">
-              ¡Hola, <span className="text-gradient-gold">{profile?.display_name ?? "Artista"}</span>! 👋
+              ¡Hola,{" "}
+              <span className="text-gradient-gold">{profile?.display_name ?? "Artista"}</span>! 👋
             </h1>
-            <p className="mt-2 text-sm text-muted-foreground">Aquí tienes un resumen de tu actividad reciente.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Aquí tienes un resumen de tu actividad reciente.
+            </p>
           </div>
           <Button asChild variant="gold" className="rounded-full">
             <Link to="/perfil">
@@ -51,14 +54,19 @@ function DashboardPage() {
           <Stat icon={Eye} label="Vistas del perfil" value="0" hint="+0% esta semana" />
           <Stat icon={Video} label="Vídeos subidos" value="0" hint="Plan Spark: 1" />
           <Stat icon={MessageCircle} label="Mensajes" value="0" hint="Sin leer" />
-          <Stat icon={Star} label="Reseñas" value={String(profile?.reviews_count ?? 0)} hint={profile?.rating ? `${profile.rating} ★` : "Aún sin reseñas"} />
+          <Stat
+            icon={Star}
+            label="Reseñas"
+            value={String(profile?.reviews_count ?? 0)}
+            hint={profile?.rating ? `${profile.rating} ★` : "Aún sin reseñas"}
+          />
         </div>
 
         <section className="mt-12 grid gap-6 md:grid-cols-2">
           <Panel title="Completa tu perfil">
             <p className="text-sm text-muted-foreground">
-              Tu perfil está {profile?.is_published ? "publicado" : "sin publicar"}.
-              Añade foto, biografía y categoría para empezar a recibir solicitudes.
+              Tu perfil está {profile?.is_published ? "publicado" : "sin publicar"}. Añade foto,
+              biografía y categoría para empezar a recibir solicitudes.
             </p>
             <Button asChild variant="gold" className="mt-4 rounded-full">
               <Link to="/perfil">Completar ahora</Link>
@@ -77,7 +85,17 @@ function DashboardPage() {
   );
 }
 
-function Stat({ icon: Icon, label, value, hint }: { icon: any; label: string; value: string; hint: string }) {
+function Stat({
+  icon: Icon,
+  label,
+  value,
+  hint,
+}: {
+  icon: any;
+  label: string;
+  value: string;
+  hint: string;
+}) {
   return (
     <div className="rounded-2xl border border-border gradient-card p-5 shadow-card">
       <div className="flex items-center justify-between">

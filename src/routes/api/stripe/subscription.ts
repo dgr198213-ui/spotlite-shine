@@ -24,7 +24,7 @@ export async function POST({ request }: { request: Request }) {
       return json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await request.json() as { action: string; subscriptionId?: string };
+    const body = (await request.json()) as { action: string; subscriptionId?: string };
     const { action, subscriptionId } = body;
 
     if (action === "cancel" && subscriptionId) {
