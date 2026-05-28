@@ -14,7 +14,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AuthState>({ session: null, user: null, loading: true });
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_e, session) => {
       setState({ session, user: session?.user ?? null, loading: false });
     });
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -38,7 +40,8 @@ export async function getAuth() {
 
   // Use consistent environment variable names (prefer non-VITE_ for server)
   const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  const SUPABASE_PUBLISHABLE_KEY =
+    process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
   if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
     console.error("Missing Supabase configuration");
@@ -47,7 +50,7 @@ export async function getAuth() {
 
   try {
     const request = getRequest();
-    
+
     // Try to get token from Authorization header
     const authHeader = request?.headers.get("authorization");
     let token: string | null = null;
@@ -58,14 +61,17 @@ export async function getAuth() {
       // Fallback: try to get from cookie (for browser sessions)
       const cookieHeader = request?.headers.get("cookie");
       if (cookieHeader) {
-        const cookies = cookieHeader.split(";").reduce((acc, cookie) => {
-          const [key, value] = cookie.trim().split("=");
-          acc[key] = value;
-          return acc;
-        }, {} as Record<string, string>);
-        
+        const cookies = cookieHeader.split(";").reduce(
+          (acc, cookie) => {
+            const [key, value] = cookie.trim().split("=");
+            acc[key] = value;
+            return acc;
+          },
+          {} as Record<string, string>,
+        );
+
         // Supabase stores session in sb-{project-ref}-auth-token
-        const sessionKey = Object.keys(cookies).find(key => key.includes("auth-token"));
+        const sessionKey = Object.keys(cookies).find((key) => key.includes("auth-token"));
         if (sessionKey) {
           try {
             const sessionData = JSON.parse(decodeURIComponent(cookies[sessionKey]));
@@ -82,7 +88,9 @@ export async function getAuth() {
     }
 
     const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-    const { data: { user } } = await supabaseClient.auth.getUser(token);
+    const {
+      data: { user },
+    } = await supabaseClient.auth.getUser(token);
 
     return { user };
   } catch (error) {
@@ -90,4 +98,3 @@ export async function getAuth() {
     return { user: null };
   }
 }
-

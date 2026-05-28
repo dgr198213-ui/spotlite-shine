@@ -5,16 +5,36 @@ import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { SiteHeader } from "@/components/site-header";
-import { CheckCircle2, Mail, Lock, User, MapPin, Sparkles, Wand2, Music, Calendar } from "lucide-react";
+import {
+  CheckCircle2,
+  Mail,
+  Lock,
+  User,
+  MapPin,
+  Sparkles,
+  Wand2,
+  Music,
+  Calendar,
+} from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/registro")({
   head: () => ({
     meta: [
       { title: "Crear cuenta — Spot&Shows" },
-      { name: "description", content: "Crea tu perfil de artista o promotor en Spot&Shows. Conecta con talento o encuentra tu próximo evento." },
+      {
+        name: "description",
+        content:
+          "Crea tu perfil de artista o promotor en Spot&Shows. Conecta con talento o encuentra tu próximo evento.",
+      },
     ],
   }),
   component: SignupPage,
@@ -106,7 +126,9 @@ function SignupPage() {
       });
       setBusy(false);
       if (error) return toast.error(error.message);
-      toast.success("Te hemos enviado un enlace mágico", { description: "Revisa tu bandeja de entrada." });
+      toast.success("Te hemos enviado un enlace mágico", {
+        description: "Revisa tu bandeja de entrada.",
+      });
       return;
     }
 
@@ -159,18 +181,23 @@ function SignupPage() {
             {role === "artist"
               ? "Tu próximo escenario,\na un clic."
               : role === "organizer"
-              ? "Encuentra talento\nexcepcional."
-              : "Conecta con talento\no crea tu agenda."}
+                ? "Encuentra talento\nexcepcional."
+                : "Conecta con talento\no crea tu agenda."}
           </h1>
           <p className="mt-5 max-w-md text-muted-foreground">
             {role === "artist"
               ? "Estamos lanzando Spot&Shows. Durante la beta, los artistas se publican gratis. Nosotros somos solo intermediarios: tú cobras directamente del cliente."
               : role === "organizer"
-              ? "Accede a cientos de artistas verificados, crea tu agenda cultural y conecta directamente con el talento que necesitas para tus eventos."
-              : "Eres artista buscando escenarios o promotor buscando talento. Elige tu rol y empieza."}
+                ? "Accede a cientos de artistas verificados, crea tu agenda cultural y conecta directamente con el talento que necesitas para tus eventos."
+                : "Eres artista buscando escenarios o promotor buscando talento. Elige tu rol y empieza."}
           </p>
           <ul className="mt-8 space-y-3">
-            {(role === "artist" ? ARTIST_PERKS : role === "organizer" ? ORGANIZER_PERKS : ARTIST_PERKS).map((p) => (
+            {(role === "artist"
+              ? ARTIST_PERKS
+              : role === "organizer"
+                ? ORGANIZER_PERKS
+                : ARTIST_PERKS
+            ).map((p) => (
               <li key={p} className="flex items-start gap-3 text-sm">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
                 <span>{p}</span>
@@ -181,7 +208,8 @@ function SignupPage() {
             <div className="mt-10 rounded-2xl border border-gold/30 bg-card/40 p-5 text-sm">
               <p className="font-display text-base">Tu plan Free (Beta) incluye</p>
               <p className="mt-2 text-muted-foreground">
-                1 fotografía, descripción, precio orientativo, exigencias técnicas, ciudad y disciplina. Lo justo para empezar fuerte.
+                1 fotografía, descripción, precio orientativo, exigencias técnicas, ciudad y
+                disciplina. Lo justo para empezar fuerte.
               </p>
               <p className="mt-3 text-xs text-muted-foreground">
                 Próximamente · Standard 6€/mes con vídeo de hasta 8 s y promoción en redes.
@@ -196,7 +224,9 @@ function SignupPage() {
             <div className="space-y-6">
               <header>
                 <h2 className="font-display text-2xl">¿Quién eres?</h2>
-                <p className="mt-1 text-sm text-muted-foreground">Elige tu rol para personalizar tu experiencia.</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Elige tu rol para personalizar tu experiencia.
+                </p>
               </header>
 
               <div className="grid gap-3 md:grid-cols-2">
@@ -227,14 +257,19 @@ function SignupPage() {
                     </div>
                     <div>
                       <p className="font-display text-lg">Soy Promotor</p>
-                      <p className="text-xs text-muted-foreground">Organizo eventos y busco talento</p>
+                      <p className="text-xs text-muted-foreground">
+                        Organizo eventos y busco talento
+                      </p>
                     </div>
                   </div>
                 </button>
               </div>
 
               <p className="text-center text-sm text-muted-foreground">
-                ¿Ya tienes cuenta? <Link to="/login" className="text-gold hover:underline">Acceder</Link>
+                ¿Ya tienes cuenta?{" "}
+                <Link to="/login" className="text-gold hover:underline">
+                  Acceder
+                </Link>
               </p>
             </div>
           ) : step === 2 ? (
@@ -243,10 +278,21 @@ function SignupPage() {
                 <div>
                   <h2 className="font-display text-2xl">Cuéntanos más</h2>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    {role === "artist" ? "Lo básico para que los organizadores te encuentren." : "Información sobre tu empresa o evento."}
+                    {role === "artist"
+                      ? "Lo básico para que los organizadores te encuentren."
+                      : "Información sobre tu empresa o evento."}
                   </p>
                 </div>
-                <button type="button" onClick={() => { setStep(1); setRole(null); }} className="text-xs text-muted-foreground hover:text-foreground">← Atrás</button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStep(1);
+                    setRole(null);
+                  }}
+                  className="text-xs text-muted-foreground hover:text-foreground"
+                >
+                  ← Atrás
+                </button>
               </header>
 
               {role === "artist" ? (
@@ -261,10 +307,19 @@ function SignupPage() {
                   </Field>
 
                   <Field icon={Wand2} label="Disciplina principal">
-                    <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v })}>
-                      <SelectTrigger><SelectValue placeholder="Elige una categoría" /></SelectTrigger>
+                    <Select
+                      value={form.category}
+                      onValueChange={(v) => setForm({ ...form, category: v })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Elige una categoría" />
+                      </SelectTrigger>
                       <SelectContent>
-                        {ARTIST_CATS.map(([v, l]) => <SelectItem key={v} value={v}>{l}</SelectItem>)}
+                        {ARTIST_CATS.map(([v, l]) => (
+                          <SelectItem key={v} value={v}>
+                            {l}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </Field>
@@ -313,16 +368,31 @@ function SignupPage() {
                       : `Hola ${form.company} 👋 último paso.`}
                   </p>
                 </div>
-                <button type="button" onClick={() => setStep(2)} className="text-xs text-muted-foreground hover:text-foreground">← Atrás</button>
+                <button
+                  type="button"
+                  onClick={() => setStep(2)}
+                  className="text-xs text-muted-foreground hover:text-foreground"
+                >
+                  ← Atrás
+                </button>
               </header>
 
               <div className="flex rounded-full border border-border bg-card/40 p-1 text-xs">
-                <ToggleBtn active={!magic} onClick={() => setMagic(false)}>Email + contraseña</ToggleBtn>
-                <ToggleBtn active={magic} onClick={() => setMagic(true)}>Enlace mágico</ToggleBtn>
+                <ToggleBtn active={!magic} onClick={() => setMagic(false)}>
+                  Email + contraseña
+                </ToggleBtn>
+                <ToggleBtn active={magic} onClick={() => setMagic(true)}>
+                  Enlace mágico
+                </ToggleBtn>
               </div>
 
               <Field icon={Mail} label="Email">
-                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+                <Input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
+                />
               </Field>
 
               {!magic && (
@@ -338,12 +408,26 @@ function SignupPage() {
                 </Field>
               )}
 
-              <Button type="submit" disabled={busy} variant="gold" size="lg" className="w-full rounded-full">
+              <Button
+                type="submit"
+                disabled={busy}
+                variant="gold"
+                size="lg"
+                className="w-full rounded-full"
+              >
                 {busy ? "Creando cuenta…" : magic ? "Enviar enlace mágico" : "Crear cuenta"}
               </Button>
 
               <p className="text-center text-xs text-muted-foreground">
-                Al continuar aceptas los <Link to="/terminos" className="text-gold hover:underline">términos</Link> y la <Link to="/privacidad" className="text-gold hover:underline">política de privacidad</Link>.
+                Al continuar aceptas los{" "}
+                <Link to="/terminos" className="text-gold hover:underline">
+                  términos
+                </Link>{" "}
+                y la{" "}
+                <Link to="/privacidad" className="text-gold hover:underline">
+                  política de privacidad
+                </Link>
+                .
               </p>
             </form>
           )}
@@ -353,7 +437,15 @@ function SignupPage() {
   );
 }
 
-function Field({ icon: Icon, label, children }: { icon: React.ComponentType<{ className?: string }>; label: string; children: React.ReactNode }) {
+function Field({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="space-y-2">
       <Label className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
@@ -364,7 +456,15 @@ function Field({ icon: Icon, label, children }: { icon: React.ComponentType<{ cl
   );
 }
 
-function ToggleBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function ToggleBtn({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <button
       type="button"

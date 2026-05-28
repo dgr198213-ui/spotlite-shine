@@ -16,9 +16,26 @@ export function SiteHeader() {
           <span className="sr-only">Spot&Shows</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
-          <Link to="/explorar" className="text-muted-foreground transition-colors hover:text-foreground" activeProps={{ className: "text-foreground" }}>Explorar</Link>
-          <Link to="/precios" className="text-muted-foreground transition-colors hover:text-foreground" activeProps={{ className: "text-foreground" }}>Precios</Link>
-          <a href="/#como-funciona" className="text-muted-foreground transition-colors hover:text-foreground">Cómo funciona</a>
+          <Link
+            to="/explorar"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-foreground" }}
+          >
+            Explorar
+          </Link>
+          <Link
+            to="/precios"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-foreground" }}
+          >
+            Precios
+          </Link>
+          <a
+            href="/#como-funciona"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Cómo funciona
+          </a>
         </nav>
         {user ? (
           <div className="flex items-center gap-2">

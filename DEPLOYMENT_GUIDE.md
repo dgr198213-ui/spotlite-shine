@@ -9,7 +9,9 @@
 ## 📋 Configuración Completada
 
 ### 1. Variables de Entorno en Vercel
+
 Las siguientes variables están configuradas en Vercel:
+
 - ✅ `VITE_SUPABASE_URL`
 - ✅ `VITE_SUPABASE_PUBLISHABLE_KEY`
 - ✅ `VITE_STRIPE_PUBLISHABLE_KEY`
@@ -17,10 +19,12 @@ Las siguientes variables están configuradas en Vercel:
 - ✅ `SUPABASE_SERVICE_ROLE_KEY`
 
 ### 2. Supabase
+
 **Proyecto:** xseupkmaosjdrgdsdpmj  
 **URL:** https://xseupkmaosjdrgdsdpmj.supabase.co
 
 #### Tablas Creadas:
+
 - `profiles` - Perfiles de usuarios (artistas y promotores)
 - `events` - Eventos y agenda cultural
 - `favorites` - Artistas favoritos de promotores
@@ -28,17 +32,21 @@ Las siguientes variables están configuradas en Vercel:
 - `messages` - Comunicación entre usuarios
 
 #### Funciones SQL:
+
 - `get_user_role()` - Obtiene el rol del usuario
 - `is_artist()` - Verifica si es artista
 - `is_organizer()` - Verifica si es promotor
 
 ### 3. Stripe
+
 **Modo:** Test (Sandbox)  
 **Claves Configuradas:**
+
 - Secret Key: sk_test_51TbOLxQxrnRxh3Ydfie4...
 - Publishable Key: pk_test_51TbOLxQxrnRxh3Yd...
 
 #### Planes:
+
 - **Spark** - Gratuito (0€/mes)
 - **Spotlight** - 6€/mes
 - **Headliner** - 19€/mes
@@ -46,23 +54,27 @@ Las siguientes variables están configuradas en Vercel:
 ### 4. Características Implementadas
 
 #### Autenticación y Roles
+
 - ✅ Registro con selección de rol (Artista/Promotor)
 - ✅ Autenticación con Supabase
 - ✅ Gestión de roles y permisos
 
 #### Páginas Legales (RGPD)
+
 - ✅ `/terminos` - Términos y Condiciones
 - ✅ `/privacidad` - Política de Privacidad
 - ✅ `/cookies` - Política de Cookies
 - ✅ `/aviso-legal` - Aviso Legal
 
 #### Integración Stripe
+
 - ✅ `/api/stripe/checkout` - Crear sesión de checkout
 - ✅ `/api/stripe/webhook` - Manejar eventos de Stripe
 - ✅ `/api/stripe/subscription` - Gestionar suscripciones
 - ✅ Componente `SubscriptionManager` para panel de usuario
 
 #### Mejoras UX
+
 - ✅ Página de precios mejorada
 - ✅ Footer con enlaces legales
 - ✅ Gestión de suscripciones desde panel
@@ -71,10 +83,12 @@ Las siguientes variables están configuradas en Vercel:
 ## 🔧 Configuración Local
 
 ### Requisitos
+
 - Node.js 22.13.0+
 - npm o pnpm
 
 ### Instalación
+
 ```bash
 git clone https://github.com/dgr198213-ui/spotlite-shine.git
 cd spotlite-shine
@@ -82,12 +96,15 @@ npm install
 ```
 
 ### Variables de Entorno
+
 Copia `.env.example` a `.env.local`:
+
 ```bash
 cp .env.example .env.local
 ```
 
 Completa con tus valores:
+
 ```
 VITE_SUPABASE_URL=https://xseupkmaosjdrgdsdpmj.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_M_UtGZAIHQqpKFyMqwNkpg_B9qEf2GU
@@ -97,11 +114,13 @@ SUPABASE_SERVICE_ROLE_KEY=sbp_...
 ```
 
 ### Desarrollo
+
 ```bash
 npm run dev
 ```
 
 ### Build
+
 ```bash
 npm run build
 ```
@@ -109,6 +128,7 @@ npm run build
 ## 📱 Funcionalidades Principales
 
 ### Para Artistas
+
 1. Crear perfil con foto, biografía y precio
 2. Subir vídeos y fotos (según plan)
 3. Ver solicitudes de eventos
@@ -116,6 +136,7 @@ npm run build
 5. Acceder a panel de control
 
 ### Para Promotores
+
 1. Buscar artistas
 2. Filtrar por categoría y ciudad
 3. Ver detalles de artistas
@@ -125,11 +146,13 @@ npm run build
 ## 🔐 Seguridad
 
 ### Políticas RLS (Row Level Security)
+
 - ✅ Usuarios solo ven sus propios datos
 - ✅ Perfiles públicos visibles para todos
 - ✅ Mensajes privados entre usuarios
 
 ### Autenticación
+
 - ✅ JWT con Supabase Auth
 - ✅ Sesiones seguras
 - ✅ Refresh tokens automáticos
@@ -145,14 +168,17 @@ npm run build
 ## 🐛 Solución de Problemas
 
 ### Variables de entorno no cargadas
+
 - Verifica que estén configuradas en Vercel Settings → Environment Variables
 - Redeploy después de cambiar variables
 
 ### Errores de Stripe
+
 - Verifica que las claves sean correctas (test vs live)
 - Comprueba que el webhook esté configurado en Stripe Dashboard
 
 ### Errores de Supabase
+
 - Verifica la conexión a la base de datos
 - Comprueba que las políticas RLS estén correctas
 - Revisa los logs en Supabase Dashboard
@@ -160,6 +186,7 @@ npm run build
 ## 📞 Soporte
 
 Para preguntas o problemas:
+
 - Email: hola@spotandshows.com
 - GitHub Issues: https://github.com/dgr198213-ui/spotlite-shine/issues
 

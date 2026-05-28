@@ -58,9 +58,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
-      { name: "description", content: "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones." },
+      {
+        name: "description",
+        content:
+          "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones.",
+      },
       { property: "og:title", content: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
-      { property: "og:description", content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones." },
+      {
+        property: "og:description",
+        content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -90,7 +97,9 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
       router.invalidate();
     });
     return () => subscription.unsubscribe();

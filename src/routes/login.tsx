@@ -58,7 +58,9 @@ function LoginPage() {
         <div className="text-center">
           <Sparkles className="mx-auto h-8 w-8 text-gold" />
           <h1 className="mt-4 font-display text-3xl">Bienvenido de vuelta</h1>
-          <p className="mt-2 text-sm text-muted-foreground">Accede para gestionar tu perfil de artista.</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Accede para gestionar tu perfil de artista.
+          </p>
         </div>
 
         <div className="mt-8 rounded-2xl border border-border gradient-card p-6 shadow-card">
@@ -71,8 +73,19 @@ function LoginPage() {
             <TabsContent value="password">
               <form onSubmit={handlePassword} className="mt-4 space-y-4">
                 <Field label="Email" type="email" value={email} onChange={setEmail} required />
-                <Field label="Contraseña" type="password" value={password} onChange={setPassword} required />
-                <Button type="submit" disabled={busy} variant="gold" className="w-full rounded-full">
+                <Field
+                  label="Contraseña"
+                  type="password"
+                  value={password}
+                  onChange={setPassword}
+                  required
+                />
+                <Button
+                  type="submit"
+                  disabled={busy}
+                  variant="gold"
+                  className="w-full rounded-full"
+                >
                   {busy ? "Accediendo…" : "Acceder"}
                 </Button>
               </form>
@@ -81,8 +94,15 @@ function LoginPage() {
             <TabsContent value="magic">
               <form onSubmit={handleMagicLink} className="mt-4 space-y-4">
                 <Field label="Email" type="email" value={email} onChange={setEmail} required />
-                <p className="text-xs text-muted-foreground">Te enviamos un enlace para entrar sin contraseña.</p>
-                <Button type="submit" disabled={busy} variant="gold" className="w-full rounded-full">
+                <p className="text-xs text-muted-foreground">
+                  Te enviamos un enlace para entrar sin contraseña.
+                </p>
+                <Button
+                  type="submit"
+                  disabled={busy}
+                  variant="gold"
+                  className="w-full rounded-full"
+                >
                   {busy ? "Enviando…" : "Enviar enlace mágico"}
                 </Button>
               </form>
@@ -91,18 +111,38 @@ function LoginPage() {
         </div>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
-          ¿Aún no tienes cuenta? <Link to="/registro" className="text-gold hover:underline">Regístrate</Link>
+          ¿Aún no tienes cuenta?{" "}
+          <Link to="/registro" className="text-gold hover:underline">
+            Regístrate
+          </Link>
         </p>
       </div>
     </div>
   );
 }
 
-function Field({ label, type, value, onChange, required }: { label: string; type: string; value: string; onChange: (v: string) => void; required?: boolean }) {
+function Field({
+  label,
+  type,
+  value,
+  onChange,
+  required,
+}: {
+  label: string;
+  type: string;
+  value: string;
+  onChange: (v: string) => void;
+  required?: boolean;
+}) {
   return (
     <div className="space-y-2">
       <Label>{label}</Label>
-      <Input type={type} value={value} onChange={(e) => onChange(e.target.value)} required={required} />
+      <Input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required={required}
+      />
     </div>
   );
 }

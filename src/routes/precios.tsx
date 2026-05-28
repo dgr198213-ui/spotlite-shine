@@ -12,7 +12,11 @@ export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
       { title: "Planes y Precios — Spot&Shows" },
-      { name: "description", content: "Elige el plan perfecto para tu carrera artística. Desde gratuito hasta profesional." },
+      {
+        name: "description",
+        content:
+          "Elige el plan perfecto para tu carrera artística. Desde gratuito hasta profesional.",
+      },
     ],
   }),
   component: PricingPage,
@@ -147,7 +151,7 @@ function PricingPage() {
         toast.error(
           error instanceof Error
             ? error.message
-            : "Error al procesar la suscripción. Intenta de nuevo."
+            : "Error al procesar la suscripción. Intenta de nuevo.",
         );
       } finally {
         setLoading(null);
@@ -165,7 +169,8 @@ function PricingPage() {
           </span>
           <h1 className="mt-5 font-display text-5xl md:text-6xl">Elige tu plan</h1>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Somos solo intermediarios: publicamos eventos gratuitos y cobramos una suscripción opcional a los artistas según su plan. Sin comisiones por contrato.
+            Somos solo intermediarios: publicamos eventos gratuitos y cobramos una suscripción
+            opcional a los artistas según su plan. Sin comisiones por contrato.
           </p>
         </div>
 

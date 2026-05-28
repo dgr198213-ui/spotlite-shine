@@ -5,12 +5,14 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
 ## 🚀 Características Principales
 
 ### 🎭 Para Artistas
+
 - **Perfil Profesional:** Crea un perfil detallado con biografía, categorías y precios.
 - **Galería Multimedia:** Sube fotos y vídeos (según tu plan) para mostrar tu talento.
 - **Gestión de Suscripciones:** Elige entre los planes Spark, Spotlight o Headliner.
 - **Sin Comisiones:** Cobra directamente de tus clientes sin intermediarios.
 
 ### 📅 Para Organizadores (Promotores)
+
 - **Búsqueda Avanzada:** Encuentra artistas por categoría, ciudad y rango de precios.
 - **Favoritos:** Guarda tus artistas preferidos para futuros eventos.
 - **Contacto Directo:** Comunícate con los artistas para cerrar contrataciones.
@@ -33,18 +35,21 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
 ## ⚙️ Configuración Local
 
 1. **Clonar el repositorio:**
+
    ```bash
    git clone https://github.com/dgr198213-ui/spotlite-shine.git
    cd spotlite-shine
    ```
 
 2. **Instalar dependencias:**
+
    ```bash
    npm install
    ```
 
 3. **Variables de Entorno:**
    Crea un archivo `.env.local` basado en `.env.example`:
+
    ```env
    VITE_SUPABASE_URL=tu_url_supabase
    VITE_SUPABASE_PUBLISHABLE_KEY=tu_anon_key
@@ -70,6 +75,7 @@ La plataforma está optimizada para funcionar en Vercel. Asegúrate de configura
 ## ⚖️ Legal y Privacidad
 
 El proyecto incluye páginas legales completas adaptadas al RGPD:
+
 - [Términos y Condiciones](/terminos)
 - [Política de Privacidad](/privacidad)
 - [Política de Cookies](/cookies)
@@ -78,6 +84,7 @@ El proyecto incluye páginas legales completas adaptadas al RGPD:
 ## 📞 Soporte
 
 Si tienes alguna duda o sugerencia, puedes contactarnos en:
+
 - Email: [hola@spotandshows.com](mailto:hola@spotandshows.com)
 - Web: [spotandshows.com](https://spotandshows.com)
 
