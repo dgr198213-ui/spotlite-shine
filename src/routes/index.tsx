@@ -87,7 +87,7 @@ function HomePage() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <video
-          src="/hero-bg.mp4"
+          src="/hero-bg-compressed.mp4"
           autoPlay
           loop
           muted
@@ -262,7 +262,7 @@ function HomePage() {
           </p>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {["/showcase-1.mp4", "/showcase-2.mp4"].map((src) => (
+          {["/showcase-1-compressed.mp4", "/showcase-2-compressed.mp4"].map((src) => (
             <div
               key={src}
               className="group relative overflow-hidden rounded-2xl border border-border gradient-card shadow-card"

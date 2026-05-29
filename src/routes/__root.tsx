@@ -14,6 +14,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
+import logoSrc from "../assets/logo.png";
 
 function NotFoundComponent() {
   return (
@@ -72,7 +73,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "preload", href: logoSrc, as: "image" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

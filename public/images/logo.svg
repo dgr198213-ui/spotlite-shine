@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- Background -->
+  <rect width="400" height="120" fill="#0a0a0f"/>
+
+  <!-- Spotlight Icon (simplified) -->
+  <g transform="translate(20, 20)">
+    <!-- Main spotlight shape -->
+    <path d="M30 0 L60 40 L50 80 L30 60 L10 80 L0 40 Z" fill="url(#spotGradient)" opacity="0.9"/>
+
+    <!-- Star -->
+    <path d="M30 25 L32 32 L40 32 L34 37 L36 44 L30 40 L24 44 L26 37 L20 32 L28 32 Z" fill="#ffd700"/>
+
+    <!-- Person silhouette -->
+    <ellipse cx="30" cy="50" rx="8" ry="10" fill="#0a0a0f"/>
+    <rect x="26" y="58" width="8" height="12" rx="2" fill="#0a0a0f"/>
+
+    <!-- Sparkles -->
+    <circle cx="8" cy="15" r="2" fill="#fff"/>
+    <circle cx="52" cy="10" r="1.5" fill="#ffd700"/>
+  </g>
+
+  <!-- Text "Spot" -->
+  <text x="100" y="55" font-family="Arial Black, sans-serif" font-size="42" font-weight="900" fill="#ffffff">
+    Spot
+  </text>
+
+  <!-- Text "&" -->
+  <text x="185" y="55" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="url(#goldGradient)">
+    &amp;
+  </text>
+
+  <!-- Text "Shows" -->
+  <text x="215" y="55" font-family="Arial Black, sans-serif" font-size="42" font-weight="900" fill="#ffffff">
+    Shows
+  </text>
+
+  <!-- Tagline -->
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="14" fill="#a0a0c0" letter-spacing="0.5">
+    Artistas, Eventos &amp; Escenario
+  </text>
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="spotGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff4500"/>
+      <stop offset="50%" stop-color="#ffa500"/>
+      <stop offset="100%" stop-color="#ffd700"/>
+    </linearGradient>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#ff8c00"/>
+    </linearGradient>
+  </defs>
+</svg>

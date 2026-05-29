@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,18 @@ import { ImagePlus, Video, Trash2, Loader2, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
 
 type Plan = "spark" | "spotlight" | "headliner";
+
+// Optimized image sizes for responsive images
+const IMAGE_SIZES = [400, 800, 1200];
+
+// Generate srcSet for responsive images
+function generateSrcSet(url: string): string {
+  return IMAGE_SIZES.map((size) => `${url}?width=${size} ${size}w`).join(", ");
+}
+
+// Generate blur placeholder as base64 (tiny 10px version)
+function generateBlurPlaceholder(url: string): string {
+  return `data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k=`;
 
 const LIMITS: Record<Plan, { videos: number; images: number; videoSeconds: number }> = {
   spark: { videos: 0, images: 1, videoSeconds: 0 },
@@ -24,6 +36,7 @@ export function MediaGallery({ userId, plan }: Props) {
   const imgInput = useRef<HTMLInputElement>(null);
   const vidInput = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState<"image" | "video" | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const { data: media = [] } = useQuery({
     queryKey: ["media", userId],
@@ -214,7 +227,30 @@ export function MediaGallery({ userId, plan }: Props) {
               className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-card"
             >
               {m.type === "image" ? (
-                <img src={m.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+                <div className="relative h-full w-full overflow-hidden">
+                  {/* Blur placeholder shown while loading */}
+                  {!loadedImages.has(m.id) && (
+                    <div
+                      className="absolute inset-0 bg-muted animate-pulse"
+                      style={{
+                        backgroundImage: `url(${generateBlurPlaceholder(m.url)})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        filter: 'blur(10px)',
+                        transform: 'scale(1.1)'
+                      }}
+                    />
+                  )}
+                  <img
+                    src={m.url}
+                    srcSet={generateSrcSet(m.url)}
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    alt=""
+                    loading="lazy"
+                    className={`h-full w-full object-cover transition-opacity duration-300 ${loadedImages.has(m.id) ? 'opacity-100' : 'opacity-0'}`}
+                    onLoad={() => setLoadedImages(prev => new Set(prev).add(m.id))}
+                  />
+                </div>
               ) : (
                 <video
                   src={m.url}
@@ -223,6 +259,7 @@ export function MediaGallery({ userId, plan }: Props) {
                   loop
                   playsInline
                   preload="metadata"
+                  poster={m.thumbnail_url || undefined}
                 />
               )}
               {m.type === "video" && (
