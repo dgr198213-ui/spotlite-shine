@@ -116,3 +116,9 @@ Todas las ramas remotas han sido revisadas:
 - `origin/vercel/install-vercel-speed-insights-dn75g6` - Commits ya en main
 
 No hay pull requests abiertos pendientes.
+
+## Actualización de Visibilidad
+
+- **Estado**: Repositorio cambiado a **Público**.
+- **Motivo**: Permitir despliegues automáticos en Vercel sin restricciones de membresía de equipo para colaboradores externos.
+- **Acción**: Se realiza este commit para disparar el redeploy automático con la nueva configuración.
