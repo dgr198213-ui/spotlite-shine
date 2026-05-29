@@ -30,7 +30,7 @@ export default async function (req: VercelRequest, res: VercelResponse) {
 
       const response = await handler.fetch(request, {}, {});
 
-      response.headers.forEach((value, key) => {
+      response.headers.forEach((value: string, key: string) => {
         if (!["transfer-encoding", "connection", "keep-alive"].includes(key.toLowerCase())) {
           res.setHeader(key, value);
         }
