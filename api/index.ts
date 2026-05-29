@@ -1,57 +1,48 @@
-// @ts-nocheck
-import { VercelRequest, VercelResponse } from "@vercel/node";
+/**
+ * Vercel Serverless Function Entry Point — spotlite-shine
+ *
+ * TanStack Start (Vite SSR, sin Nitro) genera en build:
+ *   dist/server/server.js  → exporta `handler` compatible con Node.js http
+ *   dist/client/           → assets estáticos (servidos por Vercel CDN)
+ *
+ * ARQUITECTURA:
+ *   Vercel → api/index.ts → dist/server/server.js → TanStack Start SSR
+ */
 
-// @ts-expect-error - This file is generated during the build process
-import { handler } from "../dist/server/server.js";
+import type { IncomingMessage, ServerResponse } from 'node:http'
 
-export default async function (req: VercelRequest, res: VercelResponse) {
-  try {
-    if (handler) {
-      const protocol = req.headers["x-forwarded-proto"] || "https";
-      const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
-      const url = new URL(req.url || "/", `${protocol}://${host}`);
+// @ts-expect-error — generado en build, no existe durante análisis estático de TS
+import serverModule from '../dist/server/server.js'
 
-      const headers = new Headers();
-      for (const [key, value] of Object.entries(req.headers)) {
-        if (value) {
-          headers.set(key, Array.isArray(value) ? value.join(", ") : value);
-        }
-      }
+// TanStack Start exporta el handler como named export o default
+type NodeHandler = (req: IncomingMessage, res: ServerResponse) => void | Promise<void>
 
-      const request = new Request(url, {
-        method: req.method,
-        headers,
-        body:
-          req.method !== "GET" && req.method !== "HEAD" && req.body
-            ? typeof req.body === "string"
-              ? req.body
-              : JSON.stringify(req.body)
-            : undefined,
-      });
+const handler: NodeHandler | undefined =
+  typeof serverModule?.handler === 'function'
+    ? serverModule.handler
+    : typeof serverModule?.default === 'function'
+      ? serverModule.default
+      : typeof serverModule === 'function'
+        ? serverModule
+        : undefined
 
-      const response = await handler.fetch(request, {}, {});
-
-      response.headers.forEach((value, key) => {
-        if (!["transfer-encoding", "connection", "keep-alive"].includes(key.toLowerCase())) {
-          res.setHeader(key, value);
-        }
-      });
-
-      res.status(response.status);
-
-      const contentType = response.headers.get("content-type") || "";
-      if (contentType.includes("application/json")) {
-        const json = await response.json();
-        res.json(json);
-      } else {
-        const body = await response.text();
-        res.send(body);
-      }
-    } else {
-      res.status(500).send("Server handler not initialized");
-    }
-  } catch (error) {
-    console.error("Server error:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+export default async function vercelEntrypoint(
+  req: IncomingMessage,
+  res: ServerResponse,
+): Promise<void> {
+  if (typeof handler !== 'function') {
+    res.writeHead(500, { 'Content-Type': 'application/json' })
+    res.end(
+      JSON.stringify({
+        error: 'Server handler not initialized',
+        detail:
+          'dist/server/server.js no exporta un handler válido. ' +
+          'Verifica que `npm run build` completó correctamente.',
+        exports: Object.keys(serverModule ?? {}),
+      }),
+    )
+    return
   }
+
+  return handler(req, res)
 }
