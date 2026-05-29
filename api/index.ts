@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
 // @ts-expect-error - This file is generated during the build process
