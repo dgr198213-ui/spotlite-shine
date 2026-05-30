@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // 🎭 Escénika Brand — Sidebar Footer Component
 // Container for sidebar footer content with Escénika styling
 
-interface SidebarFooterProps extends React.ComponentProps<"div"> {}
+type SidebarFooterProps = React.ComponentProps<"div">;
 
 export const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
   ({ className, ...props }, ref) => {
