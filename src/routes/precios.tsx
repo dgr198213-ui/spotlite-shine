@@ -17,6 +17,30 @@ export const Route = createFileRoute("/precios")({
         content:
           "Elige el plan perfecto para tu carrera artística. Desde gratuito hasta profesional.",
       },
+      // Open Graph
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Escénika" },
+      { property: "og:title", content: "Escénika — Tu escenario empieza aquí" },
+      {
+        property: "og:description",
+        content: "Elige el plan perfecto para tu carrera artística. Sin comisiones.",
+      },
+      { property: "og:url", content: "https://spotlite-shine.vercel.app/precios" },
+      {
+        property: "og:image",
+        content: "https://spotlite-shine.vercel.app/assets/og-banner.png",
+      },
+      // Twitter Card
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Escénika — Tu escenario empieza aquí" },
+      {
+        name: "twitter:description",
+        content: "Elige el plan perfecto para tu carrera artística. Sin comisiones.",
+      },
+      {
+        name: "twitter:image",
+        content: "https://spotlite-shine.vercel.app/assets/og-banner.png",
+      },
     ],
   }),
   component: PricingPage,
