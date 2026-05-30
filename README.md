@@ -2,7 +2,7 @@
 
 Escénika es una plataforma web moderna diseñada para conectar a artistas talentosos con organizadores de eventos. Nuestra misión es simplificar la contratación artística y ofrecer visibilidad a los talentos locales.
 
-**Tagline:** *"Tu escenario empieza aquí."*
+**Tu escenario empieza aquí.**
 
 ---
 
@@ -110,8 +110,8 @@ La plataforma está optimizada para funcionar en Vercel con **SSR (Server-Side R
 - `STRIPE_SECRET_KEY`
 - `STRIPE_PUBLISHABLE_KEY`
 - `STRIPE_WEBHOOK_SECRET`
-- `STRIPE_PRICE_ID_BASIC`
-- `STRIPE_PRICE_ID_PREMIUM`
+- `STRIPE_SPOTLIGHT_PRICE_ID`
+- `STRIPE_HEADLINER_PRICE_ID`
 
 ---
 
