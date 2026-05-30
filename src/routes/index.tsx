@@ -365,7 +365,7 @@ function HomePage() {
                   {p.badge}
                 </span>
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="" className="h-7 w-auto" />
+                  <img src={logo} alt="" className="h-8 w-auto" />
                   <Icon
                     className={`h-5 w-5 ${p.comingSoon ? "text-muted-foreground" : "text-gold"}`}
                   />

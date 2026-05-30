@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <img src={logo} alt="Escénika" className="h-10 w-auto" />
+            <img src={logo} alt="Escénika" className="h-8 w-auto" />
             <p className="mt-3 text-sm text-muted-foreground">
               La plataforma donde artistas encuentran su público y eventos encuentran talento
               excepcional.
