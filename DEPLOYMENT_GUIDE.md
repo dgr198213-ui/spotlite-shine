@@ -1,4 +1,4 @@
-# Guía de Despliegue - Spot&Shows
+# Guía de Despliegue - Escénika
 
 ## 🚀 Estado del Despliegue
 
@@ -187,7 +187,7 @@ npm run build
 
 Para preguntas o problemas:
 
-- Email: hola@spotandshows.com
+- Email: hola@escenika.com
 - GitHub Issues: https://github.com/dgr198213-ui/spotlite-shine/issues
 
 ## 📚 Documentación

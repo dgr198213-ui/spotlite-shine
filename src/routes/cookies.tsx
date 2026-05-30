@@ -5,11 +5,11 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
-      { title: "Política de Cookies — Spot&Shows" },
+      { title: "Política de Cookies — Escénika" },
       {
         name: "description",
         content:
-          "Política de cookies de Spot&Shows. Información sobre el uso de cookies y tecnologías de rastreo.",
+          "Política de cookies de Escénika. Información sobre el uso de cookies y tecnologías de rastreo.",
       },
     ],
   }),
@@ -108,7 +108,7 @@ function CookiesPage() {
           <section>
             <h2 className="font-display text-2xl">Consentimiento de Cookies</h2>
             <p className="mt-3 text-muted-foreground">
-              Al acceder a Spot&Shows, aceptas el uso de cookies esenciales. Las cookies de análisis
+              Al acceder a Escénika, aceptas el uso de cookies esenciales. Las cookies de análisis
               y marketing requieren tu consentimiento explícito, que puedes otorgar o rechazar a
               través del banner de cookies.
             </p>
@@ -133,7 +133,7 @@ function CookiesPage() {
                 bloquear cookies
               </li>
               <li>
-                <strong>Preferencias de Spot&Shows:</strong> Gestiona tus preferencias desde tu
+                <strong>Preferencias de Escénika:</strong> Gestiona tus preferencias desde tu
                 perfil
               </li>
             </ul>
@@ -195,8 +195,8 @@ function CookiesPage() {
             <h2 className="font-display text-2xl">Contacto</h2>
             <p className="mt-3 text-muted-foreground">
               Para preguntas sobre cookies, contáctanos en:{" "}
-              <a href="mailto:privacy@spotandshows.com" className="text-gold hover:underline">
-                privacy@spotandshows.com
+              <a href="mailto:privacy@escenika.com" className="text-gold hover:underline">
+                privacy@escenika.com
               </a>
             </p>
           </section>

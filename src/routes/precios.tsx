@@ -11,7 +11,7 @@ import logo from "@/assets/logo.png";
 export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
-      { title: "Planes y Precios — Spot&Shows" },
+      { title: "Planes y Precios — Escénika" },
       {
         name: "description",
         content:
@@ -238,7 +238,7 @@ function PricingPage() {
             <div>
               <h3 className="font-display text-lg">Sin comisiones</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tú cobras directamente del cliente. Spot&Shows solo cobra la suscripción opcional.
+                Tú cobras directamente del cliente. Escénika solo cobra la suscripción opcional.
               </p>
             </div>
             <div>
@@ -259,8 +259,8 @@ function PricingPage() {
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
             ¿Preguntas? Contáctanos en{" "}
-            <a href="mailto:hola@spotandshows.com" className="text-gold hover:underline">
-              hola@spotandshows.com
+            <a href="mailto:hola@escenika.com" className="text-gold hover:underline">
+              hola@escenika.com
             </a>
           </p>
         </div>

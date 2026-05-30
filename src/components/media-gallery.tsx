@@ -144,7 +144,7 @@ export function MediaGallery({ userId, plan }: Props) {
           <h2 className="font-display text-2xl">Tu fotografía</h2>
           <p className="text-sm text-muted-foreground">
             {isBeta
-              ? `Spot&Shows Free (Beta) · 1 imagen de presentación`
+              ? `Escénika Free (Beta) · 1 imagen de presentación`
               : `${limits.images} imágenes · ${limits.videos} vídeo(s) ≤ ${limits.videoSeconds}s`}
           </p>
         </div>
@@ -208,7 +208,7 @@ export function MediaGallery({ userId, plan }: Props) {
             fotografía + descripción + precio + exigencias. Los vídeos llegarán muy pronto con el
             plan{" "}
             <a href="/precios" className="text-gold hover:underline">
-              Spot&Shows Standard (6€/mes)
+              Escénika Standard (6€/mes)
             </a>
             .
           </span>

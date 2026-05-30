@@ -1,4 +1,4 @@
-# Auditoría de Imágenes y Marca - Spot&Shows
+# Auditoría de Imágenes y Marca - Escénika
 
 **Proyecto:** Spotlite Shine
 **Fecha:** 30 de mayo de 2026
@@ -10,7 +10,7 @@
 
 ## Resumen Ejecutivo
 
-Esta auditoría examina la gestión de activos visuales del proyecto Spot&Shows, incluyendo imágenes, videos, logos, iconos, colores de marca y tipografía. Se han identificado tanto puntos fuertes como áreas de mejora, y se han implementado optimizaciones.
+Esta auditoría examina la gestión de activos visuales del proyecto Escénika, incluyendo imágenes, videos, logos, iconos, colores de marca y tipografía. Se han identificado tanto puntos fuertes como áreas de mejora, y se han implementado optimizaciones.
 
 ## Estado: ✅ OPTIMIZACIONES COMPLETADAS
 
@@ -55,7 +55,7 @@ Esta auditoría examina la gestión de activos visuales del proyecto Spot&Shows,
 
 ```
 ✓ Usa logo.png correctamente
-✓ Alt text apropiado ("Spot&Shows")
+✓ Alt text apropiado ("Escénika")
 ✓ Altura responsive (h-12 md:h-14)
 ✓ Clase sr-only para accesibilidad
 ✓ Preloading del logo en __root.tsx ✅ NUEVO

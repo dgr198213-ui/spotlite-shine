@@ -59,13 +59,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
+      { title: "Escénika — Tu escenario empieza aquí" },
       {
         name: "description",
         content:
           "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones.",
       },
-      { property: "og:title", content: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
+      { property: "og:title", content: "Escénika — Tu escenario empieza aquí" },
       {
         property: "og:description",
         content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones.",

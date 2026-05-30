@@ -1,6 +1,10 @@
-# Spot&Shows — La Plataforma para Artistas y Eventos
+# 🎭 Escénika — La Plataforma para Artistas y Eventos
 
-Spot&Shows es una plataforma web moderna diseñada para conectar a artistas talentosos con organizadores de eventos. Nuestra misión es simplificar la contratación artística y ofrecer visibilidad a los talentos locales.
+Escénika es una plataforma web moderna diseñada para conectar a artistas talentosos con organizadores de eventos. Nuestra misión es simplificar la contratación artística y ofrecer visibilidad a los talentos locales.
+
+**Tagline:** *"Tu escenario empieza aquí."*
+
+---
 
 ## 🚀 Características Principales
 
@@ -11,11 +15,13 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
 - **Gestión de Suscripciones:** Elige entre los planes Spark, Spotlight o Headliner.
 - **Sin Comisiones:** Cobra directamente de tus clientes sin intermediarios.
 
-### 📅 Para Organizadores (Promotores)
+### 📅 Para Organizadores
 
 - **Búsqueda Avanzada:** Encuentra artistas por categoría, ciudad y rango de precios.
 - **Favoritos:** Guarda tus artistas preferidos para futuros eventos.
 - **Contacto Directo:** Comunícate con los artistas para cerrar contrataciones.
+
+---
 
 ## 🛠️ Stack Tecnológico
 
@@ -26,11 +32,32 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
 - **Pagos:** [Stripe](https://stripe.com/)
 - **Despliegue:** [Vercel](https://vercel.com/)
 
+---
+
+## 📁 Estructura del Proyecto
+
+```
+├── docs/
+│   └── brand/
+│       ├── brand-kit.md           # Identidad de marca completa
+│       └── estrategia-contenido.md # Estrategia de contenido y redes sociales
+├── src/
+│   ├── components/               # Componentes React
+│   ├── routes/                   # Rutas de la aplicación
+│   └── integrations/             # Integraciones (Supabase, Stripe)
+├── public/                       # Assets públicos
+└── supabase/                     # Migraciones de base de datos
+```
+
+---
+
 ## 📋 Requisitos Previos
 
 - Node.js 22.x
 - Cuenta en Supabase
 - Cuenta en Stripe (para pagos)
+
+---
 
 ## ⚙️ Configuración Local
 
@@ -63,23 +90,17 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
    npm run dev
    ```
 
+---
+
 ## 🚢 Despliegue en Vercel
 
 La plataforma está optimizada para funcionar en Vercel con **SSR (Server-Side Rendering)**. Vercel está configurado automáticamente a través de `vercel.json` para manejar las rutas correctamente.
-
-### Configuración automática (recomendado)
-
-El archivo `vercel.json` ya está configurado con:
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist/client` (para assets estáticos)
-- **Server Function**: `api/index.ts` (para SSR)
-- **Rewrites**: Todas las rutas se redirigen al servidor para SSR
 
 ### Pasos para desplegar:
 
 1. Conecta tu repositorio de GitHub a Vercel.
 2. Vercel detectará automáticamente `vercel.json` y aplicará la configuración.
-3. Asegúrate de añadir todas las variables de entorno requeridas en el panel de Vercel.
+3. Añade las variables de entorno requeridas en el panel de Vercel.
 
 ### Variables de entorno necesarias:
 
@@ -92,6 +113,8 @@ El archivo `vercel.json` ya está configurado con:
 - `STRIPE_PRICE_ID_BASIC`
 - `STRIPE_PRICE_ID_PREMIUM`
 
+---
+
 ## ⚖️ Legal y Privacidad
 
 El proyecto incluye páginas legales completas adaptadas al RGPD:
@@ -101,13 +124,16 @@ El proyecto incluye páginas legales completas adaptadas al RGPD:
 - [Política de Cookies](/cookies)
 - [Aviso Legal](/aviso-legal)
 
+---
+
 ## 📞 Soporte
 
 Si tienes alguna duda o sugerencia, puedes contactarnos en:
 
-- Email: [hola@spotandshows.com](mailto:hola@spotandshows.com)
-- Web: [spotandshows.com](https://spotandshows.com)
+- **Web:** [escenika.com](https://escenika.com)
+- **Email:** hola@escenika.com
+- **Redes sociales:** @escenika (todas las plataformas)
 
 ---
 
-Hecho con ♥ por el equipo de Spot&Shows.
+Hecho con ♥ por el equipo de Escénika.

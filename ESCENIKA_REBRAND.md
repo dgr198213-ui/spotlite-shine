@@ -1,3 +1,3 @@
 # Escénika
 
-Rebrand desde Spot&Shows
+Rebrand desde Escénika

@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/explorar")({
   head: () => ({
     meta: [
-      { title: "Explorar artistas — Spot&Shows" },
+      { title: "Explorar artistas — Escénika" },
       {
         name: "description",
         content: "Descubre cantantes, DJs, magos y más artistas para tu próximo evento.",
