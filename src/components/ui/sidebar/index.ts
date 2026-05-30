@@ -26,7 +26,7 @@ export { SidebarContent } from "./organisms/sidebar-content";
 export { SidebarGroup } from "./organisms/sidebar-group";
 
 // Templates (composed organisms)
-export { SidebarMenuItem, SidebarMenuButton, SidebarMenuBadge, SidebarMenuSub } from "./templates/sidebar-menu";
+export { SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuBadge, SidebarMenuSub } from "./templates/sidebar-menu";
 
 // Legacy re-exports for backward compatibility
 // Import from ui/sidebar for existing usage
