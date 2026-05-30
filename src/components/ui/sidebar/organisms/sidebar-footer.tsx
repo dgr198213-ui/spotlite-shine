@@ -18,11 +18,11 @@ export const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps
           // Escénika styling - subtle gradient footer
           "flex flex-col gap-2 p-3 mt-auto border-t border-sidebar-border/50",
           "bg-gradient-to-t from-[oklch(0.24_0.08_300)] to-transparent",
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 SidebarFooter.displayName = "SidebarFooter";

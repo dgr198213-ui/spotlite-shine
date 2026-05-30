@@ -18,11 +18,11 @@ export const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps
           // Escénika styling - gold accent on headers
           "flex flex-col gap-2 p-3 border-b border-sidebar-border/50",
           "bg-gradient-to-b from-[oklch(0.24_0.08_300)] to-transparent",
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 SidebarHeader.displayName = "SidebarHeader";

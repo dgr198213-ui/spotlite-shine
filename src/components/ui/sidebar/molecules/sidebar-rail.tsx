@@ -31,11 +31,11 @@ export const SidebarRail = React.forwardRef<HTMLButtonElement, SidebarRailProps>
           "group-data-[collapsible=offcanvas]:hover:bg-sidebar-accent",
           "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
           "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 SidebarRail.displayName = "SidebarRail";

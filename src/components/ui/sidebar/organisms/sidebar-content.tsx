@@ -19,11 +19,11 @@ export const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentPro
           "flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overflow-x-hidden",
           "scrollbar-thin scrollbar-thumb-sidebar-border scrollbar-track-transparent",
           "group-data-[collapsible=icon]:overflow-hidden",
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 SidebarContent.displayName = "SidebarContent";

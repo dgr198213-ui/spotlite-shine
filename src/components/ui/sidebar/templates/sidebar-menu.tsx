@@ -19,7 +19,7 @@ export const SidebarMenuItem = React.forwardRef<HTMLLIElement, SidebarMenuItemPr
       className={cn("group/menu-item relative list-none", className)}
       {...props}
     />
-  )
+  ),
 );
 SidebarMenuItem.displayName = "SidebarMenuItem";
 
@@ -44,7 +44,7 @@ export const SidebarMenuButton = React.forwardRef<
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : "button";
     const { isMobile, state } = useSidebar();
@@ -59,7 +59,7 @@ export const SidebarMenuButton = React.forwardRef<
         className={cn(
           sidebarMenuButtonVariants({ variant, size }),
           "data-[active=true]:bg-gold/20 data-[active=true]:text-gold",
-          className
+          className,
         )}
         {...props}
       />
@@ -82,7 +82,7 @@ export const SidebarMenuButton = React.forwardRef<
         />
       </Tooltip>
     );
-  }
+  },
 );
 SidebarMenuButton.displayName = "SidebarMenuButton";
 
@@ -98,11 +98,11 @@ export const SidebarMenuBadge = React.forwardRef<HTMLDivElement, SidebarMenuBadg
         // Escénika gold badge styling
         "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums",
         "bg-gold/20 text-gold border border-gold/30",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  ),
 );
 SidebarMenuBadge.displayName = "SidebarMenuBadge";
 
@@ -117,10 +117,10 @@ export const SidebarMenuSub = React.forwardRef<HTMLUListElement, SidebarMenuSubP
       className={cn(
         "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border/50 px-2.5 py-0.5 list-none",
         "group-data-[collapsible=icon]:hidden",
-        className
+        className,
       )}
       {...props}
     />
-  )
+  ),
 );
 SidebarMenuSub.displayName = "SidebarMenuSub";

@@ -29,7 +29,7 @@ export const SidebarTrigger = React.forwardRef<
       className={cn(
         // Escénika gold accent on hover
         "h-9 w-9 rounded-lg transition-all duration-200 hover:bg-sidebar-accent hover:text-gold",
-        className
+        className,
       )}
       onClick={(event) => {
         onClick?.(event);

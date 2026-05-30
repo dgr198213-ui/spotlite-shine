@@ -17,10 +17,7 @@ export const SidebarSeparator = React.forwardRef<
     <Separator
       ref={ref}
       data-sidebar="separator"
-      className={cn(
-        "mx-2 w-auto bg-gradient-to-r from-transparent via-sidebar-border/80 to-transparent",
-        className
-      )}
+      className={cn("mx-2 w-auto h-[1px] bg-sidebar-border", className)}
       {...props}
     />
   );

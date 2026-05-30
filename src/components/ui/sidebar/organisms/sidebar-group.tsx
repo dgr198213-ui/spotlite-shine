@@ -18,11 +18,11 @@ export const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
           // Escénika styled group
           "relative flex w-full min-w-0 flex-col p-2 rounded-lg",
           "hover:bg-sidebar-accent/30 transition-colors duration-200",
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 SidebarGroup.displayName = "SidebarGroup";
