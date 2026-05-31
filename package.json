@@ -79,7 +79,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
+    "@eslint/js": "^10.0.1",
     "@vitest/coverage-v8": "^2.1.9",
     "@lovable.dev/vite-tanstack-config": "^1.7.0",
     "@tanstack/router-vite-plugin": "^1.167.11",
