@@ -1,9 +1,29 @@
 import Stripe from "stripe";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-12-15",
-});
+// Export for testing - allows dependency injection
+export function createStripeClient(secretKey?: string) {
+  return new Stripe(secretKey || process.env.STRIPE_SECRET_KEY || "", {
+    apiVersion: "2024-12-15",
+  });
+}
+
+// Module-level client, can be replaced in tests
+let _stripeClient: Stripe | null = null;
+
+export function getStripeClient(): Stripe {
+  if (!_stripeClient) {
+    _stripeClient = createStripeClient();
+  }
+  return _stripeClient;
+}
+
+export function setStripeClient(client: Stripe) {
+  _stripeClient = client;
+}
+
+// Re-export type for convenience
+export type StripeServer = typeof stripeServer;
 
 export const stripeServer = {
   /**
@@ -16,6 +36,8 @@ export const stripeServer = {
     cancelUrl: string,
   ) {
     try {
+      const stripe = getStripeClient();
+      
       // Get or create Stripe customer
       let customerId: string;
       const { data: subscription } = await supabaseAdmin
@@ -28,9 +50,7 @@ export const stripeServer = {
         customerId = subscription.stripe_customer_id;
       } else {
         // Get user email
-        const {
-          data: { user },
-        } = await supabaseAdmin.auth.admin.getUserById(userId);
+        const { data: { user } } = await supabaseAdmin.auth.admin.getUserById(userId);
         if (!user?.email) throw new Error("User email not found");
 
         // Create new customer
@@ -44,12 +64,7 @@ export const stripeServer = {
       // Create checkout session
       const session = await stripe.checkout.sessions.create({
         customer: customerId,
-        line_items: [
-          {
-            price: priceId,
-            quantity: 1,
-          },
-        ],
+        line_items: [{ price: priceId, quantity: 1 }],
         mode: "subscription",
         success_url: successUrl,
         cancel_url: cancelUrl,
@@ -68,6 +83,8 @@ export const stripeServer = {
    */
   async handleWebhook(event: Stripe.Event) {
     try {
+      const stripe = getStripeClient();
+      
       switch (event.type) {
         case "customer.subscription.created":
         case "customer.subscription.updated": {
@@ -83,9 +100,7 @@ export const stripeServer = {
         case "invoice.payment_succeeded": {
           const invoice = event.data.object as Stripe.Invoice;
           if (invoice.subscription) {
-            const subscription = await stripe.subscriptions.retrieve(
-              invoice.subscription as string,
-            );
+            const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
             await stripeServer.syncSubscription(subscription);
           }
           break;
@@ -93,9 +108,7 @@ export const stripeServer = {
         case "invoice.payment_failed": {
           const invoice = event.data.object as Stripe.Invoice;
           if (invoice.subscription) {
-            const subscription = await stripe.subscriptions.retrieve(
-              invoice.subscription as string,
-            );
+            const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
             await stripeServer.updateSubscriptionStatus(subscription, "past_due");
           }
           break;
@@ -118,12 +131,10 @@ export const stripeServer = {
       const customerId = stripeSubscription.customer as string;
       const priceId = stripeSubscription.items.data[0]?.price.id;
 
-      // Determine plan from price ID
       let plan: "spark" | "spotlight" | "headliner" = "spark";
       if (priceId?.includes("spotlight")) plan = "spotlight";
       else if (priceId?.includes("headliner")) plan = "headliner";
 
-      // Update subscription in Supabase
       const { error } = await supabaseAdmin.from("subscriptions").upsert(
         {
           user_id: userId,
@@ -131,9 +142,7 @@ export const stripeServer = {
           stripe_subscription_id: stripeSubscription.id,
           plan,
           status: stripeSubscription.status,
-          current_period_start: new Date(
-            stripeSubscription.current_period_start * 1000,
-          ).toISOString(),
+          current_period_start: new Date(stripeSubscription.current_period_start * 1000).toISOString(),
           current_period_end: new Date(stripeSubscription.current_period_end * 1000).toISOString(),
           cancel_at: stripeSubscription.cancel_at
             ? new Date(stripeSubscription.cancel_at * 1000).toISOString()
@@ -143,10 +152,7 @@ export const stripeServer = {
       );
 
       if (error) throw error;
-
-      // Update user profile plan
       await supabaseAdmin.from("profiles").update({ plan }).eq("id", userId);
-
       console.log(`Subscription synced for user ${userId}: ${plan}`);
     } catch (error) {
       console.error("Error syncing subscription:", error);
@@ -162,17 +168,13 @@ export const stripeServer = {
       const userId = stripeSubscription.metadata?.userId;
       if (!userId) throw new Error("User ID not found in subscription metadata");
 
-      // Update subscription status
       const { error } = await supabaseAdmin
         .from("subscriptions")
         .update({ status: "canceled" })
         .eq("stripe_subscription_id", stripeSubscription.id);
 
       if (error) throw error;
-
-      // Reset user plan to spark
       await supabaseAdmin.from("profiles").update({ plan: "spark" }).eq("id", userId);
-
       console.log(`Subscription canceled for user ${userId}`);
     } catch (error) {
       console.error("Error canceling subscription:", error);
@@ -223,6 +225,7 @@ export const stripeServer = {
    */
   async cancelStripeSubscription(subscriptionId: string) {
     try {
+      const stripe = getStripeClient();
       const subscription = await stripe.subscriptions.del(subscriptionId);
       return subscription;
     } catch (error) {
@@ -238,6 +241,7 @@ export const stripeServer = {
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
     if (!webhookSecret) throw new Error("Webhook secret not configured");
 
+    const stripe = getStripeClient();
     try {
       return stripe.webhooks.constructEvent(body, signature, webhookSecret);
     } catch (error) {
