@@ -131,9 +131,22 @@ export const stripeServer = {
       const customerId = stripeSubscription.customer as string;
       const priceId = stripeSubscription.items.data[0]?.price.id;
 
+      // Detect plan from Price ID — supports both env-var IDs and keyword fallback
+      const spotlightPriceId =
+        process.env.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID ||
+        process.env.STRIPE_SPOTLIGHT_PRICE_ID ||
+        process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID;
+      const headlinerPriceId =
+        process.env.NEXT_PUBLIC_STRIPE_HEADLINER_PRICE_ID ||
+        process.env.STRIPE_HEADLINER_PRICE_ID ||
+        process.env.VITE_STRIPE_HEADLINER_PRICE_ID;
+
       let plan: "spark" | "spotlight" | "headliner" = "spark";
-      if (priceId?.includes("spotlight")) plan = "spotlight";
-      else if (priceId?.includes("headliner")) plan = "headliner";
+      if (priceId && spotlightPriceId && priceId === spotlightPriceId) plan = "spotlight";
+      else if (priceId && headlinerPriceId && priceId === headlinerPriceId) plan = "headliner";
+      // Keyword fallback for development/test environments
+      else if (priceId?.toLowerCase().includes("spotlight")) plan = "spotlight";
+      else if (priceId?.toLowerCase().includes("headliner")) plan = "headliner";
 
       const { error } = await supabaseAdmin.from("subscriptions").upsert(
         {

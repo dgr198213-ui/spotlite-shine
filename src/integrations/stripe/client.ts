@@ -4,9 +4,12 @@ let stripePromise: Promise<Stripe | null>;
 
 export const getStripe = () => {
   if (!stripePromise) {
-    const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+    // Supports NEXT_PUBLIC_ (Vercel standard) and VITE_ (Vite dev)
+    const publishableKey =
+      import.meta.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
+      import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
     if (!publishableKey) {
-      console.error("VITE_STRIPE_PUBLISHABLE_KEY is not set");
+      console.error("NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not set. Configure it in Vercel Environment Variables.");
       return Promise.resolve(null);
     }
     stripePromise = loadStripe(publishableKey);
@@ -31,7 +34,13 @@ export const STRIPE_PLANS = {
   spotlight: {
     name: "Spotlight",
     price: 6,
-    priceId: process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID || "price_spotlight",
+    priceId:
+      (typeof import.meta !== "undefined" && import.meta.env?.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID) ||
+      (typeof import.meta !== "undefined" && import.meta.env?.VITE_STRIPE_SPOTLIGHT_PRICE_ID) ||
+      process.env.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID ||
+      process.env.STRIPE_SPOTLIGHT_PRICE_ID ||
+      process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID ||
+      null,
     description: "Plan recomendado para artistas",
     features: [
       "Todo del plan Spark +",
@@ -45,7 +54,13 @@ export const STRIPE_PLANS = {
   headliner: {
     name: "Headliner",
     price: 19,
-    priceId: process.env.VITE_STRIPE_HEADLINER_PRICE_ID || "price_headliner",
+    priceId:
+      (typeof import.meta !== "undefined" && import.meta.env?.NEXT_PUBLIC_STRIPE_HEADLINER_PRICE_ID) ||
+      (typeof import.meta !== "undefined" && import.meta.env?.VITE_STRIPE_HEADLINER_PRICE_ID) ||
+      process.env.NEXT_PUBLIC_STRIPE_HEADLINER_PRICE_ID ||
+      process.env.STRIPE_HEADLINER_PRICE_ID ||
+      process.env.VITE_STRIPE_HEADLINER_PRICE_ID ||
+      null,
     description: "Plan profesional completo",
     features: [
       "Todo del plan Spotlight +",

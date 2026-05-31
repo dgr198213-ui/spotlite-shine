@@ -126,7 +126,15 @@ export function SubscriptionManager() {
           <div className="flex justify-between">
             <span className="text-muted-foreground">Estado:</span>
             <span className="font-medium capitalize">
-              {subscription.status === "active" ? "Activo" : subscription.status}
+              {subscription.status === "active"
+                ? "Activo"
+                : subscription.status === "canceled"
+                  ? "Cancelado"
+                  : subscription.status === "past_due"
+                    ? "Pago pendiente"
+                    : subscription.status === "unpaid"
+                      ? "Impagado"
+                      : subscription.status}
             </span>
           </div>
           <div className="flex justify-between">

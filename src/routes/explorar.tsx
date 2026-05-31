@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -102,9 +103,10 @@ function ExplorePage() {
         ) : (
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {artists.map((a) => (
-              <article
+              <Link
                 key={a.id}
-                className="group overflow-hidden rounded-2xl border border-border gradient-card shadow-card transition-all hover:-translate-y-1 hover:shadow-gold"
+                to={`/artista/${a.slug || a.id}`}
+                className="group block overflow-hidden rounded-2xl border border-border gradient-card shadow-card transition-all hover:-translate-y-1 hover:shadow-gold"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-muted">
                   {a.cover_url || a.avatar_url ? (
@@ -138,7 +140,7 @@ function ExplorePage() {
                     </div>
                   )}
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         )}
