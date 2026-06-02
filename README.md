@@ -34,10 +34,10 @@ Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden
 
 ## 💰 Planes de Lanzamiento
 
-| Característica | Free | Standard | Pro |
+| Característica | Free(beta)| Standard | Pro |
 |---|---|---|---|
 | Perfil Público | ✅ | ✅ | ✅ |
-| Fotos | 1 | 6 | 3 |
+| Fotos | 1 | 3 | 3 |
 | Vídeos | — | 1 | 3 |
 | Precio | **0€/mes** | **6€/mes** | **9'99€/mes** |
 | Visibilidad | Estándar | Mejorada | Máxima |
