@@ -1,3 +1,4 @@
+# This is a Prettier configuration file.
 {
   "semi": true,
   "trailingComma": "es5",
