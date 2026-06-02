@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/privacidad")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidad — Spot&Shows" },
+      { title: "Política de Privacidad — Escénika" },
       {
         name: "description",
-        content: "Política de privacidad y protección de datos de Spot&Shows conforme a RGPD.",
+        content: "Política de privacidad y protección de datos de Escénika conforme a RGPD.",
       },
     ],
   }),
@@ -17,19 +17,20 @@ export const Route = createFileRoute("/privacidad")({
 
 function PrivacidadPage() {
   return (
-    <div className="min-h-dvh gradient-hero">
+    <div className="min-h-dvh bg-background">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-6 pt-12 pb-20">
-        <h1 className="font-display text-5xl">Política de Privacidad</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+      <main className="mx-auto max-w-4xl px-6 pt-12 pb-24">
+        <p className="text-sm font-medium uppercase tracking-widest text-primary">Legal</p>
+        <h1 className="mt-3 font-display text-5xl tracking-tight">Política de Privacidad</h1>
+        <p className="mt-3 text-sm text-muted-foreground">
           Última actualización: 26 de mayo de 2026
         </p>
 
-        <article className="mt-10 space-y-8 text-sm leading-relaxed">
+        <article className="mt-12 space-y-10 text-sm leading-relaxed">
           <section>
             <h2 className="font-display text-2xl">1. Responsable del Tratamiento</h2>
-            <p className="mt-3 text-muted-foreground">
-              Spot&Shows ("nosotros" o "la Plataforma") es responsable del tratamiento de tus datos
+            <p className="mt-4 text-muted-foreground">
+              Escénika ("nosotros" o "la Plataforma") es responsable del tratamiento de tus datos
               personales conforme a la Ley Orgánica de Protección de Datos Personales (LOPDGDD) y el
               Reglamento General de Protección de Datos (RGPD).
             </p>
@@ -37,10 +38,10 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">2. Datos que Recopilamos</h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Recopilamos los siguientes datos personales:
             </p>
-            <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc list-inside">
               <li>Nombre, email y contraseña (autenticación)</li>
               <li>Nombre artístico, categoría, ciudad y biografía (perfil)</li>
               <li>Fotografías, vídeos y contenido multimedia</li>
@@ -52,8 +53,8 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">3. Base Legal del Tratamiento</h2>
-            <p className="mt-3 text-muted-foreground">Tratamos tus datos en base a:</p>
-            <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
+            <p className="mt-4 text-muted-foreground">Tratamos tus datos en base a:</p>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc list-inside">
               <li>
                 <strong>Consentimiento:</strong> Para marketing y cookies no esenciales
               </li>
@@ -71,8 +72,8 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">4. Uso de Datos</h2>
-            <p className="mt-3 text-muted-foreground">Utilizamos tus datos para:</p>
-            <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
+            <p className="mt-4 text-muted-foreground">Utilizamos tus datos para:</p>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc list-inside">
               <li>Proporcionar y mejorar el servicio</li>
               <li>Procesar pagos y suscripciones</li>
               <li>Comunicarnos contigo sobre tu cuenta</li>
@@ -84,8 +85,8 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">5. Compartición de Datos</h2>
-            <p className="mt-3 text-muted-foreground">Compartimos tus datos con:</p>
-            <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
+            <p className="mt-4 text-muted-foreground">Compartimos tus datos con:</p>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc list-inside">
               <li>
                 <strong>Stripe:</strong> Para procesar pagos (conforme a sus términos de privacidad)
               </li>
@@ -99,7 +100,7 @@ function PrivacidadPage() {
                 <strong>Autoridades legales:</strong> Si lo requiere la ley
               </li>
             </ul>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Tu perfil público (nombre, categoría, ciudad, foto) es visible para otros usuarios de
               la Plataforma.
             </p>
@@ -107,8 +108,8 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">6. Cookies y Tecnologías de Rastreo</h2>
-            <p className="mt-3 text-muted-foreground">Utilizamos cookies para:</p>
-            <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
+            <p className="mt-4 text-muted-foreground">Utilizamos cookies para:</p>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc list-inside">
               <li>
                 <strong>Cookies esenciales:</strong> Autenticación y funcionamiento del sitio
               </li>
@@ -119,7 +120,7 @@ function PrivacidadPage() {
                 <strong>Cookies de marketing:</strong> Personalizar anuncios (con consentimiento)
               </li>
             </ul>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Puedes controlar las cookies desde la configuración de tu navegador. Desactivar
               cookies puede afectar la funcionalidad de la Plataforma.
             </p>
@@ -127,8 +128,8 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">7. Derechos del Usuario</h2>
-            <p className="mt-3 text-muted-foreground">Conforme al RGPD, tienes derecho a:</p>
-            <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
+            <p className="mt-4 text-muted-foreground">Conforme al RGPD, tienes derecho a:</p>
+            <ul className="mt-4 space-y-2 text-muted-foreground list-disc list-inside">
               <li>
                 <strong>Acceso:</strong> Solicitar copia de tus datos
               </li>
@@ -149,17 +150,17 @@ function PrivacidadPage() {
                 <strong>Oposición:</strong> Oponerte al tratamiento de tus datos
               </li>
             </ul>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Para ejercer estos derechos, contáctanos en:{" "}
-              <a href="mailto:privacy@spotandshows.com" className="text-gold hover:underline">
-                privacy@spotandshows.com
+              <a href="mailto:privacy@escenika.com" className="text-primary hover:underline">
+                privacy@escenika.com
               </a>
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-2xl">8. Retención de Datos</h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Conservamos tus datos mientras tu cuenta esté activa. Después de la eliminación de tu
               cuenta, retenemos datos anonimizados por razones legales y de seguridad durante un
               máximo de 3 años.
@@ -168,7 +169,7 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">9. Seguridad</h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos,
               incluyendo encriptación SSL/TLS, autenticación segura y acceso restringido. Sin
               embargo, ningún sistema es 100% seguro.
@@ -177,7 +178,7 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">10. Cambios en esta Política</h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Podemos actualizar esta Política de Privacidad en cualquier momento. Te notificaremos
               de cambios significativos por email.
             </p>
@@ -185,10 +186,10 @@ function PrivacidadPage() {
 
           <section>
             <h2 className="font-display text-2xl">11. Contacto</h2>
-            <p className="mt-3 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Para preguntas sobre privacidad, contáctanos en:{" "}
-              <a href="mailto:privacy@spotandshows.com" className="text-gold hover:underline">
-                privacy@spotandshows.com
+              <a href="mailto:privacy@escenika.com" className="text-primary hover:underline">
+                privacy@escenika.com
               </a>
             </p>
           </section>
