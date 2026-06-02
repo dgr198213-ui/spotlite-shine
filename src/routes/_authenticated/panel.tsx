@@ -28,6 +28,52 @@ function DashboardPage() {
     },
   });
 
+<<<<<<< Updated upstream
+=======
+  const { data: mediaStats } = useQuery({
+    queryKey: ["media-stats", user?.id],
+    enabled: !!user,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("media")
+        .select("type")
+        .eq("user_id", user!.id);
+      if (error) throw error;
+      const images = data?.filter((m) => m.type === "image").length ?? 0;
+      const videos = data?.filter((m) => m.type === "video").length ?? 0;
+      return { images, videos };
+    },
+  });
+
+  const { data: messageStats } = useQuery({
+    queryKey: ["message-stats", user?.id],
+    enabled: !!user,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("messages")
+        .select("is_read")
+        .eq("recipient_id", user!.id);
+      if (error) throw error;
+      const unread = data?.filter((m) => !m.is_read).length ?? 0;
+      return { total: data?.length ?? 0, unread };
+    },
+  });
+
+  const planLabel: Record<string, string> = {
+    spark: "Escénika Free",
+    spotlight: "Escénika Standard",
+    headliner: "Escénika Pro",
+  };
+
+  const planColor: Record<string, string> = {
+    spark: "text-muted-foreground",
+    spotlight: "text-gold",
+    headliner: "text-gold",
+  };
+
+  const currentPlan = profile?.plan ?? "spark";
+
+>>>>>>> Stashed changes
   return (
     <div className="min-h-dvh gradient-hero">
       <SiteHeader />
@@ -73,12 +119,63 @@ function DashboardPage() {
             </Button>
           </Panel>
           <Panel title="Tu plan actual">
+<<<<<<< Updated upstream
             <p className="font-display text-2xl capitalize">{profile?.plan ?? "spark"}</p>
             <p className="mt-1 text-sm text-muted-foreground">¿Listo para más visibilidad?</p>
             <Button asChild variant="outline" className="mt-4 rounded-full">
               <Link to="/precios">Ver planes</Link>
             </Button>
           </Panel>
+=======
+            <div className="flex items-center gap-3">
+              <Crown className={`h-6 w-6 ${planColor[currentPlan]}`} />
+              <div>
+                <p className={`font-display text-2xl ${planColor[currentPlan]}`}>
+                  {planLabel[currentPlan]}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {currentPlan === "spark"
+                    ? "0€/mes — sin comisiones"
+                    : currentPlan === "spotlight"
+                      ? "6€/mes — más visibilidad"
+                      : "19€/mes — máxima visibilidad"}
+                </p>
+              </div>
+            </div>
+            {currentPlan === "spark" && (
+              <p className="mt-3 text-xs text-muted-foreground">
+                Actualiza para subir vídeos, más fotos y aparecer primero en las búsquedas.
+              </p>
+            )}
+            <Button
+              asChild
+              variant={currentPlan === "spark" ? "gold" : "outline"}
+              className="mt-5 w-full rounded-full"
+            >
+              <Link to="/precios">
+                {currentPlan === "spark" ? "Mejorar plan" : "Ver planes"}
+              </Link>
+            </Button>
+          </Panel>
+        </div>
+
+        {/* Gestión de suscripción — solo si tiene plan de pago */}
+        {currentPlan !== "spark" && (
+          <section className="mt-8">
+            <h2 className="mb-4 font-display text-2xl">Gestión de suscripción</h2>
+            <SubscriptionManager />
+          </section>
+        )}
+
+        {/* Accesos rápidos */}
+        <section className="mt-10">
+          <h2 className="mb-4 font-display text-2xl">Accesos rápidos</h2>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <QuickLink to="/perfil" icon={Pencil} title="Editar perfil" desc="Actualiza tu bio, fotos y precio" />
+            <QuickLink to="/explorar" icon={Crown} title="Ver el explorador" desc="Así te ven los organizadores" />
+            <QuickLink to="/precios" icon={Crown} title="Ver planes" desc="Compara Free, Standard y Pro" />
+          </div>
+>>>>>>> Stashed changes
         </section>
       </main>
     </div>

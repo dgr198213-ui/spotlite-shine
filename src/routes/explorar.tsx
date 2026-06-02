@@ -64,14 +64,21 @@ function ExplorePage() {
           Filtra por categoría y encuentra el talento perfecto para tu evento.
         </p>
 
-        <div className="mt-8 relative">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar por nombre…"
-            className="h-12 rounded-full border-border bg-card/60 pl-11 backdrop-blur"
-          />
+        <div className="mt-8 grid gap-4 md:grid-cols-[1fr_auto]">
+          <div className="relative">
+            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Buscar por nombre artístico, disciplina o ciudad…"
+              className="h-12 rounded-full border-border bg-card/60 pl-11 backdrop-blur"
+            />
+          </div>
+          <Link to="/eventos">
+            <Button variant="outline" className="h-12 rounded-full px-6 border-gold/30 text-gold hover:bg-gold/10">
+              Ver eventos publicados
+            </Button>
+          </Link>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-2">

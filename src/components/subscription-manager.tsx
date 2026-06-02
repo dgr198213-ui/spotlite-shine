@@ -16,9 +16,9 @@ interface Subscription {
 }
 
 const PLAN_DETAILS: Record<string, { name: string; price: number }> = {
-  spark: { name: "Spark", price: 0 },
-  spotlight: { name: "Spotlight", price: 6 },
-  headliner: { name: "Headliner", price: 19 },
+  spark: { name: "Escénika Free", price: 0 },
+  spotlight: { name: "Escénika Standard", price: 6 },
+  headliner: { name: "Escénika Pro", price: 19 },
 };
 
 export function SubscriptionManager() {
@@ -94,8 +94,8 @@ export function SubscriptionManager() {
           <div>
             <h3 className="font-semibold">Sin suscripción activa</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Estás usando el plan Spark (gratuito). Actualiza a Spotlight o Headliner para acceder
-              a más funcionalidades.
+              Estás usando el plan <strong>Escénika Free</strong>. Actualiza a Escénika Standard o Pro para acceder
+              a más funcionalidades multimedia.
             </p>
           </div>
         </div>

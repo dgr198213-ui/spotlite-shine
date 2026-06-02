@@ -8,10 +8,13 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
+<<<<<<< Updated upstream
             <img src={logo} alt="Spot&Shows" className="h-10 w-auto" />
+=======
+            <img src={logo} alt="Escénika" className="h-14 w-auto object-contain mix-blend-normal" />
+>>>>>>> Stashed changes
             <p className="mt-3 text-sm text-muted-foreground">
-              La plataforma donde artistas encuentran su público y eventos encuentran talento
-              excepcional.
+              La plataforma donde artistas encuentran su público y los eventos encuentran talento excepcional. Publica gratis y contrata sin comisiones.
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
               <Mail className="h-3.5 w-3.5" />
@@ -31,8 +34,9 @@ export function SiteFooter() {
           <FooterCol
             title="Eventos"
             items={[
+              { label: "Ver próximos eventos", to: "/eventos" },
+              { label: "Publicar evento gratis", to: "/registro" },
               { label: "Buscar artistas", to: "/explorar" },
-              { label: "Cómo contratar", to: "/precios" },
             ]}
           />
           <FooterCol

@@ -39,7 +39,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     icon: Sparkles,
-    name: "Spark",
+    name: "Escénika Free",
     badge: "Disponible ahora",
     price: "0€",
     period: "/mes",
@@ -59,7 +59,7 @@ const plans: Plan[] = [
   },
   {
     icon: Star,
-    name: "Spotlight",
+    name: "Escénika Standard",
     badge: "Recomendado",
     price: "6€",
     period: "/mes",
@@ -78,7 +78,7 @@ const plans: Plan[] = [
   },
   {
     icon: Crown,
-    name: "Headliner",
+    name: "Escénika Pro",
     badge: "Profesional",
     price: "19€",
     period: "/mes",

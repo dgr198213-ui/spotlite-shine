@@ -110,10 +110,10 @@ function SignupPage() {
     setBusy(true);
 
     const metadata = {
-      display_name: role === "artist" ? form.name : form.company,
+      display_name: form.name,
       category: form.category || null,
       city: form.city || null,
-      role,
+      role: "artist",
     };
 
     if (magic) {
@@ -158,7 +158,6 @@ function SignupPage() {
           display_name: metadata.display_name,
           category: (form.category || null) as never,
           city: form.city || null,
-          organizer_company: role === "organizer" ? form.company : null,
         } as never)
         .eq("id", data.user.id);
     }

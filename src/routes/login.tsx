@@ -59,7 +59,7 @@ function LoginPage() {
           <Sparkles className="mx-auto h-8 w-8 text-gold" />
           <h1 className="mt-4 font-display text-3xl">Bienvenido de vuelta</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Accede para gestionar tu perfil de artista.
+            Accede para gestionar tu perfil de artista o tus eventos publicados.
           </p>
         </div>
 

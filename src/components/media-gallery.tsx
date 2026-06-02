@@ -22,7 +22,7 @@ function generateBlurPlaceholder(url: string): string {
 const LIMITS: Record<Plan, { videos: number; images: number; videoSeconds: number }> = {
   spark: { videos: 0, images: 1, videoSeconds: 0 },
   spotlight: { videos: 1, images: 6, videoSeconds: 8 },
-  headliner: { videos: 100, images: 100, videoSeconds: 600 },
+  headliner: { videos: 100, images: 100, videoSeconds: 3600 },
 };
 
 interface Props {
@@ -143,9 +143,17 @@ export function MediaGallery({ userId, plan }: Props) {
         <div>
           <h2 className="font-display text-2xl">Tu fotografía</h2>
           <p className="text-sm text-muted-foreground">
+<<<<<<< Updated upstream
             {isBeta
               ? `Spot&Shows Free (Beta) · 1 imagen de presentación`
               : `${limits.images} imágenes · ${limits.videos} vídeo(s) ≤ ${limits.videoSeconds}s`}
+=======
+            {plan === "spark"
+              ? "Escénika Free · 1 imagen de presentación"
+              : plan === "spotlight"
+                ? "Escénika Standard · 6 imágenes + 1 vídeo (8s)"
+                : "Escénika Pro · Imágenes y vídeos ilimitados"}
+>>>>>>> Stashed changes
           </p>
         </div>
         <div className="flex gap-2">
