@@ -12,9 +12,9 @@ Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden
 
 - **Perfil Profesional Gratuito:** Crea un perfil detallado con biografía, categoría, ciudad y precio desde.
 - **Galería Multimedia:**
-  - **Plan Free (0€/mes):** 1 foto
-  - **Plan Standard (6€/mes):** 6 fotos + 1 vídeo
-  - **Plan Pro (19€/mes):** Ilimitado
+  - **Plan beta Free (0€/mes):** 1 foto 
+  - **Próximamente-Plan Standard (6€/mes):** 3    fotos + 1 vídeo
+  - **Próximamente-Plan Pro (9'99€/mes):** 3 Videos + 3 fotos 
 - **Descubrimiento:** Aparece en el buscador de artistas y en la sección "Explorar"
 - **Contacto Directo:** Los organizadores pueden contactarte sin intermediarios
 - **Sin Comisiones:** Todos los ingresos van directamente al artista
