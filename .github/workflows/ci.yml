@@ -1,140 +1,98 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: [main, develop]
-  schedule:
-    # Run dependency audit weekly
-    - cron: "0 8 * * 1"
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    branches:
+      - main
+      - develop
 
 jobs:
-  # ─────────────────────────────────────────────────────────────
-  # Lint
-  # ─────────────────────────────────────────────────────────────
   lint:
-    name: Lint
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 9
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22.13.0'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Run ESLint
-        run: pnpm run lint
+        run: npm run lint
 
-  # ─────────────────────────────────────────────────────────────
-  # Type-check
-  # ─────────────────────────────────────────────────────────────
-  typecheck:
-    name: Type-check
+  type-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 9
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22.13.0'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
-      - name: Run TypeScript compiler (noEmit)
-        run: pnpm exec tsc --noEmit
+      - name: TypeScript check
+        run: npx tsc --noEmit
 
-  # ─────────────────────────────────────────────────────────────
-  # Test
-  # ─────────────────────────────────────────────────────────────
   test:
-    name: Test
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 9
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22.13.0'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
-      - name: Run Vitest
-        run: pnpm exec vitest run --reporter=verbose
+      - name: Run tests
+        run: npm run test
+
+      - name: Generate coverage
+        run: npm run test:coverage
 
       - name: Upload coverage
-        if: always()
-        uses: actions/upload-artifact@v7
+        uses: codecov/codecov-action@v3
         with:
-          name: coverage
-          path: coverage/
-          retention-days: 7
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
 
-  # ─────────────────────────────────────────────────────────────
-  # Build
-  # ─────────────────────────────────────────────────────────────
   build:
-    name: Build
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    needs: [lint, typecheck, test]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 9
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version: '22.13.0'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build
-        run: pnpm run build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
-          VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: dist/
+          retention-days: 5
