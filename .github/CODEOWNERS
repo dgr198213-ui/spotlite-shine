@@ -1,0 +1,12 @@
+# Code ownership rules
+
+# Main branch protection
+@dgr198213-ui
+
+# Workflows
+.github/ @dgr198213-ui
+
+# Configuration files
+*.json @dgr198213-ui
+*.ts @dgr198213-ui
+*.tsx @dgr198213-ui
