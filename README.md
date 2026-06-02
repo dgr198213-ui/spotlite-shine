@@ -1,21 +1,46 @@
-# Spot&Shows — La Plataforma para Artistas y Eventos
+# Escénika — La Plataforma para Artistas y Eventos
 
-Spot&Shows es una plataforma web moderna diseñada para conectar a artistas talentosos con organizadores de eventos. Nuestra misión es simplificar la contratación artística y ofrecer visibilidad a los talentos locales.
+**Escénika** es una plataforma web moderna diseñada para conectar artistas talentosos con su audiencia y oportunidades de actuación. Nuestra misión es simplificar la visibilidad artística, permitir la publicación gratuita de eventos y ofrecer un espacio sin comisiones donde el talento prospera.
+
+## 🎯 Visión
+
+Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden mostrar su talento sin barreras, los eventos se publican de forma gratuita para atraer talento, y todo sucede sin intermediarios ni comisiones.
 
 ## 🚀 Características Principales
 
 ### 🎭 Para Artistas
 
-- **Perfil Profesional:** Crea un perfil detallado con biografía, categorías y precios.
-- **Galería Multimedia:** Sube fotos y vídeos (según tu plan) para mostrar tu talento.
-- **Gestión de Suscripciones:** Elige entre los planes Spark, Spotlight o Headliner.
-- **Sin Comisiones:** Cobra directamente de tus clientes sin intermediarios.
+- **Perfil Profesional Gratuito:** Crea un perfil detallado con biografía, categoría, ciudad y precio desde.
+- **Galería Multimedia:**
+  - **Plan Free (0€/mes):** 1 foto
+  - **Plan Standard (6€/mes):** 6 fotos + 1 vídeo
+  - **Plan Pro (19€/mes):** Ilimitado
+- **Descubrimiento:** Aparece en el buscador de artistas y en la sección "Explorar"
+- **Contacto Directo:** Los organizadores pueden contactarte sin intermediarios
+- **Sin Comisiones:** Todos los ingresos van directamente al artista
 
-### 📅 Para Organizadores (Promotores)
+### 📅 Para Eventos
 
-- **Búsqueda Avanzada:** Encuentra artistas por categoría, ciudad y rango de precios.
-- **Favoritos:** Guarda tus artistas preferidos para futuros eventos.
-- **Contacto Directo:** Comunícate con los artistas para cerrar contrataciones.
+- **Publicación Gratuita:** Publica eventos sin costo y sin registro obligatorio
+- **Información Completa:** Imagen del evento, título, descripción, ubicación, fecha y hora
+- **Contacto Directo:** Los artistas pueden contactarte directamente desde la ficha del evento
+- **Buscador Dedicado:** Los artistas encuentran eventos por ciudad y categoría
+
+### 🔍 Características de Búsqueda
+
+- **Explorador de Artistas:** Filtra por categoría, ciudad y nombre
+- **Catálogo de Eventos:** Encuentra escenarios gratuitos donde actuar
+- **Perfiles Públicos:** Cada artista tiene su propia página con galería, bio y CTA de contacto
+
+## 💰 Planes de Lanzamiento
+
+| Característica | Free | Standard | Pro |
+|---|---|---|---|
+| Perfil Público | ✅ | ✅ | ✅ |
+| Fotos | 1 | 6 | Ilimitadas |
+| Vídeos | — | 1 | Ilimitados |
+| Precio | **0€/mes** | **6€/mes** | **19€/mes** |
+| Visibilidad | Estándar | Mejorada | Máxima |
 
 ## 🛠️ Stack Tecnológico
 
@@ -30,69 +55,128 @@ Spot&Shows es una plataforma web moderna diseñada para conectar a artistas tale
 
 - Node.js 22.x
 - Cuenta en Supabase
-- Cuenta en Stripe (para pagos)
+- Cuenta en Stripe (para pagos de suscripciones)
 
 ## ⚙️ Configuración Local
 
-1. **Clonar el repositorio:**
+### 1. Clonar el repositorio
 
-   ```bash
-   git clone https://github.com/dgr198213-ui/spotlite-shine.git
-   cd spotlite-shine
-   ```
+```bash
+git clone https://github.com/dgr198213-ui/spotlite-shine.git
+cd spotlite-shine
+```
 
-2. **Instalar dependencias:**
+### 2. Instalar dependencias
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Variables de Entorno:**
-   Crea un archivo `.env.local` basado en `.env.example`:
+### 3. Variables de Entorno
 
-   ```env
-   VITE_SUPABASE_URL=tu_url_supabase
-   VITE_SUPABASE_PUBLISHABLE_KEY=tu_anon_key
-   VITE_STRIPE_PUBLISHABLE_KEY=tu_stripe_pk
-   STRIPE_SECRET_KEY=tu_stripe_sk
-   SUPABASE_SERVICE_ROLE_KEY=tu_service_role_key
-   ```
+Crea un archivo `.env.local` basado en `.env.example`:
 
-4. **Iniciar en desarrollo:**
-   ```bash
-   npm run dev
-   ```
+```env
+# Supabase (Frontend - Públicas)
+NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key_aqui
+
+# Supabase (Backend - Privadas)
+SUPABASE_SERVICE_ROLE_KEY=tu_service_role_key_aqui
+
+# Stripe (Frontend - Pública)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_tu_clave_publica
+
+# Stripe (Backend - Privadas)
+STRIPE_SECRET_KEY=sk_test_tu_clave_secreta
+STRIPE_WEBHOOK_SECRET=whsec_tu_webhook_secret
+
+# Stripe Price IDs (para planes de suscripción)
+STRIPE_SPOTLIGHT_PRICE_ID=price_spotlight_aqui
+STRIPE_HEADLINER_PRICE_ID=price_headliner_aqui
+```
+
+### 4. Iniciar en desarrollo
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en `http://localhost:5173`
 
 ## 🚢 Despliegue en Vercel
 
-La plataforma está optimizada para funcionar en Vercel con **SSR (Server-Side Rendering)**. Vercel está configurado automáticamente a través de `vercel.json` para manejar las rutas correctamente.
+Escénika está optimizado para funcionar en Vercel con **SSR (Server-Side Rendering)**.
 
-### Configuración automática (recomendado)
+### Pasos para desplegar
 
-El archivo `vercel.json` ya está configurado con:
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist/client` (para assets estáticos)
+1. **Conecta tu repositorio** de GitHub a Vercel
+2. **Vercel detectará automáticamente** `vercel.json` y aplicará la configuración
+3. **Añade las variables de entorno** en el panel de Vercel (ver sección anterior)
+
+### Configuración automática
+
+El archivo `vercel.json` ya incluye:
+- **Build Command**: `npm run vercel-build`
+- **Output Directory**: `dist/client`
 - **Server Function**: `api/index.ts` (para SSR)
-- **Rewrites**: Todas las rutas se redirigen al servidor para SSR
+- **Rewrites**: Todas las rutas se redirigen al servidor
+- **Headers de Seguridad**: CORS, CSP, X-Frame-Options, etc.
 
-### Pasos para desplegar:
+## 📍 Rutas Principales
 
-1. Conecta tu repositorio de GitHub a Vercel.
-2. Vercel detectará automáticamente `vercel.json` y aplicará la configuración.
-3. Asegúrate de añadir todas las variables de entorno requeridas en el panel de Vercel.
+| Ruta | Descripción |
+|---|---|
+| `/` | Landing page principal |
+| `/explorar` | Buscador de artistas |
+| `/eventos` | Catálogo de eventos publicados |
+| `/publicar-evento` | Formulario para publicar un evento (gratuito, sin registro) |
+| `/evento/:id` | Detalles del evento con información de contacto |
+| `/artista/:slug` | Perfil público del artista |
+| `/precios` | Planes de suscripción |
+| `/registro` | Registro de artistas |
+| `/login` | Acceso a cuenta |
+| `/_authenticated/panel` | Panel de control del artista |
+| `/_authenticated/perfil` | Edición del perfil |
 
-### Variables de entorno necesarias:
+## 🔐 Seguridad
 
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `STRIPE_SECRET_KEY`
-- `STRIPE_PUBLISHABLE_KEY`
-- `STRIPE_WEBHOOK_SECRET`
-- `STRIPE_PRICE_ID_BASIC`
-- `STRIPE_PRICE_ID_PREMIUM`
+- **Autenticación:** Supabase Auth con JWT
+- **RLS (Row Level Security):** Políticas de seguridad en base de datos
+- **HTTPS:** Obligatorio en producción
+- **Headers de Seguridad:** Configurados en Vercel
+- **Validación:** Frontend y backend
 
-## ⚖️ Legal y Privacidad
+## 📊 Base de Datos
+
+### Tablas principales
+
+- **profiles**: Perfiles de artistas
+- **media**: Fotos y vídeos de artistas
+- **events**: Eventos publicados (anónimos o de artistas)
+- **messages**: Mensajes entre artistas y organizadores
+- **subscriptions**: Suscripciones de usuarios
+- **favorites**: Artistas favoritos guardados
+
+## 🔄 Migraciones SQL
+
+Las migraciones se encuentran en `supabase/migrations/`. Para ejecutarlas:
+
+1. Ve a tu proyecto Supabase → SQL Editor
+2. Ejecuta los archivos de migración en orden
+3. Las migraciones incluyen:
+   - Esquema inicial de tablas
+   - Políticas de RLS
+   - Índices de rendimiento
+   - Soporte para eventos anónimos
+
+## 📞 Contacto y Soporte
+
+- **Email:** [hola@escenika.com](mailto:hola@escenika.com)
+- **Web:** [escenika.com](https://escenika.com)
+- **GitHub:** [dgr198213-ui/spotlite-shine](https://github.com/dgr198213-ui/spotlite-shine)
+
+## 📄 Legal y Privacidad
 
 El proyecto incluye páginas legales completas adaptadas al RGPD:
 
@@ -101,13 +185,21 @@ El proyecto incluye páginas legales completas adaptadas al RGPD:
 - [Política de Cookies](/cookies)
 - [Aviso Legal](/aviso-legal)
 
-## 📞 Soporte
+## 🎓 Próximas Mejoras
 
-Si tienes alguna duda o sugerencia, puedes contactarnos en:
+- [ ] Sistema de reseñas y valoraciones
+- [ ] Calendario de disponibilidad para artistas
+- [ ] Notificaciones en tiempo real
+- [ ] Integración con redes sociales
+- [ ] App móvil nativa
+- [ ] Sistema de recomendaciones con IA
 
-- Email: [hola@spotandshows.com](mailto:hola@spotandshows.com)
-- Web: [spotandshows.com](https://spotandshows.com)
+## 📝 Licencia
+
+Este proyecto es propietario. Todos los derechos reservados © 2024 Escénika.
 
 ---
 
-Hecho con ♥ por el equipo de Spot&Shows.
+**Hecho con ♥ para artistas de España.**
+
+Escénika: Donde el talento encuentra su escenario.
