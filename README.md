@@ -1,6 +1,6 @@
 # 🎭 Escénika — La Plataforma para Artistas y Eventos
 
-Escénika es una plataforma web moderna diseñada para conectar a artistas talentosos con organizadores de eventos. Nuestra misión es simplificar la contratación artística y ofrecer visibilidad a los talentos locales.
+Escénika es una plataforma web moderna diseñada para conectar a artistas talentosos con organizadores de eventos.
 
 **Tu escenario empieza aquí.**
 
@@ -9,130 +9,165 @@ Escénika es una plataforma web moderna diseñada para conectar a artistas talen
 ## 🚀 Características Principales
 
 ### 🎭 Para Artistas
-
-- **Perfil Profesional:** Crea un perfil detallado con biografía, categorías y precios.
-- **Galería Multimedia:** Sube fotos y vídeos (según tu plan) para mostrar tu talento.
-- **Gestión de Suscripciones:** Elige entre los planes Spark, Spotlight o Headliner.
-- **Sin Comisiones:** Cobra directamente de tus clientes sin intermediarios.
+- **Perfil Profesional:** Crea un perfil detallado con biografía, categorías y precios
+- **Galería Multimedia:** Sube fotos y vídeos para mostrar tu talento
+- **Gestión de Suscripciones:** Elige entre planes Spark, Spotlight o Headliner
+- **Sin Comisiones:** Cobra directamente de tus clientes
 
 ### 📅 Para Organizadores
-
-- **Búsqueda Avanzada:** Encuentra artistas por categoría, ciudad y rango de precios.
-- **Favoritos:** Guarda tus artistas preferidos para futuros eventos.
-- **Contacto Directo:** Comunícate con los artistas para cerrar contrataciones.
+- **Búsqueda Avanzada:** Encuentra artistas por categoría, ciudad y rango de precios
+- **Favoritos:** Guarda artistas preferidos para futuros eventos
+- **Contacto Directo:** Comunícate directamente con los artistas
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-- **Frontend:** [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Framework:** [TanStack Start](https://tanstack.com/start) (SSR/Hydration)
-- **Estilos:** [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
-- **Backend/Base de Datos:** [Supabase](https://supabase.com/) (Auth, DB, Storage)
-- **Pagos:** [Stripe](https://stripe.com/)
-- **Despliegue:** [Vercel](https://vercel.com/)
+| Componente | Tecnología |
+|-----------|------------|
+| **Frontend** | React 19 + TypeScript |
+| **Framework** | TanStack Start (SSR/Hydration) |
+| **Estilos** | Tailwind CSS 4 + shadcn/ui |
+| **Backend/BD** | Supabase (Auth, DB, Storage) |
+| **Pagos** | Stripe |
+| **Despliegue** | Vercel |
+| **Analytics** | Vercel Speed Insights |
 
 ---
 
 ## 📁 Estructura del Proyecto
 
 ```
-├── docs/
-│   └── brand/
-│       ├── brand-kit.md           # Identidad de marca completa
-│       └── estrategia-contenido.md # Estrategia de contenido y redes sociales
+escenika/
+├── .github/
+│   ├── workflows/
+│   │   ├── ci.yml                  # CI/CD Pipeline
+│   │   ├── code-quality.yml        # Code Quality & Security
+│   │   ├── deploy.yml              # Deploy a Vercel
+│   │   ├── dependabot-auto-merge.yml # Auto-merge Dependabot
+│   │   ├── cleanup.yml             # Branch cleanup
+│   │   └── release.yml             # Release automation
+│   └── CODEOWNERS
 ├── src/
-│   ├── components/               # Componentes React
-│   ├── routes/                   # Rutas de la aplicación
-│   └── integrations/             # Integraciones (Supabase, Stripe)
-├── public/                       # Assets públicos
-└── supabase/                     # Migraciones de base de datos
+│   ├── components/                 # Componentes React reutilizables
+│   ├── routes/                     # Rutas (TanStack Router)
+│   ├── integrations/               # Supabase, Stripe, etc
+│   ├── lib/                        # Utilities y helpers
+│   ├── hooks/                      # Custom React hooks
+│   ├── assets/                     # Imágenes, iconos
+│   ├── styles.css                  # Estilos globales
+│   ├── router.tsx                  # Configuración del router
+│   ├── start.ts                    # Entry point de TanStack Start
+│   └── server.ts                   # Handler del servidor
+├── supabase/
+│   └── migrations/                 # Migraciones de BD
+├── public/                         # Assets públicos
+├── .github/                        # Workflows de GitHub Actions
+├── .env.example                    # Template de variables
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── vitest.config.ts
+├── vercel.json                     # Config de Vercel
+├── eslint.config.js                # ESLint config
+└── .prettierrc                     # Prettier config
 ```
 
 ---
 
 ## 📋 Requisitos Previos
 
-- Node.js 22.x
-- Cuenta en Supabase
-- Cuenta en Stripe (para pagos)
+- Node.js 22.13.0+
+- npm 10+
+- Git
+
+Opcional:
+- Cuenta Supabase (Base de datos y autenticación)
+- Cuenta Stripe (Pagos)
+- Proyecto Vercel (Despliegue)
 
 ---
 
 ## ⚙️ Configuración Local
 
-1. **Clonar el repositorio:**
+### 1. Clonar el repositorio
 
-   ```bash
-   git clone https://github.com/dgr198213-ui/spotlite-shine.git
-   cd spotlite-shine
-   ```
+```bash
+git clone https://github.com/dgr198213-ui/spotlite-shine.git
+cd spotlite-shine
+```
 
-2. **Instalar dependencias:**
+### 2. Instalar dependencias
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Variables de Entorno:**
-   Crea un archivo `.env.local` basado en `.env.example`:
+### 3. Configurar variables de entorno
 
-   ```env
-   VITE_SUPABASE_URL=tu_url_supabase
-   VITE_SUPABASE_PUBLISHABLE_KEY=tu_anon_key
-   VITE_STRIPE_PUBLISHABLE_KEY=tu_stripe_pk
-   STRIPE_SECRET_KEY=tu_stripe_sk
-   SUPABASE_SERVICE_ROLE_KEY=tu_service_role_key
-   ```
+```bash
+cp .env.example .env.local
+```
 
-4. **Iniciar en desarrollo:**
-   ```bash
-   npm run dev
-   ```
-
----
-
-## 🚢 Despliegue en Vercel
-
-La plataforma está optimizada para funcionar en Vercel con **SSR (Server-Side Rendering)**. Vercel está configurado automáticamente a través de `vercel.json` para manejar las rutas correctamente.
-
-### Pasos para desplegar:
-
-1. Conecta tu repositorio de GitHub a Vercel.
-2. Vercel detectará automáticamente `vercel.json` y aplicará la configuración.
-3. Añade las variables de entorno requeridas en el panel de Vercel.
-
-### Variables de entorno necesarias:
-
+Edita `.env.local` con tus valores:
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `VITE_STRIPE_PUBLISHABLE_KEY`
 - `STRIPE_SECRET_KEY`
-- `STRIPE_PUBLISHABLE_KEY`
-- `STRIPE_WEBHOOK_SECRET`
-- `STRIPE_SPOTLIGHT_PRICE_ID`
-- `STRIPE_HEADLINER_PRICE_ID`
+
+### 4. Iniciar servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+Accede a `http://localhost:5173`
 
 ---
 
-## ⚖️ Legal y Privacidad
+## 📜 Scripts Disponibles
 
-El proyecto incluye páginas legales completas adaptadas al RGPD:
+```bash
+npm run dev              # Servidor de desarrollo
+npm run build            # Build para producción
+npm run preview          # Preview del build
+npm run lint             # Ejecutar ESLint
+npm run format           # Formatear código
+npm run type-check       # Verificar tipos TypeScript
+npm run test             # Ejecutar tests
+npm run test:watch       # Tests en modo watch
+npm run test:coverage    # Generar coverage report
+```
 
-- [Términos y Condiciones](/terminos)
-- [Política de Privacidad](/privacidad)
-- [Política de Cookies](/cookies)
-- [Aviso Legal](/aviso-legal)
+---
+
+## 🚀 Despliegue en Vercel
+
+1. Conecta tu repositorio en Vercel Dashboard
+2. Vercel detectará automáticamente la configuración
+3. Añade variables de entorno en Settings > Environment Variables
+4. Deploy automático en cada push a `main`
+
+---
+
+## 📊 CI/CD Pipeline
+
+El repositorio incluye automatización completa:
+
+- **CI**: Tests, linting y type-check en PRs
+- **Code Quality**: Análisis de seguridad
+- **Deploy**: Auto-deploy a Vercel
+- **Cleanup**: Limpieza de ramas fusionadas
+- **Dependabot**: Auto-merge de actualizaciones
 
 ---
 
 ## 📞 Soporte
 
-Si tienes alguna duda o sugerencia, puedes contactarnos en:
-
-- **Web:** [escenika.com](https://escenika.com)
-- **Email:** hola@escenika.com
-- **Redes sociales:** @escenika (todas las plataformas)
+- **Web**: [escenika.com](https://escenika.com)
+- **Email**: hola@escenika.com
+- **Twitter**: [@escenika](https://twitter.com/escenika)
 
 ---
 

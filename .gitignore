@@ -1,47 +1,54 @@
-# Environment variables
+# Environment
 .env
 .env.local
 .env.*.local
+.env.production.local
 
-# Build output
+# Build
 dist
 dist-ssr
 .output
 .vinxi
 .nitro
+build
 *.local
 
 # Dependencies
 node_modules
+package-lock.json
 
 # IDEs
 .vscode
 .idea
 .DS_Store
+*.sublime-workspace
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Vercel & Deployment
+# Deployment
 .vercel
 .wrangler/
 .dev.vars
+.railway
 
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+
+# Testing
+coverage
+.nyc_output
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Old Lovable files (deprecated)
-.lovable/
-.tanstack/
+# Misc
+.cache
+.parcel-cache
+.turbo
