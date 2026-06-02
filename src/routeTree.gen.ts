@@ -15,10 +15,12 @@ import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PreciosRouteImport } from './routes/precios'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ExplorarRouteImport } from './routes/explorar'
+import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EventosNuevoRouteImport } from './routes/eventos.nuevo'
 import { Route as ArtistaSlugRouteImport } from './routes/artista.$slug'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
 import { Route as AuthenticatedPanelRouteImport } from './routes/_authenticated/panel'
@@ -53,6 +55,11 @@ const ExplorarRoute = ExplorarRouteImport.update({
   path: '/explorar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventosRoute = EventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CookiesRoute = CookiesRouteImport.update({
   id: '/cookies',
   path: '/cookies',
@@ -71,6 +78,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const EventosNuevoRoute = EventosNuevoRouteImport.update({
+  id: '/nuevo',
+  path: '/nuevo',
+  getParentRoute: () => EventosRoute,
 } as any)
 const ArtistaSlugRoute = ArtistaSlugRouteImport.update({
   id: '/artista/$slug',
@@ -92,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
+  '/eventos': typeof EventosRouteWithChildren
   '/explorar': typeof ExplorarRoute
   '/login': typeof LoginRoute
   '/precios': typeof PreciosRoute
@@ -101,11 +114,13 @@ export interface FileRoutesByFullPath {
   '/panel': typeof AuthenticatedPanelRoute
   '/perfil': typeof AuthenticatedPerfilRoute
   '/artista/$slug': typeof ArtistaSlugRoute
+  '/eventos/nuevo': typeof EventosNuevoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
+  '/eventos': typeof EventosRouteWithChildren
   '/explorar': typeof ExplorarRoute
   '/login': typeof LoginRoute
   '/precios': typeof PreciosRoute
@@ -115,6 +130,7 @@ export interface FileRoutesByTo {
   '/panel': typeof AuthenticatedPanelRoute
   '/perfil': typeof AuthenticatedPerfilRoute
   '/artista/$slug': typeof ArtistaSlugRoute
+  '/eventos/nuevo': typeof EventosNuevoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,6 +138,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
+  '/eventos': typeof EventosRouteWithChildren
   '/explorar': typeof ExplorarRoute
   '/login': typeof LoginRoute
   '/precios': typeof PreciosRoute
@@ -131,6 +148,7 @@ export interface FileRoutesById {
   '/_authenticated/panel': typeof AuthenticatedPanelRoute
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
   '/artista/$slug': typeof ArtistaSlugRoute
+  '/eventos/nuevo': typeof EventosNuevoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -138,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/aviso-legal'
     | '/cookies'
+    | '/eventos'
     | '/explorar'
     | '/login'
     | '/precios'
@@ -147,11 +166,13 @@ export interface FileRouteTypes {
     | '/panel'
     | '/perfil'
     | '/artista/$slug'
+    | '/eventos/nuevo'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/aviso-legal'
     | '/cookies'
+    | '/eventos'
     | '/explorar'
     | '/login'
     | '/precios'
@@ -161,12 +182,14 @@ export interface FileRouteTypes {
     | '/panel'
     | '/perfil'
     | '/artista/$slug'
+    | '/eventos/nuevo'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/aviso-legal'
     | '/cookies'
+    | '/eventos'
     | '/explorar'
     | '/login'
     | '/precios'
@@ -176,6 +199,7 @@ export interface FileRouteTypes {
     | '/_authenticated/panel'
     | '/_authenticated/perfil'
     | '/artista/$slug'
+    | '/eventos/nuevo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -183,6 +207,7 @@ export interface RootRouteChildren {
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   AvisoLegalRoute: typeof AvisoLegalRoute
   CookiesRoute: typeof CookiesRoute
+  EventosRoute: typeof EventosRouteWithChildren
   ExplorarRoute: typeof ExplorarRoute
   LoginRoute: typeof LoginRoute
   PreciosRoute: typeof PreciosRoute
@@ -236,6 +261,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExplorarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/eventos': {
+      id: '/eventos'
+      path: '/eventos'
+      fullPath: '/eventos'
+      preLoaderRoute: typeof EventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cookies': {
       id: '/cookies'
       path: '/cookies'
@@ -263,6 +295,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/eventos/nuevo': {
+      id: '/eventos/nuevo'
+      path: '/nuevo'
+      fullPath: '/eventos/nuevo'
+      preLoaderRoute: typeof EventosNuevoRouteImport
+      parentRoute: typeof EventosRoute
     }
     '/artista/$slug': {
       id: '/artista/$slug'
@@ -302,11 +341,23 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
   AuthenticatedRouteChildren,
 )
 
+interface EventosRouteChildren {
+  EventosNuevoRoute: typeof EventosNuevoRoute
+}
+
+const EventosRouteChildren: EventosRouteChildren = {
+  EventosNuevoRoute: EventosNuevoRoute,
+}
+
+const EventosRouteWithChildren =
+  EventosRoute._addFileChildren(EventosRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   AvisoLegalRoute: AvisoLegalRoute,
   CookiesRoute: CookiesRoute,
+  EventosRoute: EventosRouteWithChildren,
   ExplorarRoute: ExplorarRoute,
   LoginRoute: LoginRoute,
   PreciosRoute: PreciosRoute,

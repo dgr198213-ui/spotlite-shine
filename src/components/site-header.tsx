@@ -27,6 +27,13 @@ export function SiteHeader() {
             Explorar
           </Link>
           <Link
+            to="/eventos"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-foreground" }}
+          >
+            Eventos
+          </Link>
+          <Link
             to="/precios"
             className="text-muted-foreground transition-colors hover:text-foreground"
             activeProps={{ className: "text-foreground" }}
@@ -91,6 +98,13 @@ export function SiteHeader() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Explorar
+            </Link>
+            <Link
+              to="/eventos"
+              className="text-lg text-muted-foreground transition-colors hover:text-foreground"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Eventos
             </Link>
             <Link
               to="/precios"
