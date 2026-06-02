@@ -20,7 +20,7 @@ import { MediaGallery } from "@/components/media-gallery";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/perfil")({
-  head: () => ({ meta: [{ title: "Mi perfil — Spot&Shows" }] }),
+  head: () => ({ meta: [{ title: "Mi perfil — Escénika" }] }),
   component: ProfileEditPage,
 });
 
@@ -190,7 +190,7 @@ function ProfileEditPage() {
               placeholder="350"
             />
             <p className="text-xs text-muted-foreground">
-              Spot&Shows no cobra comisión: tú cobras directamente del cliente.
+              Escénika no cobra comisión: tú cobras directamente del cliente.
             </p>
           </div>
 

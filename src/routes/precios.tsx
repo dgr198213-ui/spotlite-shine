@@ -11,11 +11,35 @@ import logo from "@/assets/logo.png";
 export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
-      { title: "Planes y Precios — Spot&Shows" },
+      { title: "Planes y Precios — Escénika" },
       {
         name: "description",
         content:
           "Elige el plan perfecto para tu carrera artística. Desde gratuito hasta profesional.",
+      },
+      // Open Graph
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Escénika" },
+      { property: "og:title", content: "Escénika — Tu escenario empieza aquí" },
+      {
+        property: "og:description",
+        content: "Elige el plan perfecto para tu carrera artística. Sin comisiones.",
+      },
+      { property: "og:url", content: "https://spotlite-shine.vercel.app/precios" },
+      {
+        property: "og:image",
+        content: "https://spotlite-shine.vercel.app/assets/og-banner.png",
+      },
+      // Twitter Card
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Escénika — Tu escenario empieza aquí" },
+      {
+        name: "twitter:description",
+        content: "Elige el plan perfecto para tu carrera artística. Sin comisiones.",
+      },
+      {
+        name: "twitter:image",
+        content: "https://spotlite-shine.vercel.app/assets/og-banner.png",
       },
     ],
   }),
@@ -199,7 +223,7 @@ function PricingPage() {
                 )}
 
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="" className="h-6 w-auto" />
+                  <img src={logo} alt="" className="h-7 w-auto" />
                   <Icon className="h-5 w-5 text-gold" />
                 </div>
 
@@ -238,7 +262,7 @@ function PricingPage() {
             <div>
               <h3 className="font-display text-lg">Sin comisiones</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tú cobras directamente del cliente. Spot&Shows solo cobra la suscripción opcional.
+                Tú cobras directamente del cliente. Escénika solo cobra la suscripción opcional.
               </p>
             </div>
             <div>
@@ -259,8 +283,8 @@ function PricingPage() {
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
             ¿Preguntas? Contáctanos en{" "}
-            <a href="mailto:hola@spotandshows.com" className="text-gold hover:underline">
-              hola@spotandshows.com
+            <a href="mailto:hola@escenika.com" className="text-gold hover:underline">
+              hola@escenika.com
             </a>
           </p>
         </div>

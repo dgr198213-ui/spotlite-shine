@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -16,8 +16,9 @@ function generateSrcSet(url: string): string {
 }
 
 // Generate blur placeholder as base64 (tiny 10px version)
-function generateBlurPlaceholder(url: string): string {
+function generateBlurPlaceholder(): string {
   return `data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k=`;
+}
 
 const LIMITS: Record<Plan, { videos: number; images: number; videoSeconds: number }> = {
   spark: { videos: 0, images: 1, videoSeconds: 0 },
@@ -30,7 +31,7 @@ interface Props {
   plan: Plan;
 }
 
-export function MediaGallery({ userId, plan }: Props) {
+function MediaGallery({ userId, plan }: Props) {
   const qc = useQueryClient();
   const limits = LIMITS[plan];
   const imgInput = useRef<HTMLInputElement>(null);
@@ -127,8 +128,8 @@ export function MediaGallery({ userId, plan }: Props) {
     }
   };
 
-  const remove = async (id: string, path: string | null) => {
-    if (path) await supabase.storage.from("artist-media").remove([path]);
+  const remove = async (id: string, storagePath: string | null) => {
+    if (storagePath) await supabase.storage.from("artist-media").remove([storagePath]);
     const { error } = await supabase.from("media").delete().eq("id", id);
     if (error) return toast.error(error.message);
     toast.success("Eliminado");
@@ -136,6 +137,7 @@ export function MediaGallery({ userId, plan }: Props) {
   };
 
   const isBeta = plan === "spark";
+  const blurPlaceholder = generateBlurPlaceholder();
 
   return (
     <div className="space-y-6">
@@ -144,7 +146,7 @@ export function MediaGallery({ userId, plan }: Props) {
           <h2 className="font-display text-2xl">Tu fotografía</h2>
           <p className="text-sm text-muted-foreground">
             {isBeta
-              ? `Spot&Shows Free (Beta) · 1 imagen de presentación`
+              ? "Escénika Free (Beta) · 1 imagen de presentación"
               : `${limits.images} imágenes · ${limits.videos} vídeo(s) ≤ ${limits.videoSeconds}s`}
           </p>
         </div>
@@ -208,7 +210,7 @@ export function MediaGallery({ userId, plan }: Props) {
             fotografía + descripción + precio + exigencias. Los vídeos llegarán muy pronto con el
             plan{" "}
             <a href="/precios" className="text-gold hover:underline">
-              Spot&Shows Standard (6€/mes)
+              Escénika Standard (6€/mes)
             </a>
             .
           </span>
@@ -228,16 +230,15 @@ export function MediaGallery({ userId, plan }: Props) {
             >
               {m.type === "image" ? (
                 <div className="relative h-full w-full overflow-hidden">
-                  {/* Blur placeholder shown while loading */}
                   {!loadedImages.has(m.id) && (
                     <div
-                      className="absolute inset-0 bg-muted animate-pulse"
+                      className="absolute inset-0 animate-pulse bg-muted"
                       style={{
-                        backgroundImage: `url(${generateBlurPlaceholder(m.url)})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        filter: 'blur(10px)',
-                        transform: 'scale(1.1)'
+                        backgroundImage: `url(${blurPlaceholder})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        filter: "blur(10px)",
+                        transform: "scale(1.1)",
                       }}
                     />
                   )}
@@ -247,8 +248,8 @@ export function MediaGallery({ userId, plan }: Props) {
                     sizes="(max-width: 768px) 50vw, 33vw"
                     alt=""
                     loading="lazy"
-                    className={`h-full w-full object-cover transition-opacity duration-300 ${loadedImages.has(m.id) ? 'opacity-100' : 'opacity-0'}`}
-                    onLoad={() => setLoadedImages(prev => new Set(prev).add(m.id))}
+                    className={`h-full w-full object-cover transition-opacity duration-300 ${loadedImages.has(m.id) ? "opacity-100" : "opacity-0"}`}
+                    onLoad={() => setLoadedImages((prev) => new Set(prev).add(m.id))}
                   />
                 </div>
               ) : (
@@ -259,7 +260,7 @@ export function MediaGallery({ userId, plan }: Props) {
                   loop
                   playsInline
                   preload="metadata"
-                  poster={m.thumbnail_url || undefined}
+                  poster={(m as { thumbnail_url?: string }).thumbnail_url}
                 />
               )}
               {m.type === "video" && (
@@ -282,3 +283,5 @@ export function MediaGallery({ userId, plan }: Props) {
     </div>
   );
 }
+
+export { MediaGallery };

@@ -5,8 +5,8 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/aviso-legal")({
   head: () => ({
     meta: [
-      { title: "Aviso Legal — Spot&Shows" },
-      { name: "description", content: "Aviso legal e información del titular de Spot&Shows." },
+      { title: "Aviso Legal — Escénika" },
+      { name: "description", content: "Aviso legal e información del titular de Escénika." },
     ],
   }),
   component: AvisoLegalPage,
@@ -27,7 +27,7 @@ function AvisoLegalPage() {
             <h2 className="font-display text-2xl">1. Identificación del Titular</h2>
             <div className="mt-3 space-y-2 text-muted-foreground">
               <p>
-                <strong>Denominación:</strong> Spot&Shows
+                <strong>Denominación:</strong> Escénika
               </p>
               <p>
                 <strong>Tipo:</strong> Plataforma Digital
@@ -37,8 +37,8 @@ function AvisoLegalPage() {
               </p>
               <p>
                 <strong>Email de contacto:</strong>{" "}
-                <a href="mailto:legal@spotandshows.com" className="text-gold hover:underline">
-                  legal@spotandshows.com
+                <a href="mailto:legal@escenika.com" className="text-gold hover:underline">
+                  legal@escenika.com
                 </a>
               </p>
               <p>
@@ -50,7 +50,7 @@ function AvisoLegalPage() {
           <section>
             <h2 className="font-display text-2xl">2. Objeto de la Plataforma</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows es una plataforma digital que facilita la conexión entre artistas y
+              Escénika es una plataforma digital que facilita la conexión entre artistas y
               promotores de eventos. Actúa como intermediaria sin responsabilidad directa sobre los
               servicios contratados entre usuarios.
             </p>
@@ -60,23 +60,23 @@ function AvisoLegalPage() {
             <h2 className="font-display text-2xl">3. Derechos de Propiedad Intelectual</h2>
             <p className="mt-3 text-muted-foreground">
               Todos los contenidos de la Plataforma (diseño, código, textos, imágenes, logos) son
-              propiedad intelectual de Spot&Shows o sus licenciantes. Está prohibida su
+              propiedad intelectual de Escénika o sus licenciantes. Está prohibida su
               reproducción, distribución o transmisión sin autorización expresa.
             </p>
             <p className="mt-3 text-muted-foreground">
               El contenido publicado por usuarios (perfiles, fotos, vídeos) permanece siendo
-              propiedad del usuario, quien otorga a Spot&Shows licencia para utilizarlo en la
+              propiedad del usuario, quien otorga a Escénika licencia para utilizarlo en la
               Plataforma.
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-2xl">4. Limitación de Responsabilidad</h2>
-            <p className="mt-3 text-muted-foreground">Spot&Shows no es responsable de:</p>
+            <p className="mt-3 text-muted-foreground">Escénika no es responsable de:</p>
             <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
               <li>Daños derivados del uso o imposibilidad de uso de la Plataforma</li>
               <li>Pérdida de datos o contenido</li>
-              <li>Interrupciones del servicio por causas ajenas a Spot&Shows</li>
+              <li>Interrupciones del servicio por causas ajenas a Escénika</li>
               <li>Incumplimientos de contratos entre usuarios</li>
               <li>Calidad o desempeño de servicios artísticos</li>
               <li>Fraude o conducta ilegal de otros usuarios</li>
@@ -86,7 +86,7 @@ function AvisoLegalPage() {
           <section>
             <h2 className="font-display text-2xl">5. Acceso y Disponibilidad</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows se proporciona "tal cual" sin garantías de disponibilidad continua. Nos
+              Escénika se proporciona "tal cual" sin garantías de disponibilidad continua. Nos
               reservamos el derecho de:
             </p>
             <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
@@ -113,7 +113,7 @@ function AvisoLegalPage() {
           <section>
             <h2 className="font-display text-2xl">7. Enlaces Externos</h2>
             <p className="mt-3 text-muted-foreground">
-              La Plataforma puede contener enlaces a sitios web de terceros. Spot&Shows no es
+              La Plataforma puede contener enlaces a sitios web de terceros. Escénika no es
               responsable del contenido, precisión o prácticas de privacidad de estos sitios. El
               acceso a enlaces externos es bajo tu propio riesgo.
             </p>
@@ -122,7 +122,7 @@ function AvisoLegalPage() {
           <section>
             <h2 className="font-display text-2xl">8. Modificación de Términos</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows se reserva el derecho de modificar este Aviso Legal en cualquier momento.
+              Escénika se reserva el derecho de modificar este Aviso Legal en cualquier momento.
               Los cambios entrarán en vigor inmediatamente. Tu uso continuado de la Plataforma
               constituye aceptación de los cambios.
             </p>
@@ -145,8 +145,8 @@ function AvisoLegalPage() {
             <div className="mt-3 space-y-2 text-muted-foreground">
               <p>
                 <strong>Email:</strong>{" "}
-                <a href="mailto:abuse@spotandshows.com" className="text-gold hover:underline">
-                  abuse@spotandshows.com
+                <a href="mailto:abuse@escenika.com" className="text-gold hover:underline">
+                  abuse@escenika.com
                 </a>
               </p>
               <p>
@@ -165,7 +165,7 @@ function AvisoLegalPage() {
 
           <section>
             <h2 className="font-display text-2xl">11. Cumplimiento Legal</h2>
-            <p className="mt-3 text-muted-foreground">Spot&Shows cumple con:</p>
+            <p className="mt-3 text-muted-foreground">Escénika cumple con:</p>
             <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
               <li>Ley Orgánica de Protección de Datos Personales (LOPDGDD)</li>
               <li>Reglamento General de Protección de Datos (RGPD)</li>
@@ -183,8 +183,8 @@ function AvisoLegalPage() {
               Para cualquier pregunta o comentario sobre este Aviso Legal, contáctanos en:
             </p>
             <p className="mt-3 text-muted-foreground">
-              <a href="mailto:legal@spotandshows.com" className="text-gold hover:underline">
-                legal@spotandshows.com
+              <a href="mailto:legal@escenika.com" className="text-gold hover:underline">
+                legal@escenika.com
               </a>
             </p>
           </section>
