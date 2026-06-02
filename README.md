@@ -37,9 +37,9 @@ Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden
 | Característica | Free | Standard | Pro |
 |---|---|---|---|
 | Perfil Público | ✅ | ✅ | ✅ |
-| Fotos | 1 | 6 | Ilimitadas |
-| Vídeos | — | 1 | Ilimitados |
-| Precio | **0€/mes** | **6€/mes** | **19€/mes** |
+| Fotos | 1 | 6 | 3 |
+| Vídeos | — | 1 | 3 |
+| Precio | **0€/mes** | **6€/mes** | **9'99€/mes** |
 | Visibilidad | Estándar | Mejorada | Máxima |
 
 ## 🛠️ Stack Tecnológico
