@@ -1,5 +1,8 @@
 #!/bin/bash
-# Script to build for Vercel without Lovable specific constraints
+# Vercel Build Script
+set -e
+
+echo "Building for Vercel..."
 export NODE_ENV=production
-export VITE_LOVABLE_AUTONOMOUS=true
-npx vite build
+npm run build
+echo "Build completed successfully!"

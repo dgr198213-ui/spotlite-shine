@@ -1,15 +1,13 @@
 {
   "name": "escenika",
   "description": "Plataforma de booking artístico sin comisiones — escenika.com",
+  "version": "1.0.0",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "vercel-build": "bash build-vercel.sh",
-    "build:vercel": "bash build-vercel.sh",
-    "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -21,7 +19,6 @@
     "node": ">=22.13.0"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.25.5",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -80,8 +77,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@vitest/coverage-v8": "^2.1.9",
-    "@lovable.dev/vite-tanstack-config": "^1.7.0",
     "@tanstack/router-vite-plugin": "^1.167.11",
     "@tanstack/start-vite-plugin": "^1.91.1",
     "@types/node": "^22.16.5",
@@ -89,7 +84,7 @@
     "@types/react-dom": "^19.2.0",
     "@vercel/node": "^5.8.4",
     "@vitejs/plugin-react": "^5.2.0",
-    "@vitest/coverage-v8": "^4.1.7",
+    "@vitest/coverage-v8": "^2.1.9",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
@@ -98,10 +93,9 @@
     "globals": "^17.6.0",
     "prettier": "^3.7.3",
     "typescript": "^6.0.3",
-    "vitest": "^2.1.9",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.7"
+    "vitest": "^2.1.9"
   }
 }
