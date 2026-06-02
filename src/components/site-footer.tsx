@@ -8,33 +8,45 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <img src={logo} alt="Spot&Shows" className="h-10 w-auto" />
+            <img src={logo} alt="Escénika" className="h-14 w-auto object-contain mix-blend-normal" />
             <p className="mt-3 text-sm text-muted-foreground">
-              La plataforma donde artistas encuentran su público y eventos encuentran talento excepcional.
+              La plataforma donde artistas encuentran su público y los eventos encuentran talento excepcional. Publica gratis y contrata sin comisiones.
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
               <Mail className="h-3.5 w-3.5" />
-              <a href="mailto:hola@spotandshows.com" className="hover:text-foreground">hola@spotandshows.com</a>
+              <a href="mailto:hola@escenika.com" className="hover:text-foreground">
+                hola@escenika.com
+              </a>
             </div>
           </div>
-          <FooterCol title="Artistas" items={[
-            { label: "Crear perfil", to: "/registro" },
-            { label: "Precios", to: "/precios" },
-            { label: "Explorar", to: "/explorar" },
-          ]} />
-          <FooterCol title="Eventos" items={[
-            { label: "Buscar artistas", to: "/explorar" },
-            { label: "Cómo contratar", to: "/precios" },
-          ]} />
-          <FooterCol title="Legal" items={[
-            { label: "Términos", to: "/terminos" },
-            { label: "Privacidad", to: "/privacidad" },
-            { label: "Cookies", to: "/cookies" },
-            { label: "Aviso Legal", to: "/aviso-legal" },
-          ]} />
+          <FooterCol
+            title="Artistas"
+            items={[
+              { label: "Crear perfil", to: "/registro" },
+              { label: "Precios", to: "/precios" },
+              { label: "Explorar", to: "/explorar" },
+            ]}
+          />
+          <FooterCol
+            title="Eventos"
+            items={[
+              { label: "Ver próximos eventos", to: "/eventos" },
+              { label: "Publicar evento gratis", to: "/registro" },
+              { label: "Buscar artistas", to: "/explorar" },
+            ]}
+          />
+          <FooterCol
+            title="Legal"
+            items={[
+              { label: "Términos", to: "/terminos" },
+              { label: "Privacidad", to: "/privacidad" },
+              { label: "Cookies", to: "/cookies" },
+              { label: "Aviso Legal", to: "/aviso-legal" },
+            ]}
+          />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Spot&Shows. Hecho con ♥ para artistas de España.</span>
+          <span>© {new Date().getFullYear()} Escénika. Hecho con ♥ para artistas de España.</span>
           <span>Versión 2.0</span>
         </div>
       </div>
@@ -49,7 +61,9 @@ function FooterCol({ title, items }: { title: string; items: { label: string; to
       <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
         {items.map((it) => (
           <li key={it.label}>
-            <Link to={it.to} className="transition-colors hover:text-foreground">{it.label}</Link>
+            <Link to={it.to} className="transition-colors hover:text-foreground">
+              {it.label}
+            </Link>
           </li>
         ))}
       </ul>

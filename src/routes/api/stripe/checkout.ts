@@ -2,10 +2,26 @@ import { json } from "@tanstack/start";
 import { stripeServer } from "@/integrations/stripe/server";
 import { getAuth } from "@/lib/auth-context";
 
-const STRIPE_PLANS: Record<string, string> = {
-  spotlight: process.env.STRIPE_SPOTLIGHT_PRICE_ID || "price_spotlight",
-  headliner: process.env.STRIPE_HEADLINER_PRICE_ID || "price_headliner",
-};
+// Resolves Stripe Price IDs from multiple possible env var names
+function getStripePriceId(plan: string): string | null {
+  if (plan === "spotlight") {
+    return (
+      process.env.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID ||
+      process.env.STRIPE_SPOTLIGHT_PRICE_ID ||
+      process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID ||
+      null
+    );
+  }
+  if (plan === "headliner") {
+    return (
+      process.env.NEXT_PUBLIC_STRIPE_HEADLINER_PRICE_ID ||
+      process.env.STRIPE_HEADLINER_PRICE_ID ||
+      process.env.VITE_STRIPE_HEADLINER_PRICE_ID ||
+      null
+    );
+  }
+  return null;
+}
 
 export async function POST({ request }: { request: Request }) {
   try {
@@ -15,7 +31,7 @@ export async function POST({ request }: { request: Request }) {
       return json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await request.json() as {
+    const body = (await request.json()) as {
       planId: string;
       successUrl: string;
       cancelUrl: string;
@@ -27,9 +43,10 @@ export async function POST({ request }: { request: Request }) {
       return json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const priceId = STRIPE_PLANS[planId];
+    const priceId = getStripePriceId(planId);
     if (!priceId) {
-      return json({ error: "Invalid plan" }, { status: 400 });
+      console.error(`No Stripe Price ID configured for plan: ${planId}. Set STRIPE_SPOTLIGHT_PRICE_ID or STRIPE_HEADLINER_PRICE_ID in Vercel.`);
+      return json({ error: "Plan no configurado. Contacta con soporte." }, { status: 400 });
     }
 
     // Create checkout session
@@ -37,7 +54,7 @@ export async function POST({ request }: { request: Request }) {
       auth.user.id,
       priceId,
       successUrl,
-      cancelUrl
+      cancelUrl,
     );
 
     return json({ sessionId, url });

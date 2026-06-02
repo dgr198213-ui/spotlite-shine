@@ -11,8 +11,10 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/auth-context";
 import { supabase } from "@/integrations/supabase/client";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
+import logoSrc from "../assets/logo.png";
 
 function NotFoundComponent() {
   return (
@@ -57,14 +59,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
-      { name: "description", content: "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones." },
-      { property: "og:title", content: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
-      { property: "og:description", content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones." },
+      { title: "Escénika — Tu escenario empieza aquí" },
+      {
+        name: "description",
+        content:
+          "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones.",
+      },
+      { property: "og:title", content: "Escénika — Tu escenario empieza aquí" },
+      {
+        property: "og:description",
+        content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "preload", href: logoSrc, as: "image" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -90,7 +104,9 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
       router.invalidate();
     });
     return () => subscription.unsubscribe();
@@ -101,6 +117,7 @@ function RootComponent() {
       <AuthProvider>
         <Outlet />
         <Toaster richColors position="top-center" />
+        <SpeedInsights />
       </AuthProvider>
     </QueryClientProvider>
   );

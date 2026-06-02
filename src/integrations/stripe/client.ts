@@ -1,59 +1,31 @@
-import { loadStripe, Stripe } from "@stripe/stripe-js";
+import { createClient } from "@supabase/supabase-js";
+import type { Database } from "./types";
 
-let stripePromise: Promise<Stripe | null>;
+function createSupabaseAdminClient() {
+  // Supports NEXT_PUBLIC_ prefix (Vercel standard) and bare SUPABASE_URL
+  const SUPABASE_URL =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.SUPABASE_URL ||
+    process.env.VITE_SUPABASE_URL;
+  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-export const getStripe = () => {
-  if (!stripePromise) {
-    const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
-    if (!publishableKey) {
-      console.error("VITE_STRIPE_PUBLISHABLE_KEY is not set");
-      return Promise.resolve(null);
-    }
-    stripePromise = loadStripe(publishableKey);
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    console.warn("[Supabase Admin] Missing env vars (NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY). Configure them in Vercel.");
+    return createClient<Database>("https://placeholder.supabase.co", "placeholder-service-key", {
+      auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+    });
   }
-  return stripePromise;
-};
 
-export const STRIPE_PLANS = {
-  spark: {
-    name: "Spark (Gratis)",
-    price: 0,
-    priceId: null,
-    description: "Plan gratuito para empezar",
-    features: [
-      "1 fotografía de presentación",
-      "Descripción y precio",
-      "Exigencias técnicas",
-      "Visible en el explorador",
-      "Sin comisiones",
-    ],
+  return createClient<Database>(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+    auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+  });
+}
+
+let _supabaseAdmin: ReturnType<typeof createSupabaseAdminClient> | undefined;
+
+export const supabaseAdmin = new Proxy({} as ReturnType<typeof createSupabaseAdminClient>, {
+  get(_, prop, receiver) {
+    if (!_supabaseAdmin) _supabaseAdmin = createSupabaseAdminClient();
+    return Reflect.get(_supabaseAdmin, prop, receiver);
   },
-  spotlight: {
-    name: "Spotlight",
-    price: 6,
-    priceId: process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID || "price_spotlight",
-    description: "Plan recomendado para artistas",
-    features: [
-      "Todo del plan Spark +",
-      "1 vídeo de hasta 8 segundos",
-      "6 fotografías",
-      "Promoción en redes",
-      "Prioridad en búsquedas",
-      "Soporte prioritario",
-    ],
-  },
-  headliner: {
-    name: "Headliner",
-    price: 19,
-    priceId: process.env.VITE_STRIPE_HEADLINER_PRICE_ID || "price_headliner",
-    description: "Plan profesional completo",
-    features: [
-      "Todo del plan Spotlight +",
-      "100 vídeos sin límite de duración",
-      "100 fotografías",
-      "Acceso a eventos premium",
-      "Análisis detallado",
-      "Soporte 24/7",
-    ],
-  },
-};
+});

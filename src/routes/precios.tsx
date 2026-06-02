@@ -11,8 +11,12 @@ import logo from "@/assets/logo.png";
 export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
-      { title: "Planes y Precios — Spot&Shows" },
-      { name: "description", content: "Elige el plan perfecto para tu carrera artística. Desde gratuito hasta profesional." },
+      { title: "Planes y Precios — Escénika" },
+      {
+        name: "description",
+        content:
+          "Elige el plan perfecto para tu carrera artística. Desde gratuito hasta profesional.",
+      },
     ],
   }),
   component: PricingPage,
@@ -35,7 +39,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     icon: Sparkles,
-    name: "Spark",
+    name: "Escénika Free",
     badge: "Disponible ahora",
     price: "0€",
     period: "/mes",
@@ -55,7 +59,7 @@ const plans: Plan[] = [
   },
   {
     icon: Star,
-    name: "Spotlight",
+    name: "Escénika Standard",
     badge: "Recomendado",
     price: "6€",
     period: "/mes",
@@ -74,7 +78,7 @@ const plans: Plan[] = [
   },
   {
     icon: Crown,
-    name: "Headliner",
+    name: "Escénika Pro",
     badge: "Profesional",
     price: "19€",
     period: "/mes",
@@ -147,7 +151,7 @@ function PricingPage() {
         toast.error(
           error instanceof Error
             ? error.message
-            : "Error al procesar la suscripción. Intenta de nuevo."
+            : "Error al procesar la suscripción. Intenta de nuevo.",
         );
       } finally {
         setLoading(null);
@@ -165,7 +169,8 @@ function PricingPage() {
           </span>
           <h1 className="mt-5 font-display text-5xl md:text-6xl">Elige tu plan</h1>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Somos solo intermediarios: publicamos eventos gratuitos y cobramos una suscripción opcional a los artistas según su plan. Sin comisiones por contrato.
+            Somos solo intermediarios: publicamos eventos gratuitos y cobramos una suscripción
+            opcional a los artistas según su plan. Sin comisiones por contrato.
           </p>
         </div>
 
@@ -194,7 +199,7 @@ function PricingPage() {
                 )}
 
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="" className="h-6 w-auto" />
+                  <img src={logo} alt="" className="h-7 w-auto" />
                   <Icon className="h-5 w-5 text-gold" />
                 </div>
 
@@ -233,7 +238,7 @@ function PricingPage() {
             <div>
               <h3 className="font-display text-lg">Sin comisiones</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tú cobras directamente del cliente. Spot&Shows solo cobra la suscripción opcional.
+                Tú cobras directamente del cliente. Escénika solo cobra la suscripción opcional.
               </p>
             </div>
             <div>
@@ -254,8 +259,8 @@ function PricingPage() {
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
             ¿Preguntas? Contáctanos en{" "}
-            <a href="mailto:hola@spotandshows.com" className="text-gold hover:underline">
-              hola@spotandshows.com
+            <a href="mailto:hola@escenika.com" className="text-gold hover:underline">
+              hola@escenika.com
             </a>
           </p>
         </div>
