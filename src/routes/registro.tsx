@@ -14,12 +14,11 @@ import {
 } from "@/components/ui/select";
 import { SiteHeader } from "@/components/site-header";
 import {
-  CheckCircle2,
+  Check,
   Mail,
   Lock,
   User,
   MapPin,
-  Sparkles,
   Wand2,
   Music,
   Calendar,
@@ -29,11 +28,11 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/registro")({
   head: () => ({
     meta: [
-      { title: "Crear cuenta — Spot&Shows" },
+      { title: "Crear cuenta — Escénika" },
       {
         name: "description",
         content:
-          "Crea tu perfil de artista o promotor en Spot&Shows. Conecta con talento o encuentra tu próximo evento.",
+          "Crea tu perfil de artista o promotor en Escénika. Conecta con talento o encuentra tu próximo evento.",
       },
     ],
   }),
@@ -60,7 +59,7 @@ const ARTIST_PERKS = [
 ];
 
 const ORGANIZER_PERKS = [
-  "Acceso a la agenda cultural de Spot&Shows",
+  "Acceso a la agenda cultural de Escénika",
   "Busca y guarda artistas en favoritos",
   "Publica tus eventos y recibe solicitudes",
   "Comunícate directamente con los artistas",
@@ -150,7 +149,6 @@ function SignupPage() {
       return toast.error(error.message);
     }
 
-    // Update profile with additional info
     if (data.user) {
       await supabase
         .from("profiles")
@@ -169,29 +167,29 @@ function SignupPage() {
   };
 
   return (
-    <div className="min-h-dvh gradient-hero">
+    <div className="min-h-dvh bg-background">
       <SiteHeader />
-      <main className="mx-auto grid max-w-6xl gap-12 px-6 pt-12 pb-20 md:grid-cols-[1.1fr_1fr] md:pt-20">
+      <main className="mx-auto grid max-w-6xl gap-12 px-6 pt-12 pb-24 md:grid-cols-[1.1fr_1fr] md:pt-20">
         {/* Columna marketing */}
         <aside className="hidden md:block">
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-gold backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5" /> Spot&Shows · Plataforma de talento
-          </span>
-          <h1 className="mt-6 font-display text-5xl leading-[1.05]">
+          <p className="text-sm font-medium uppercase tracking-widest text-primary">
+            Escénika · Plataforma de talento
+          </p>
+          <h1 className="mt-6 font-display text-5xl leading-[1.1] tracking-tight">
             {role === "artist"
               ? "Tu próximo escenario,\na un clic."
               : role === "organizer"
                 ? "Encuentra talento\nexcepcional."
                 : "Conecta con talento\no crea tu agenda."}
           </h1>
-          <p className="mt-5 max-w-md text-muted-foreground">
+          <p className="mt-6 max-w-md text-muted-foreground">
             {role === "artist"
-              ? "Estamos lanzando Spot&Shows. Durante la beta, los artistas se publican gratis. Nosotros somos solo intermediarios: tú cobras directamente del cliente."
+              ? "Estamos lanzando Escénika. Durante la beta, los artistas se publican gratis. Nosotros somos solo intermediarios: tú cobras directamente del cliente."
               : role === "organizer"
                 ? "Accede a cientos de artistas verificados, crea tu agenda cultural y conecta directamente con el talento que necesitas para tus eventos."
                 : "Eres artista buscando escenarios o promotor buscando talento. Elige tu rol y empieza."}
           </p>
-          <ul className="mt-8 space-y-3">
+          <ul className="mt-10 space-y-4">
             {(role === "artist"
               ? ARTIST_PERKS
               : role === "organizer"
@@ -199,14 +197,14 @@ function SignupPage() {
                 : ARTIST_PERKS
             ).map((p) => (
               <li key={p} className="flex items-start gap-3 text-sm">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                 <span>{p}</span>
               </li>
             ))}
           </ul>
           {role === "artist" && (
-            <div className="mt-10 rounded-2xl border border-gold/30 bg-card/40 p-5 text-sm">
-              <p className="font-display text-base">Tu plan Free (Beta) incluye</p>
+            <div className="mt-12 rounded-xl border border-primary/20 bg-card p-6 text-sm">
+              <p className="font-display text-lg">Tu plan Free (Beta) incluye</p>
               <p className="mt-2 text-muted-foreground">
                 1 fotografía, descripción, precio orientativo, exigencias técnicas, ciudad y
                 disciplina. Lo justo para empezar fuerte.
@@ -219,7 +217,7 @@ function SignupPage() {
         </aside>
 
         {/* Columna formulario */}
-        <section className="rounded-3xl border border-border gradient-card p-7 shadow-card md:p-10">
+        <section className="rounded-xl border border-border bg-card p-8 shadow-card md:p-10">
           {step === 1 ? (
             <div className="space-y-6">
               <header>
@@ -229,15 +227,15 @@ function SignupPage() {
                 </p>
               </header>
 
-              <div className="grid gap-3 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-2">
                 <button
                   type="button"
                   onClick={() => selectRole("artist")}
-                  className="group rounded-2xl border-2 border-border bg-card/40 p-6 text-left transition-all hover:border-gold hover:bg-card"
+                  className="group rounded-xl border-2 border-border bg-background p-6 text-left transition-all hover:border-primary"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full bg-gold/10 p-3">
-                      <Music className="h-6 w-6 text-gold" />
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <Music className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <p className="font-display text-lg">Soy Artista</p>
@@ -249,11 +247,11 @@ function SignupPage() {
                 <button
                   type="button"
                   onClick={() => selectRole("organizer")}
-                  className="group rounded-2xl border-2 border-border bg-card/40 p-6 text-left transition-all hover:border-gold hover:bg-card"
+                  className="group rounded-xl border-2 border-border bg-background p-6 text-left transition-all hover:border-primary"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full bg-gold/10 p-3">
-                      <Calendar className="h-6 w-6 text-gold" />
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-full bg-primary/10 p-3">
+                      <Calendar className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <p className="font-display text-lg">Soy Promotor</p>
@@ -267,13 +265,13 @@ function SignupPage() {
 
               <p className="text-center text-sm text-muted-foreground">
                 ¿Ya tienes cuenta?{" "}
-                <Link to="/login" className="text-gold hover:underline">
+                <Link to="/login" className="text-primary hover:underline">
                   Acceder
                 </Link>
               </p>
             </div>
           ) : step === 2 ? (
-            <form onSubmit={nextStep} className="space-y-5">
+            <form onSubmit={nextStep} className="space-y-6">
               <header className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="font-display text-2xl">Cuéntanos más</h2>
@@ -353,19 +351,19 @@ function SignupPage() {
                 </>
               )}
 
-              <Button type="submit" variant="gold" size="lg" className="w-full rounded-full">
+              <Button type="submit" variant="gold" size="lg" className="w-full">
                 Continuar
               </Button>
             </form>
           ) : (
-            <form onSubmit={submit} className="space-y-5">
+            <form onSubmit={submit} className="space-y-6">
               <header className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="font-display text-2xl">Crea tu acceso</h2>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {role === "artist"
-                      ? `Hola ${form.name} 👋 último paso.`
-                      : `Hola ${form.company} 👋 último paso.`}
+                      ? `Hola ${form.name} — último paso.`
+                      : `Hola ${form.company} — último paso.`}
                   </p>
                 </div>
                 <button
@@ -377,7 +375,7 @@ function SignupPage() {
                 </button>
               </header>
 
-              <div className="flex rounded-full border border-border bg-card/40 p-1 text-xs">
+              <div className="flex rounded-lg border border-border bg-background p-1 text-xs">
                 <ToggleBtn active={!magic} onClick={() => setMagic(false)}>
                   Email + contraseña
                 </ToggleBtn>
@@ -413,18 +411,18 @@ function SignupPage() {
                 disabled={busy}
                 variant="gold"
                 size="lg"
-                className="w-full rounded-full"
+                className="w-full"
               >
                 {busy ? "Creando cuenta…" : magic ? "Enviar enlace mágico" : "Crear cuenta"}
               </Button>
 
               <p className="text-center text-xs text-muted-foreground">
                 Al continuar aceptas los{" "}
-                <Link to="/terminos" className="text-gold hover:underline">
+                <Link to="/terminos" className="text-primary hover:underline">
                   términos
                 </Link>{" "}
                 y la{" "}
-                <Link to="/privacidad" className="text-gold hover:underline">
+                <Link to="/privacidad" className="text-primary hover:underline">
                   política de privacidad
                 </Link>
                 .
@@ -449,7 +447,7 @@ function Field({
   return (
     <div className="space-y-2">
       <Label className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
-        <Icon className="h-3.5 w-3.5 text-gold" /> {label}
+        <Icon className="h-3.5 w-3.5 text-primary" /> {label}
       </Label>
       {children}
     </div>
@@ -469,7 +467,7 @@ function ToggleBtn({
     <button
       type="button"
       onClick={onClick}
-      className={`flex-1 rounded-full px-4 py-2 transition-colors ${
+      className={`flex-1 rounded-md px-4 py-2 transition-colors ${
         active ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
       }`}
     >

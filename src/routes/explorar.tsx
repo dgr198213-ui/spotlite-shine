@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/explorar")({
   head: () => ({
     meta: [
-      { title: "Explorar artistas — Spot&Shows" },
+      { title: "Explorar artistas — Escénika" },
       {
         name: "description",
         content: "Descubre cantantes, DJs, magos y más artistas para tu próximo evento.",
@@ -56,11 +56,12 @@ function ExplorePage() {
   });
 
   return (
-    <div className="min-h-dvh gradient-hero">
+    <div className="min-h-dvh bg-background">
       <SiteHeader />
-      <section className="mx-auto max-w-6xl px-6 pt-12 pb-20">
-        <h1 className="font-display text-5xl md:text-6xl">Explorar artistas</h1>
-        <p className="mt-3 text-muted-foreground">
+      <section className="mx-auto max-w-6xl px-6 pt-12 pb-24">
+        <p className="text-sm font-medium uppercase tracking-widest text-primary">Descubre</p>
+        <h1 className="mt-3 font-display text-5xl tracking-tight md:text-6xl">Explorar artistas</h1>
+        <p className="mt-4 text-muted-foreground">
           Filtra por categoría y encuentra el talento perfecto para tu evento.
         </p>
 
@@ -70,7 +71,7 @@ function ExplorePage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Buscar por nombre…"
-            className="h-12 rounded-full border-border bg-card/60 pl-11 backdrop-blur"
+            className="h-12 rounded-lg border-border bg-card pl-11"
           />
         </div>
 
@@ -79,10 +80,10 @@ function ExplorePage() {
             <button
               key={c.value}
               onClick={() => setCat(c.value)}
-              className={`rounded-full border px-4 py-1.5 text-sm transition-all ${
+              className={`rounded-full border px-4 py-2 text-sm transition-all ${
                 cat === c.value
-                  ? "border-gold/50 gradient-gold text-gold-foreground shadow-gold"
-                  : "border-border bg-card/50 text-muted-foreground hover:bg-card hover:text-foreground"
+                  ? "border-primary/50 gradient-gold text-gold-foreground shadow-gold"
+                  : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground"
               }`}
             >
               {c.label}
@@ -91,20 +92,20 @@ function ExplorePage() {
         </div>
 
         {isLoading ? (
-          <p className="mt-12 text-center text-sm text-muted-foreground">Cargando artistas…</p>
+          <p className="mt-16 text-center text-sm text-muted-foreground">Cargando artistas…</p>
         ) : artists.length === 0 ? (
-          <div className="mt-16 rounded-2xl border border-border gradient-card p-10 text-center">
+          <div className="mt-16 rounded-xl border border-border bg-card p-12 text-center shadow-card">
             <p className="font-display text-2xl">Aún no hay artistas en esta categoría</p>
             <p className="mt-2 text-sm text-muted-foreground">
               Sé el primero en aparecer aquí. Crea tu perfil y publícalo.
             </p>
           </div>
         ) : (
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
             {artists.map((a) => (
               <article
                 key={a.id}
-                className="group overflow-hidden rounded-2xl border border-border gradient-card shadow-card transition-all hover:-translate-y-1 hover:shadow-gold"
+                className="group overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-gold"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-muted">
                   {a.cover_url || a.avatar_url ? (
@@ -115,24 +116,24 @@ function ExplorePage() {
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center font-display text-5xl text-gold/30">
+                    <div className="flex h-full w-full items-center justify-center font-display text-6xl text-primary/20">
                       {a.display_name.charAt(0)}
                     </div>
                   )}
                 </div>
-                <div className="p-5">
+                <div className="p-6">
                   <div className="flex items-baseline justify-between">
-                    <h3 className="font-display text-lg">{a.display_name}</h3>
+                    <h3 className="font-display text-xl">{a.display_name}</h3>
                     {a.price_from && (
-                      <span className="text-sm text-gold">Desde {a.price_from}€</span>
+                      <span className="text-sm font-medium text-primary">Desde {a.price_from}€</span>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="mt-1 text-sm text-muted-foreground">
                     {a.category ?? "—"} {a.city ? `· ${a.city}` : ""}
                   </p>
                   {(a.reviews_count ?? 0) > 0 && (
-                    <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
-                      <Star className="h-3.5 w-3.5 fill-gold text-gold" />{" "}
+                    <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+                      <Star className="h-3.5 w-3.5 fill-primary text-primary" />{" "}
                       <span className="text-foreground">{a.rating}</span> · {a.reviews_count}{" "}
                       reseñas
                     </div>

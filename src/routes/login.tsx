@@ -7,12 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SiteHeader } from "@/components/site-header";
-import { Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
-    meta: [{ title: "Acceder — Spot&Shows" }],
+    meta: [{ title: "Acceder — Escénika" }],
   }),
   component: LoginPage,
 });
@@ -52,18 +51,18 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-dvh gradient-hero">
+    <div className="min-h-dvh bg-background">
       <SiteHeader />
-      <div className="mx-auto flex max-w-md flex-col px-6 pt-16 pb-20">
+      <div className="mx-auto flex max-w-md flex-col px-6 pt-20 pb-24">
         <div className="text-center">
-          <Sparkles className="mx-auto h-8 w-8 text-gold" />
-          <h1 className="mt-4 font-display text-3xl">Bienvenido de vuelta</h1>
+          <span className="font-display text-4xl tracking-tight">Escénika</span>
+          <h1 className="mt-6 font-display text-3xl">Bienvenido de vuelta</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Accede para gestionar tu perfil de artista.
           </p>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-border gradient-card p-6 shadow-card">
+        <div className="mt-10 rounded-xl border border-border bg-card p-8 shadow-card">
           <Tabs defaultValue="password">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="password">Contraseña</TabsTrigger>
@@ -71,7 +70,7 @@ function LoginPage() {
             </TabsList>
 
             <TabsContent value="password">
-              <form onSubmit={handlePassword} className="mt-4 space-y-4">
+              <form onSubmit={handlePassword} className="mt-6 space-y-5">
                 <Field label="Email" type="email" value={email} onChange={setEmail} required />
                 <Field
                   label="Contraseña"
@@ -80,29 +79,19 @@ function LoginPage() {
                   onChange={setPassword}
                   required
                 />
-                <Button
-                  type="submit"
-                  disabled={busy}
-                  variant="gold"
-                  className="w-full rounded-full"
-                >
+                <Button type="submit" disabled={busy} variant="gold" className="w-full">
                   {busy ? "Accediendo…" : "Acceder"}
                 </Button>
               </form>
             </TabsContent>
 
             <TabsContent value="magic">
-              <form onSubmit={handleMagicLink} className="mt-4 space-y-4">
+              <form onSubmit={handleMagicLink} className="mt-6 space-y-5">
                 <Field label="Email" type="email" value={email} onChange={setEmail} required />
                 <p className="text-xs text-muted-foreground">
                   Te enviamos un enlace para entrar sin contraseña.
                 </p>
-                <Button
-                  type="submit"
-                  disabled={busy}
-                  variant="gold"
-                  className="w-full rounded-full"
-                >
+                <Button type="submit" disabled={busy} variant="gold" className="w-full">
                   {busy ? "Enviando…" : "Enviar enlace mágico"}
                 </Button>
               </form>
@@ -110,9 +99,9 @@ function LoginPage() {
           </Tabs>
         </div>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-8 text-center text-sm text-muted-foreground">
           ¿Aún no tienes cuenta?{" "}
-          <Link to="/registro" className="text-gold hover:underline">
+          <Link to="/registro" className="text-primary hover:underline">
             Regístrate
           </Link>
         </p>
