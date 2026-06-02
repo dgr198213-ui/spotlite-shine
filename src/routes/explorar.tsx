@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -11,7 +10,7 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/explorar")({
   head: () => ({
     meta: [
-      { title: "Explorar artistas — Escénika" },
+      { title: "Explorar artistas — Spot&Shows" },
       {
         name: "description",
         content: "Descubre cantantes, DJs, magos y más artistas para tu próximo evento.",
@@ -65,21 +64,14 @@ function ExplorePage() {
           Filtra por categoría y encuentra el talento perfecto para tu evento.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-[1fr_auto]">
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Buscar por nombre artístico, disciplina o ciudad…"
-              className="h-12 rounded-full border-border bg-card/60 pl-11 backdrop-blur"
-            />
-          </div>
-          <Link to="/eventos">
-            <Button variant="outline" className="h-12 rounded-full px-6 border-gold/30 text-gold hover:bg-gold/10">
-              Ver eventos publicados
-            </Button>
-          </Link>
+        <div className="mt-8 relative">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Buscar por nombre…"
+            className="h-12 rounded-full border-border bg-card/60 pl-11 backdrop-blur"
+          />
         </div>
 
         <div className="mt-6 flex flex-wrap gap-2">
@@ -110,10 +102,9 @@ function ExplorePage() {
         ) : (
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {artists.map((a) => (
-              <Link
+              <article
                 key={a.id}
-                to={`/artista/${a.slug || a.id}`}
-                className="group block overflow-hidden rounded-2xl border border-border gradient-card shadow-card transition-all hover:-translate-y-1 hover:shadow-gold"
+                className="group overflow-hidden rounded-2xl border border-border gradient-card shadow-card transition-all hover:-translate-y-1 hover:shadow-gold"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-muted">
                   {a.cover_url || a.avatar_url ? (
@@ -147,7 +138,7 @@ function ExplorePage() {
                     </div>
                   )}
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
         )}

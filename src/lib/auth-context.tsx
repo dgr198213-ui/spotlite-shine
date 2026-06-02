@@ -38,19 +38,13 @@ export async function getAuth() {
   const { getRequest } = await import("@tanstack/react-start/server");
   const { createClient } = await import("@supabase/supabase-js");
 
-  // Supports NEXT_PUBLIC_ (Vercel), VITE_ (Vite dev), and bare names
-  const SUPABASE_URL =
-    process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.SUPABASE_URL ||
-    process.env.VITE_SUPABASE_URL;
-  const SUPABASE_ANON_KEY =
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_PUBLISHABLE_KEY ||
-    process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  // Use consistent environment variable names (prefer non-VITE_ for server)
+  const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const SUPABASE_PUBLISHABLE_KEY =
+    process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    console.error("Missing Supabase configuration: NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are required.");
+  if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+    console.error("Missing Supabase configuration");
     return { user: null };
   }
 
@@ -93,7 +87,7 @@ export async function getAuth() {
       return { user: null };
     }
 
-    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
     const {
       data: { user },
     } = await supabaseClient.auth.getUser(token);

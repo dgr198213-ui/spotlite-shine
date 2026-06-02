@@ -13,7 +13,7 @@ export const stripeServer = {
     userId: string,
     priceId: string,
     successUrl: string,
-    cancelUrl: string
+    cancelUrl: string,
   ) {
     try {
       // Get or create Stripe customer
@@ -28,7 +28,9 @@ export const stripeServer = {
         customerId = subscription.stripe_customer_id;
       } else {
         // Get user email
-        const { data: { user } } = await supabaseAdmin.auth.admin.getUserById(userId);
+        const {
+          data: { user },
+        } = await supabaseAdmin.auth.admin.getUserById(userId);
         if (!user?.email) throw new Error("User email not found");
 
         // Create new customer
@@ -82,7 +84,7 @@ export const stripeServer = {
           const invoice = event.data.object as Stripe.Invoice;
           if (invoice.subscription) {
             const subscription = await stripe.subscriptions.retrieve(
-              invoice.subscription as string
+              invoice.subscription as string,
             );
             await stripeServer.syncSubscription(subscription);
           }
@@ -92,12 +94,9 @@ export const stripeServer = {
           const invoice = event.data.object as Stripe.Invoice;
           if (invoice.subscription) {
             const subscription = await stripe.subscriptions.retrieve(
-              invoice.subscription as string
+              invoice.subscription as string,
             );
-            await stripeServer.updateSubscriptionStatus(
-              subscription,
-              "past_due"
-            );
+            await stripeServer.updateSubscriptionStatus(subscription, "past_due");
           }
           break;
         }
@@ -125,35 +124,28 @@ export const stripeServer = {
       else if (priceId?.includes("headliner")) plan = "headliner";
 
       // Update subscription in Supabase
-      const { error } = await supabaseAdmin
-        .from("subscriptions")
-        .upsert(
-          {
-            user_id: userId,
-            stripe_customer_id: customerId,
-            stripe_subscription_id: stripeSubscription.id,
-            plan,
-            status: stripeSubscription.status,
-            current_period_start: new Date(
-              stripeSubscription.current_period_start * 1000
-            ).toISOString(),
-            current_period_end: new Date(
-              stripeSubscription.current_period_end * 1000
-            ).toISOString(),
-            cancel_at: stripeSubscription.cancel_at
-              ? new Date(stripeSubscription.cancel_at * 1000).toISOString()
-              : null,
-          },
-          { onConflict: "user_id,plan" }
-        );
+      const { error } = await supabaseAdmin.from("subscriptions").upsert(
+        {
+          user_id: userId,
+          stripe_customer_id: customerId,
+          stripe_subscription_id: stripeSubscription.id,
+          plan,
+          status: stripeSubscription.status,
+          current_period_start: new Date(
+            stripeSubscription.current_period_start * 1000,
+          ).toISOString(),
+          current_period_end: new Date(stripeSubscription.current_period_end * 1000).toISOString(),
+          cancel_at: stripeSubscription.cancel_at
+            ? new Date(stripeSubscription.cancel_at * 1000).toISOString()
+            : null,
+        },
+        { onConflict: "user_id,plan" },
+      );
 
       if (error) throw error;
 
       // Update user profile plan
-      await supabaseAdmin
-        .from("profiles")
-        .update({ plan })
-        .eq("id", userId);
+      await supabaseAdmin.from("profiles").update({ plan }).eq("id", userId);
 
       console.log(`Subscription synced for user ${userId}: ${plan}`);
     } catch (error) {
@@ -179,10 +171,7 @@ export const stripeServer = {
       if (error) throw error;
 
       // Reset user plan to spark
-      await supabaseAdmin
-        .from("profiles")
-        .update({ plan: "spark" })
-        .eq("id", userId);
+      await supabaseAdmin.from("profiles").update({ plan: "spark" }).eq("id", userId);
 
       console.log(`Subscription canceled for user ${userId}`);
     } catch (error) {
@@ -194,10 +183,7 @@ export const stripeServer = {
   /**
    * Update subscription status
    */
-  async updateSubscriptionStatus(
-    stripeSubscription: Stripe.Subscription,
-    status: string
-  ) {
+  async updateSubscriptionStatus(stripeSubscription: Stripe.Subscription, status: string) {
     try {
       const { error } = await supabaseAdmin
         .from("subscriptions")

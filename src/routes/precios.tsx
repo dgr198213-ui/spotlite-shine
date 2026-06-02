@@ -11,7 +11,7 @@ import logo from "@/assets/logo.png";
 export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
-      { title: "Planes y Precios — Escénika" },
+      { title: "Planes y Precios — Spot&Shows" },
       {
         name: "description",
         content:
@@ -39,7 +39,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     icon: Sparkles,
-    name: "Escénika Free",
+    name: "Spark",
     badge: "Disponible ahora",
     price: "0€",
     period: "/mes",
@@ -59,7 +59,7 @@ const plans: Plan[] = [
   },
   {
     icon: Star,
-    name: "Escénika Standard",
+    name: "Spotlight",
     badge: "Recomendado",
     price: "6€",
     period: "/mes",
@@ -78,7 +78,7 @@ const plans: Plan[] = [
   },
   {
     icon: Crown,
-    name: "Escénika Pro",
+    name: "Headliner",
     badge: "Profesional",
     price: "19€",
     period: "/mes",
@@ -199,7 +199,7 @@ function PricingPage() {
                 )}
 
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="" className="h-7 w-auto" />
+                  <img src={logo} alt="" className="h-6 w-auto" />
                   <Icon className="h-5 w-5 text-gold" />
                 </div>
 
@@ -238,7 +238,7 @@ function PricingPage() {
             <div>
               <h3 className="font-display text-lg">Sin comisiones</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tú cobras directamente del cliente. Escénika solo cobra la suscripción opcional.
+                Tú cobras directamente del cliente. Spot&Shows solo cobra la suscripción opcional.
               </p>
             </div>
             <div>
@@ -259,8 +259,8 @@ function PricingPage() {
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
             ¿Preguntas? Contáctanos en{" "}
-            <a href="mailto:hola@escenika.com" className="text-gold hover:underline">
-              hola@escenika.com
+            <a href="mailto:hola@spotandshows.com" className="text-gold hover:underline">
+              hola@spotandshows.com
             </a>
           </p>
         </div>

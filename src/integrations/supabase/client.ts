@@ -1,74 +1,52 @@
-import { loadStripe, Stripe } from "@stripe/stripe-js";
+import { createClient } from "@supabase/supabase-js";
+import type { Database } from "./types";
 
-let stripePromise: Promise<Stripe | null>;
+function getSupabaseConfig() {
+  const SUPABASE_URL =
+    import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const SUPABASE_PUBLISHABLE_KEY =
+    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+    process.env.SUPABASE_PUBLISHABLE_KEY ||
+    process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  return { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY };
+}
 
-export const getStripe = () => {
-  if (!stripePromise) {
-    // Supports NEXT_PUBLIC_ (Vercel standard) and VITE_ (Vite dev)
-    const publishableKey =
-      import.meta.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
-      import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
-    if (!publishableKey) {
-      console.error("NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not set. Configure it in Vercel Environment Variables.");
-      return Promise.resolve(null);
-    }
-    stripePromise = loadStripe(publishableKey);
+function createSupabaseClient() {
+  const { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } = getSupabaseConfig();
+
+  if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+    const missing = [
+      ...(!SUPABASE_URL ? ["SUPABASE_URL / VITE_SUPABASE_URL"] : []),
+      ...(!SUPABASE_PUBLISHABLE_KEY
+        ? ["SUPABASE_PUBLISHABLE_KEY / VITE_SUPABASE_PUBLISHABLE_KEY"]
+        : []),
+    ];
+    console.warn(
+      `[Supabase] Missing env var(s): ${missing.join(", ")}. Configure them in your deployment platform.`,
+    );
+    return createClient<Database>("https://placeholder.supabase.co", "placeholder-key", {
+      auth: {
+        storage: typeof window !== "undefined" ? localStorage : undefined,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    });
   }
-  return stripePromise;
-};
 
-export const STRIPE_PLANS = {
-  spark: {
-    name: "Spark (Gratis)",
-    price: 0,
-    priceId: null,
-    description: "Plan gratuito para empezar",
-    features: [
-      "1 fotografía de presentación",
-      "Descripción y precio",
-      "Exigencias técnicas",
-      "Visible en el explorador",
-      "Sin comisiones",
-    ],
+  return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+    auth: {
+      storage: typeof window !== "undefined" ? localStorage : undefined,
+      persistSession: true,
+      autoRefreshToken: true,
+    },
+  });
+}
+
+let _supabase: ReturnType<typeof createSupabaseClient> | undefined;
+
+export const supabase = new Proxy({} as ReturnType<typeof createSupabaseClient>, {
+  get(_, prop, receiver) {
+    if (!_supabase) _supabase = createSupabaseClient();
+    return Reflect.get(_supabase, prop, receiver);
   },
-  spotlight: {
-    name: "Spotlight",
-    price: 6,
-    priceId:
-      (typeof import.meta !== "undefined" && import.meta.env?.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID) ||
-      (typeof import.meta !== "undefined" && import.meta.env?.VITE_STRIPE_SPOTLIGHT_PRICE_ID) ||
-      process.env.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID ||
-      process.env.STRIPE_SPOTLIGHT_PRICE_ID ||
-      process.env.VITE_STRIPE_SPOTLIGHT_PRICE_ID ||
-      null,
-    description: "Plan recomendado para artistas",
-    features: [
-      "Todo del plan Spark +",
-      "1 vídeo de hasta 8 segundos",
-      "6 fotografías",
-      "Promoción en redes",
-      "Prioridad en búsquedas",
-      "Soporte prioritario",
-    ],
-  },
-  headliner: {
-    name: "Headliner",
-    price: 19,
-    priceId:
-      (typeof import.meta !== "undefined" && import.meta.env?.NEXT_PUBLIC_STRIPE_HEADLINER_PRICE_ID) ||
-      (typeof import.meta !== "undefined" && import.meta.env?.VITE_STRIPE_HEADLINER_PRICE_ID) ||
-      process.env.NEXT_PUBLIC_STRIPE_HEADLINER_PRICE_ID ||
-      process.env.STRIPE_HEADLINER_PRICE_ID ||
-      process.env.VITE_STRIPE_HEADLINER_PRICE_ID ||
-      null,
-    description: "Plan profesional completo",
-    features: [
-      "Todo del plan Spotlight +",
-      "100 vídeos sin límite de duración",
-      "100 fotografías",
-      "Acceso a eventos premium",
-      "Análisis detallado",
-      "Soporte 24/7",
-    ],
-  },
-};
+});

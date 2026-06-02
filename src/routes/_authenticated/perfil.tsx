@@ -20,7 +20,7 @@ import { MediaGallery } from "@/components/media-gallery";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/perfil")({
-  head: () => ({ meta: [{ title: "Mi perfil — Escénika" }] }),
+  head: () => ({ meta: [{ title: "Mi perfil — Spot&Shows" }] }),
   component: ProfileEditPage,
 });
 
@@ -109,7 +109,7 @@ function ProfileEditPage() {
         </Link>
         <h1 className="mt-4 font-display text-4xl">Editar mi perfil</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Tu perfil público es lo que ven los organizadores y el público. Cuídalo.
+          Tu perfil público es lo que ven los organizadores. Cuídalo.
         </p>
 
         <form
@@ -163,7 +163,7 @@ function ProfileEditPage() {
               placeholder="Cuéntale al cliente quién eres, qué estilo tienes, tu trayectoria y qué te hace único…"
             />
             <p className="text-xs text-muted-foreground">
-              Lo primero que leerán los organizadores y el público. Sé claro y directo.
+              Lo primero que leerá el organizador. Sé claro y directo.
             </p>
           </div>
 
@@ -190,7 +190,7 @@ function ProfileEditPage() {
               placeholder="350"
             />
             <p className="text-xs text-muted-foreground">
-              Escénika no cobra comisión: tú cobras directamente del cliente.
+              Spot&Shows no cobra comisión: tú cobras directamente del cliente.
             </p>
           </div>
 

@@ -1,49 +1,80 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
+// @ts-nocheck
+import type { IncomingMessage, ServerResponse } from 'node:http'
 
-// Import the server handler from the built dist
-let serverHandler: any;
+// @ts-expect-error — generado en build
+import serverModule from '../dist/server/server.js'
 
-async function getServerHandler() {
-  if (!serverHandler) {
-    try {
-      const mod = await import("../dist/server/index.js");
-      serverHandler = mod.default;
-    } catch (error) {
-      console.error("Failed to load server handler:", error);
-      throw error;
-    }
+export default async function vercelEntrypoint(
+  req: IncomingMessage,
+  res: ServerResponse,
+): Promise<void> {
+  // Capturamos el método fetch que Vinxi nos confirma que exporta
+  const webFetch = serverModule?.fetch || serverModule?.default?.fetch
+
+  if (typeof webFetch !== 'function') {
+    res.writeHead(500, { 'Content-Type': 'application/json' })
+    res.end(
+      JSON.stringify({
+        error: 'Web Fetch handler not found',
+        detail: 'dist/server/server.js exporta un formato inesperado.',
+        exports: Object.keys(serverModule ?? {}),
+      }),
+    )
+    return
   }
-  return serverHandler;
-}
 
-export default async (req: VercelRequest, res: VercelResponse) => {
   try {
-    const handler = await getServerHandler();
-    
-    // Create a proper Request object for the handler
-    const url = new URL(req.url || "/", `http://${req.headers.host}`);
-    const request = new Request(url, {
+    // 1. Reconstruimos la URL completa para el entorno de Vercel
+    const protocol = req.headers['x-forwarded-proto'] || 'https'
+    const host = req.headers['x-forwarded-host'] || req.headers.host || 'localhost'
+    const url = new URL(req.url || '/', `${protocol}://${host}`)
+
+    // 2. Mapeamos las cabeceras entrantes de Node a la Web API (Headers)
+    const headers = new Headers()
+    for (const [key, value] of Object.entries(req.headers)) {
+      if (value) {
+        headers.set(key, Array.isArray(value) ? value.join(', ') : value)
+      }
+    }
+
+    // 3. Leemos el body de Node si no es un método GET/HEAD
+    let body: any = undefined
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      // Dejamos que los buffers de Node se unifiquen de forma segura
+      const buffers = []
+      for await (const chunk of req) {
+        buffers.push(chunk)
+      }
+      body = Buffer.concat(buffers)
+    }
+
+    // 4. Creamos la Request estándar que el fetch de TanStack espera
+    const webRequest = new Request(url.toString(), {
       method: req.method,
-      headers: new Headers(req.headers as Record<string, string>),
-      body: req.method !== "GET" && req.method !== "HEAD" ? JSON.stringify(req.body) : undefined,
-    });
+      headers,
+      body,
+      duplex: 'half', // Requerido en Node 20+ para enviar bodies en streams/buffers
+    })
 
-    // Call the server handler
-    const response = await handler.fetch(request, {}, {});
+    // 5. Ejecutamos el fetch del servidor compilado
+    const webResponse = await webFetch(webRequest)
 
-    // Set response headers
-    response.headers.forEach((value, key) => {
-      res.setHeader(key, value);
-    });
+    // 6. Devolvemos las cabeceras de respuesta a Node
+    webResponse.headers.forEach((value, key) => {
+      if (!['transfer-encoding', 'connection', 'keep-alive'].includes(key.toLowerCase())) {
+        res.setHeader(key, value)
+      }
+    })
 
-    // Set status code
-    res.status(response.status);
+    res.statusCode = webResponse.status
 
-    // Send the response body
-    const body = await response.text();
-    res.send(body);
+    // 7. Transmitimos el cuerpo de la respuesta directamente
+    const arrayBuffer = await webResponse.arrayBuffer()
+    res.end(Buffer.from(arrayBuffer))
+
   } catch (error) {
-    console.error("Server error:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Server execution error:', error)
+    res.writeHead(500, { 'Content-Type': 'application/json' })
+    res.end(JSON.stringify({ error: 'Internal Server Error', message: String(error) }))
   }
-};
+}
