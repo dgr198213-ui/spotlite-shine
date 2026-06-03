@@ -101,20 +101,20 @@ function ProfileEditPage() {
   };
 
   return (
-    <div className="min-h-dvh gradient-hero">
+    <div className="min-h-dvh bg-background">
       <SiteHeader />
-      <main className="mx-auto max-w-2xl px-6 pt-12 pb-20">
+      <main className="mx-auto max-w-2xl px-6 pt-12 pb-24">
         <Link to="/panel" className="text-sm text-muted-foreground hover:text-foreground">
           ← Volver al panel
         </Link>
-        <h1 className="mt-4 font-display text-4xl">Editar mi perfil</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="mt-6 font-display text-4xl tracking-tight">Editar mi perfil</h1>
+        <p className="mt-3 text-sm text-muted-foreground">
           Tu perfil público es lo que ven los organizadores. Cuídalo.
         </p>
 
         <form
           onSubmit={save}
-          className="mt-8 space-y-5 rounded-2xl border border-border gradient-card p-6 shadow-card"
+          className="mt-10 space-y-6 rounded-xl border border-border bg-card p-8 shadow-card"
         >
           <div className="space-y-2">
             <Label>Nombre artístico</Label>
@@ -125,7 +125,7 @@ function ProfileEditPage() {
             />
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2">
               <Label>Categoría</Label>
               <Select
@@ -194,7 +194,7 @@ function ProfileEditPage() {
             </p>
           </div>
 
-          <div className="flex items-center justify-between rounded-xl border border-border bg-card/40 p-4">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-background p-5">
             <div>
               <p className="font-medium">Publicar perfil</p>
               <p className="text-xs text-muted-foreground">
@@ -207,13 +207,13 @@ function ProfileEditPage() {
             />
           </div>
 
-          <Button type="submit" disabled={busy} variant="gold" className="w-full rounded-full">
+          <Button type="submit" disabled={busy} variant="gold" className="w-full">
             {busy ? "Guardando…" : "Guardar cambios"}
           </Button>
         </form>
 
         {user && profile && (
-          <section className="mt-10 rounded-2xl border border-border gradient-card p-6 shadow-card">
+          <section className="mt-12 rounded-xl border border-border bg-card p-8 shadow-card">
             <MediaGallery
               userId={user.id}
               plan={(profile.plan ?? "spark") as "spark" | "spotlight" | "headliner"}
