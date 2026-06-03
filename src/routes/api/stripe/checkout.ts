@@ -1,9 +1,10 @@
 import { json } from "@tanstack/start";
 import { stripeServer } from "@/integrations/stripe/server";
 import { getAuth } from "@/lib/auth-context";
+import { ArtistPlan } from "@/lib/media-limits";
 
 // Resolves Stripe Price IDs from multiple possible env var names
-function getStripePriceId(plan: string): string | null {
+function getStripePriceId(plan: ArtistPlan): string | null {
   if (plan === "spotlight") {
     return (
       process.env.NEXT_PUBLIC_STRIPE_SPOTLIGHT_PRICE_ID ||
@@ -32,7 +33,7 @@ export async function POST({ request }: { request: Request }) {
     }
 
     const body = (await request.json()) as {
-      planId: string;
+      planId: ArtistPlan;
       successUrl: string;
       cancelUrl: string;
     };
