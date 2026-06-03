@@ -1,5 +1,6 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "escenika",
+  "description": "Plataforma de booking artístico sin comisiones — escenika.com",
   "private": true,
   "sideEffects": false,
   "type": "module",

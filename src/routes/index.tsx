@@ -27,7 +27,7 @@ import logo from "@/assets/logo.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Spot&Shows — Tu escenario, tu audiencia, tu momento" },
+      { title: "Escénika — Tu escenario, tu audiencia, tu momento" },
       {
         name: "description",
         content:
@@ -254,7 +254,7 @@ function HomePage() {
             <SparklesIcon className="h-3.5 w-3.5 text-gold" /> En directo
           </span>
           <h2 className="mt-5 font-display text-4xl md:text-5xl">
-            Así se ven los escenarios en Spot&Shows
+            Así se ven los escenarios en Escénika
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
             Una muestra del tipo de vídeos que los artistas podrán publicar en sus perfiles con el
@@ -297,7 +297,7 @@ function HomePage() {
           {[
             {
               icon: SparklesIcon,
-              name: "Spot&Shows Free",
+              name: "Escénika Free",
               badge: "Beta · Disponible",
               price: "0€",
               desc: "Empieza con nosotros durante el lanzamiento",
@@ -313,7 +313,7 @@ function HomePage() {
             },
             {
               icon: Star,
-              name: "Spot&Shows Standard",
+              name: "Escénika Standard",
               badge: "Próximamente",
               price: "6€",
               desc: "Para destacar de verdad",
@@ -329,7 +329,7 @@ function HomePage() {
             },
             {
               icon: Crown,
-              name: "Spot&Shows Pro",
+              name: "Escénika Pro",
               badge: "Próximamente",
               price: "—",
               desc: "Para artistas profesionales",
@@ -365,7 +365,7 @@ function HomePage() {
                   {p.badge}
                 </span>
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="" className="h-7 w-auto" />
+                  <img src={logo} alt="" className="h-8 w-auto" />
                   <Icon
                     className={`h-5 w-5 ${p.comingSoon ? "text-muted-foreground" : "text-gold"}`}
                   />

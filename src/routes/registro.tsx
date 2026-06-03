@@ -29,11 +29,11 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/registro")({
   head: () => ({
     meta: [
-      { title: "Crear cuenta — Spot&Shows" },
+      { title: "Crear cuenta — Escénika" },
       {
         name: "description",
         content:
-          "Crea tu perfil de artista o promotor en Spot&Shows. Conecta con talento o encuentra tu próximo evento.",
+          "Crea tu perfil de artista o promotor en Escénika. Conecta con talento o encuentra tu próximo evento.",
       },
     ],
   }),
@@ -60,7 +60,7 @@ const ARTIST_PERKS = [
 ];
 
 const ORGANIZER_PERKS = [
-  "Acceso a la agenda cultural de Spot&Shows",
+  "Acceso a la agenda cultural de Escénika",
   "Busca y guarda artistas en favoritos",
   "Publica tus eventos y recibe solicitudes",
   "Comunícate directamente con los artistas",
@@ -175,7 +175,7 @@ function SignupPage() {
         {/* Columna marketing */}
         <aside className="hidden md:block">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-gold backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5" /> Spot&Shows · Plataforma de talento
+            <Sparkles className="h-3.5 w-3.5" /> Escénika · Plataforma de talento
           </span>
           <h1 className="mt-6 font-display text-5xl leading-[1.05]">
             {role === "artist"
@@ -186,7 +186,7 @@ function SignupPage() {
           </h1>
           <p className="mt-5 max-w-md text-muted-foreground">
             {role === "artist"
-              ? "Estamos lanzando Spot&Shows. Durante la beta, los artistas se publican gratis. Nosotros somos solo intermediarios: tú cobras directamente del cliente."
+              ? "Estamos lanzando Escénika. Durante la beta, los artistas se publican gratis. Nosotros somos solo intermediarios: tú cobras directamente del cliente."
               : role === "organizer"
                 ? "Accede a cientos de artistas verificados, crea tu agenda cultural y conecta directamente con el talento que necesitas para tus eventos."
                 : "Eres artista buscando escenarios o promotor buscando talento. Elige tu rol y empieza."}

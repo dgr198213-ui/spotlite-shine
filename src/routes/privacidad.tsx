@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/privacidad")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidad — Spot&Shows" },
+      { title: "Política de Privacidad — Escénika" },
       {
         name: "description",
-        content: "Política de privacidad y protección de datos de Spot&Shows conforme a RGPD.",
+        content: "Política de privacidad y protección de datos de Escénika conforme a RGPD.",
       },
     ],
   }),
@@ -29,7 +29,7 @@ function PrivacidadPage() {
           <section>
             <h2 className="font-display text-2xl">1. Responsable del Tratamiento</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows ("nosotros" o "la Plataforma") es responsable del tratamiento de tus datos
+              Escénika ("nosotros" o "la Plataforma") es responsable del tratamiento de tus datos
               personales conforme a la Ley Orgánica de Protección de Datos Personales (LOPDGDD) y el
               Reglamento General de Protección de Datos (RGPD).
             </p>
@@ -151,8 +151,8 @@ function PrivacidadPage() {
             </ul>
             <p className="mt-3 text-muted-foreground">
               Para ejercer estos derechos, contáctanos en:{" "}
-              <a href="mailto:privacy@spotandshows.com" className="text-gold hover:underline">
-                privacy@spotandshows.com
+              <a href="mailto:privacy@escenika.com" className="text-gold hover:underline">
+                privacy@escenika.com
               </a>
             </p>
           </section>
@@ -187,8 +187,8 @@ function PrivacidadPage() {
             <h2 className="font-display text-2xl">11. Contacto</h2>
             <p className="mt-3 text-muted-foreground">
               Para preguntas sobre privacidad, contáctanos en:{" "}
-              <a href="mailto:privacy@spotandshows.com" className="text-gold hover:underline">
-                privacy@spotandshows.com
+              <a href="mailto:privacy@escenika.com" className="text-gold hover:underline">
+                privacy@escenika.com
               </a>
             </p>
           </section>

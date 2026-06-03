@@ -15,8 +15,8 @@ export function SiteHeader() {
     <header className="sticky top-4 z-50 mx-auto w-[min(1180px,calc(100%-2rem))]">
       <div className="flex items-center justify-between rounded-full border border-border/40 bg-gradient-to-br from-card/60 to-card/40 px-5 py-3 backdrop-blur-xl shadow-lg hover:shadow-xl transition-shadow">
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <img src={logo} alt="Spot&Shows" className="h-12 w-auto md:h-14" />
-          <span className="sr-only">Spot&Shows</span>
+          <img src={logo} alt="Escénika" className="h-9 md:h-10 w-auto" />
+          <span className="sr-only">Escénika</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
           <Link

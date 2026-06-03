@@ -1,0 +1,3 @@
+# Escénika
+
+Rebrand desde Escénika
