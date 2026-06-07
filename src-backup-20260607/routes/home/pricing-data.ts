@@ -1,6 +1,6 @@
 // Pricing plans data for home page
 import { SparklesIcon, Star, Crown, Clock, Check } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.svg";
 
 export interface PlanFeature {
   text: string;
@@ -22,7 +22,7 @@ export interface PlanData {
 export const pricingPlans: PlanData[] = [
   {
     icon: SparklesIcon,
-    name: "Escénika Free",
+    name: "Telón Free",
     badge: "Beta · Disponible",
     price: "0€",
     desc: "Empieza con nosotros durante el lanzamiento",
@@ -38,7 +38,7 @@ export const pricingPlans: PlanData[] = [
   },
   {
     icon: Star,
-    name: "Escénika Standard",
+    name: "Telón Standard",
     badge: "Recomendado",
     price: "6€",
     desc: "Para destacar de verdad",
@@ -53,7 +53,7 @@ export const pricingPlans: PlanData[] = [
   },
   {
     icon: Crown,
-    name: "Escénika Pro",
+    name: "Telón Pro",
     badge: "Profesional",
     price: "19€",
     desc: "Para artistas profesionales",

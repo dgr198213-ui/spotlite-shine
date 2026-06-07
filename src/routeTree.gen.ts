@@ -15,6 +15,7 @@ import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PreciosRouteImport } from './routes/precios'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ExplorarRouteImport } from './routes/explorar'
+import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
@@ -52,6 +53,11 @@ const ExplorarRoute = ExplorarRouteImport.update({
   path: '/explorar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventosRoute = EventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CookiesRoute = CookiesRouteImport.update({
   id: '/cookies',
   path: '/cookies',
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
+  '/eventos': typeof EventosRoute
   '/explorar': typeof ExplorarRoute
   '/login': typeof LoginRoute
   '/precios': typeof PreciosRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
+  '/eventos': typeof EventosRoute
   '/explorar': typeof ExplorarRoute
   '/login': typeof LoginRoute
   '/precios': typeof PreciosRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/aviso-legal': typeof AvisoLegalRoute
   '/cookies': typeof CookiesRoute
+  '/eventos': typeof EventosRoute
   '/explorar': typeof ExplorarRoute
   '/login': typeof LoginRoute
   '/precios': typeof PreciosRoute
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/aviso-legal'
     | '/cookies'
+    | '/eventos'
     | '/explorar'
     | '/login'
     | '/precios'
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/'
     | '/aviso-legal'
     | '/cookies'
+    | '/eventos'
     | '/explorar'
     | '/login'
     | '/precios'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/aviso-legal'
     | '/cookies'
+    | '/eventos'
     | '/explorar'
     | '/login'
     | '/precios'
@@ -171,6 +183,7 @@ export interface RootRouteChildren {
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   AvisoLegalRoute: typeof AvisoLegalRoute
   CookiesRoute: typeof CookiesRoute
+  EventosRoute: typeof EventosRoute
   ExplorarRoute: typeof ExplorarRoute
   LoginRoute: typeof LoginRoute
   PreciosRoute: typeof PreciosRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/explorar'
       fullPath: '/explorar'
       preLoaderRoute: typeof ExplorarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos': {
+      id: '/eventos'
+      path: '/eventos'
+      fullPath: '/eventos'
+      preLoaderRoute: typeof EventosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   AvisoLegalRoute: AvisoLegalRoute,
   CookiesRoute: CookiesRoute,
+  EventosRoute: EventosRoute,
   ExplorarRoute: ExplorarRoute,
   LoginRoute: LoginRoute,
   PreciosRoute: PreciosRoute,

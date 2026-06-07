@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -7,17 +7,11 @@ import { toast } from "sonner";
 
 type Plan = "spark" | "spotlight" | "headliner";
 
-// Optimized image sizes for responsive images
 const IMAGE_SIZES = [400, 800, 1200];
 
-// Generate srcSet for responsive images
 function generateSrcSet(url: string): string {
   return IMAGE_SIZES.map((size) => `${url}?width=${size} ${size}w`).join(", ");
 }
-
-// Generate blur placeholder as base64 (tiny 10px version)
-function generateBlurPlaceholder(url: string): string {
-  return `data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k=`;
 
 const LIMITS: Record<Plan, { videos: number; images: number; videoSeconds: number }> = {
   spark: { videos: 0, images: 1, videoSeconds: 0 },
@@ -143,17 +137,11 @@ export function MediaGallery({ userId, plan }: Props) {
         <div>
           <h2 className="font-display text-2xl">Tu fotografía</h2>
           <p className="text-sm text-muted-foreground">
-<<<<<<< Updated upstream
-            {isBeta
-              ? `Spot&Shows Free (Beta) · 1 imagen de presentación`
-              : `${limits.images} imágenes · ${limits.videos} vídeo(s) ≤ ${limits.videoSeconds}s`}
-=======
             {plan === "spark"
-              ? "Escénika Free · 1 imagen de presentación"
+              ? "Telón Free · 1 imagen de presentación"
               : plan === "spotlight"
-                ? "Escénika Standard · 6 imágenes + 1 vídeo (8s)"
-                : "Escénika Pro · Imágenes y vídeos ilimitados"}
->>>>>>> Stashed changes
+                ? "Telón Standard · 6 imágenes + 1 vídeo (8s)"
+                : "Telón Pro · Imágenes y vídeos ilimitados"}
           </p>
         </div>
         <div className="flex gap-2">
@@ -216,7 +204,7 @@ export function MediaGallery({ userId, plan }: Props) {
             fotografía + descripción + precio + exigencias. Los vídeos llegarán muy pronto con el
             plan{" "}
             <a href="/precios" className="text-gold hover:underline">
-              Spot&Shows Standard (6€/mes)
+              Telón Standard (6€/mes)
             </a>
             .
           </span>
@@ -236,16 +224,14 @@ export function MediaGallery({ userId, plan }: Props) {
             >
               {m.type === "image" ? (
                 <div className="relative h-full w-full overflow-hidden">
-                  {/* Blur placeholder shown while loading */}
                   {!loadedImages.has(m.id) && (
                     <div
                       className="absolute inset-0 bg-muted animate-pulse"
                       style={{
-                        backgroundImage: `url(${generateBlurPlaceholder(m.url)})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        filter: 'blur(10px)',
-                        transform: 'scale(1.1)'
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        filter: "blur(10px)",
+                        transform: "scale(1.1)",
                       }}
                     />
                   )}
@@ -255,8 +241,12 @@ export function MediaGallery({ userId, plan }: Props) {
                     sizes="(max-width: 768px) 50vw, 33vw"
                     alt=""
                     loading="lazy"
-                    className={`h-full w-full object-cover transition-opacity duration-300 ${loadedImages.has(m.id) ? 'opacity-100' : 'opacity-0'}`}
-                    onLoad={() => setLoadedImages(prev => new Set(prev).add(m.id))}
+                    className={`h-full w-full object-cover transition-opacity duration-300 ${
+                      loadedImages.has(m.id) ? "opacity-100" : "opacity-0"
+                    }`}
+                    onLoad={() =>
+                      setLoadedImages((prev) => new Set(prev).add(m.id))
+                    }
                   />
                 </div>
               ) : (
@@ -272,7 +262,9 @@ export function MediaGallery({ userId, plan }: Props) {
               )}
               {m.type === "video" && (
                 <span className="absolute left-2 top-2 rounded-full bg-background/80 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold">
-                  {m.duration_seconds ? `${Number(m.duration_seconds).toFixed(1)}s` : "Vídeo"}
+                  {m.duration_seconds
+                    ? `${Number(m.duration_seconds).toFixed(1)}s`
+                    : "Vídeo"}
                 </span>
               )}
               <button
