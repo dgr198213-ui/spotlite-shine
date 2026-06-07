@@ -30,7 +30,9 @@ export function StepOne({ role, onSelectRole }: StepOneProps) {
             </div>
             <div>
               <p className="font-display text-2xl">Soy Artista</p>
-              <p className="text-sm text-muted-foreground">Crea tu perfil profesional, sube fotos y vídeos, y encuentra tu próximo escenario.</p>
+              <p className="text-sm text-muted-foreground">
+                Crea tu perfil profesional, sube fotos y vídeos, y encuentra tu próximo escenario.
+              </p>
             </div>
           </div>
         </button>
@@ -68,7 +70,8 @@ export function MarketingSidebar({ role }: MarketingSidebarProps) {
       </h1>
 
       <p className="mt-5 max-w-md text-muted-foreground">
-        Estamos lanzando Escénika. Durante la beta, los artistas se publican gratis. Nosotros somos solo intermediarios: tú cobras directamente del cliente.
+        Estamos lanzando Escénika. Durante la beta, los artistas se publican gratis. Nosotros somos
+        solo intermediarios: tú cobras directamente del cliente.
       </p>
 
       <ul className="mt-8 space-y-3">
@@ -84,8 +87,8 @@ export function MarketingSidebar({ role }: MarketingSidebarProps) {
         <div className="mt-10 rounded-2xl border border-gold/30 bg-card/40 p-5 text-sm">
           <p className="font-display text-base">Tu plan Free (Beta) incluye</p>
           <p className="mt-2 text-muted-foreground">
-            1 fotografía, descripción, precio orientativo, exigencias técnicas, ciudad y
-            disciplina. Lo justo para empezar fuerte.
+            1 fotografía, descripción, precio orientativo, exigencias técnicas, ciudad y disciplina.
+            Lo justo para empezar fuerte.
           </p>
           <p className="mt-3 text-xs text-muted-foreground">
             Próximamente · Standard 6€/mes con vídeo de hasta 8 s y promoción en redes.

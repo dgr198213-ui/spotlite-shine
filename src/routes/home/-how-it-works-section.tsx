@@ -4,9 +4,7 @@ import { howItWorksSteps } from "./steps-data";
 export function HowItWorksSection() {
   return (
     <section id="como-funciona" className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="text-center font-display text-4xl md:text-5xl">
-        Cómo brillar en Escénika
-      </h2>
+      <h2 className="text-center font-display text-4xl md:text-5xl">Cómo brillar en Escénika</h2>
       <div className="mt-12 grid gap-5 md:grid-cols-3">
         {howItWorksSteps.map((step) => (
           <div

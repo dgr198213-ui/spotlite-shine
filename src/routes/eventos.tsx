@@ -14,7 +14,8 @@ export const Route = createFileRoute("/eventos")({
       { title: "Explorar eventos — Escénika" },
       {
         name: "description",
-        content: "Encuentra escenarios gratuitos donde mostrar tu talento. Conecta con organizadores de toda España.",
+        content:
+          "Encuentra escenarios gratuitos donde mostrar tu talento. Conecta con organizadores de toda España.",
       },
     ],
   }),
@@ -28,14 +29,11 @@ function EventsExplorePage() {
   const { data: events = [], isLoading } = useQuery({
     queryKey: ["events", q, city],
     queryFn: async () => {
-      let query = supabase
-        .from("events")
-        .select("*")
-        .order("date", { ascending: true });
-      
+      let query = supabase.from("events").select("*").order("date", { ascending: true });
+
       if (q.trim()) query = query.ilike("title", `%${q.trim()}%`);
       if (city.trim()) query = query.ilike("location", `%${city.trim()}%`);
-      
+
       const { data, error } = await query.limit(50);
       if (error) throw error;
       return data ?? [];
@@ -118,7 +116,16 @@ function EventsExplorePage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-gold" />
-                      <span>{e.date ? new Date(e.date).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : "Fecha por definir"}</span>
+                      <span>
+                        {e.date
+                          ? new Date(e.date).toLocaleDateString("es-ES", {
+                              weekday: "long",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })
+                          : "Fecha por definir"}
+                      </span>
                     </div>
                     {e.time && (
                       <div className="flex items-center gap-2">

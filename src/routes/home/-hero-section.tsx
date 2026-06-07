@@ -35,7 +35,8 @@ export function HeroSection() {
               <span className="text-gradient-gold">Tu momento.</span>
             </h1>
             <p className="mt-6 max-w-md text-lg text-muted-foreground">
-              La plataforma donde artistas conectan con su audiencia y los eventos encuentran talento excepcional. Publica eventos gratis y contrata sin comisiones.
+              La plataforma donde artistas conectan con su audiencia y los eventos encuentran
+              talento excepcional. Publica eventos gratis y contrata sin comisiones.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" variant="gold" className="rounded-full px-7">

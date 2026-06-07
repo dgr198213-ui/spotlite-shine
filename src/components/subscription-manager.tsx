@@ -94,8 +94,8 @@ export function SubscriptionManager() {
           <div>
             <h3 className="font-semibold">Sin suscripción activa</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Estás usando el plan <strong>Escénika Free</strong>. Actualiza a Escénika Standard o Pro para acceder
-              a más funcionalidades multimedia.
+              Estás usando el plan <strong>Escénika Free</strong>. Actualiza a Escénika Standard o
+              Pro para acceder a más funcionalidades multimedia.
             </p>
           </div>
         </div>

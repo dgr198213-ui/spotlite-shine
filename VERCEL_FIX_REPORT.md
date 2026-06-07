@@ -79,6 +79,7 @@ Se actualizó el `README.md` para:
    - Asegúrate de que todas las variables de entorno estén configuradas
 
 2. **Variables de Entorno Requeridas**:
+
    ```
    VITE_SUPABASE_URL
    VITE_SUPABASE_ANON_KEY
@@ -109,6 +110,7 @@ El servidor debería estar disponible en `http://localhost:4173` y todas las rut
 ## Ramas Limpias
 
 Todas las ramas remotas han sido revisadas:
+
 - `origin/fix-allowed-hosts-vite-config-5495208921358422683` - Fusionada
 - `origin/fix-vercel-deployment-17892530914053892671` - Commits ya en main
 - `origin/fix/lockfile-sync-and-cleanup-13390603725250688672` - Fusionada

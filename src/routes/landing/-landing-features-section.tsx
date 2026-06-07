@@ -5,12 +5,17 @@ export function LandingFeaturesSection() {
   return (
     <section className="mx-auto max-w-[1180px] px-6 py-20" id="features">
       <div className="text-center">
-        <span className="text-xs font-semibold uppercase tracking-wider text-gold">¿Por qué Escénika?</span>
+        <span className="text-xs font-semibold uppercase tracking-wider text-gold">
+          ¿Por qué Escénika?
+        </span>
         <h2 className="mt-4 font-display text-4xl md:text-5xl">
-          La plataforma que los<br />artistas merecían
+          La plataforma que los
+          <br />
+          artistas merecían
         </h2>
         <p className="mx-auto mt-4 max-w-[520px] text-muted-foreground">
-          Todo lo que necesitas para conectar con tu audiencia y mostrar tu talento, en un solo lugar.
+          Todo lo que necesitas para conectar con tu audiencia y mostrar tu talento, en un solo
+          lugar.
         </p>
       </div>
 

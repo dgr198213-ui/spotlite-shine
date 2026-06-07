@@ -47,7 +47,7 @@ function ExplorePage() {
         )
         .eq("is_published", true)
         .order("rating", { ascending: false });
-      if (cat !== "all") query = query.eq("category", cat as any);
+      if (cat !== "all") query = query.eq("category", cat as Database["public"]["Enums"]["artist_category"]);
       if (q.trim()) query = query.ilike("display_name", `%${q.trim()}%`);
       const { data, error } = await query.limit(60);
       if (error) throw error;
@@ -75,7 +75,10 @@ function ExplorePage() {
             />
           </div>
           <Link to="/eventos">
-            <Button variant="outline" className="h-12 rounded-full px-6 border-gold/30 text-gold hover:bg-gold/10">
+            <Button
+              variant="outline"
+              className="h-12 rounded-full px-6 border-gold/30 text-gold hover:bg-gold/10"
+            >
               Ver eventos publicados
             </Button>
           </Link>

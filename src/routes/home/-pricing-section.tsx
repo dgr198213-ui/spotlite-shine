@@ -57,7 +57,11 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <Button asChild variant={p.popular ? "gold" : "outline"} className="mt-7 w-full rounded-full">
+              <Button
+                asChild
+                variant={p.popular ? "gold" : "outline"}
+                className="mt-7 w-full rounded-full"
+              >
                 <Link to="/registro">{p.cta}</Link>
               </Button>
             </div>

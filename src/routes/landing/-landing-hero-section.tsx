@@ -11,14 +11,16 @@ export function LandingHeroSection() {
         <Sparkles className="h-3.5 w-3.5" />
         Nueva plataforma de booking artístico en España
       </div>
-      
+
       <h1 className="mt-8 font-display text-5xl leading-[1.08] md:text-7xl">
-        Tu escenario<br />
+        Tu escenario
+        <br />
         <span className="text-gradient-gold">empieza aquí.</span>
       </h1>
-      
+
       <p className="mx-auto mt-6 max-w-[580px] text-lg text-muted-foreground">
-        Conectamos artistas talentosos con su audiencia. Publica eventos gratis y contrata sin comisiones. Sin intermediarios, contacto directo.
+        Conectamos artistas talentosos con su audiencia. Publica eventos gratis y contrata sin
+        comisiones. Sin intermediarios, contacto directo.
       </p>
 
       <div className="mt-10 flex flex-wrap justify-center gap-4">

@@ -14,7 +14,8 @@ export function ShowCaseSection() {
           Así se ven los escenarios en Escénika
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Una muestra del talento que brilla en nuestra comunidad. Con el plan Escénika Standard o Pro, podrás mostrar tus mejores vídeos directamente en tu perfil.
+          Una muestra del talento que brilla en nuestra comunidad. Con el plan Escénika Standard o
+          Pro, podrás mostrar tus mejores vídeos directamente en tu perfil.
         </p>
       </div>
       <div className="mt-10 grid gap-6 md:grid-cols-2">

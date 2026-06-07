@@ -244,9 +244,7 @@ export function MediaGallery({ userId, plan }: Props) {
                     className={`h-full w-full object-cover transition-opacity duration-300 ${
                       loadedImages.has(m.id) ? "opacity-100" : "opacity-0"
                     }`}
-                    onLoad={() =>
-                      setLoadedImages((prev) => new Set(prev).add(m.id))
-                    }
+                    onLoad={() => setLoadedImages((prev) => new Set(prev).add(m.id))}
                   />
                 </div>
               ) : (
@@ -262,9 +260,7 @@ export function MediaGallery({ userId, plan }: Props) {
               )}
               {m.type === "video" && (
                 <span className="absolute left-2 top-2 rounded-full bg-background/80 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold">
-                  {m.duration_seconds
-                    ? `${Number(m.duration_seconds).toFixed(1)}s`
-                    : "Vídeo"}
+                  {m.duration_seconds ? `${Number(m.duration_seconds).toFixed(1)}s` : "Vídeo"}
                 </span>
               )}
               <button

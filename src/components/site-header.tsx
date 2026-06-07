@@ -12,7 +12,11 @@ export function SiteHeader() {
     <header className="sticky top-4 z-50 mx-auto w-[min(1180px,calc(100%-2rem))]">
       <div className="flex items-center justify-between rounded-full border border-border bg-card/70 px-5 py-3 backdrop-blur-xl shadow-card">
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <img src={logo} alt="Telón" className="h-14 md:h-16 w-auto object-contain mix-blend-multiply" />
+          <img
+            src={logo}
+            alt="Telón"
+            className="h-14 md:h-16 w-auto object-contain mix-blend-multiply"
+          />
           <span className="sr-only">Telón</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">

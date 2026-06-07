@@ -12,9 +12,9 @@ Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden
 
 - **Perfil Profesional Gratuito:** Crea un perfil detallado con biografía, categoría, ciudad y precio desde.
 - **Galería Multimedia:**
-  - **Plan beta Free (0€/mes):** 1 foto 
-  - **Próximamente-Plan Standard (6€/mes):** 3    fotos + 1 vídeo
-  - **Próximamente-Plan Pro (9'99€/mes):** 3 Videos + 3 fotos 
+  - **Plan beta Free (0€/mes):** 1 foto
+  - **Próximamente-Plan Standard (6€/mes):** 3 fotos + 1 vídeo
+  - **Próximamente-Plan Pro (9'99€/mes):** 3 Videos + 3 fotos
 - **Descubrimiento:** Aparece en el buscador de artistas y en la sección "Explorar"
 - **Contacto Directo:** Los organizadores pueden contactarte sin intermediarios
 - **Sin Comisiones:** Todos los ingresos van directamente al artista
@@ -34,13 +34,13 @@ Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden
 
 ## 💰 Planes de Lanzamiento
 
-| Característica | Free(beta)| Standard | Pro |
-|---|---|---|---|
-| Perfil Público | ✅ | ✅ | ✅ |
-| Fotos | 1 | 3 | 3 |
-| Vídeos | — | 1 | 3 |
-| Precio | **0€/mes** | **6€/mes** | **9'99€/mes** |
-| Visibilidad | Estándar | Mejorada | Máxima |
+| Característica | Free(beta) | Standard   | Pro           |
+| -------------- | ---------- | ---------- | ------------- |
+| Perfil Público | ✅         | ✅         | ✅            |
+| Fotos          | 1          | 3          | 3             |
+| Vídeos         | —          | 1          | 3             |
+| Precio         | **0€/mes** | **6€/mes** | **9'99€/mes** |
+| Visibilidad    | Estándar   | Mejorada   | Máxima        |
 
 ## 🛠️ Stack Tecnológico
 
@@ -117,6 +117,7 @@ Escénika está optimizado para funcionar en Vercel con **SSR (Server-Side Rende
 ### Configuración automática
 
 El archivo `vercel.json` ya incluye:
+
 - **Build Command**: `npm run vercel-build`
 - **Output Directory**: `dist/client`
 - **Server Function**: `api/index.ts` (para SSR)
@@ -125,19 +126,19 @@ El archivo `vercel.json` ya incluye:
 
 ## 📍 Rutas Principales
 
-| Ruta | Descripción |
-|---|---|
-| `/` | Landing page principal |
-| `/explorar` | Buscador de artistas |
-| `/eventos` | Catálogo de eventos publicados |
-| `/publicar-evento` | Formulario para publicar un evento (gratuito, sin registro) |
-| `/evento/:id` | Detalles del evento con información de contacto |
-| `/artista/:slug` | Perfil público del artista |
-| `/precios` | Planes de suscripción |
-| `/registro` | Registro de artistas |
-| `/login` | Acceso a cuenta |
-| `/_authenticated/panel` | Panel de control del artista |
-| `/_authenticated/perfil` | Edición del perfil |
+| Ruta                     | Descripción                                                 |
+| ------------------------ | ----------------------------------------------------------- |
+| `/`                      | Landing page principal                                      |
+| `/explorar`              | Buscador de artistas                                        |
+| `/eventos`               | Catálogo de eventos publicados                              |
+| `/publicar-evento`       | Formulario para publicar un evento (gratuito, sin registro) |
+| `/evento/:id`            | Detalles del evento con información de contacto             |
+| `/artista/:slug`         | Perfil público del artista                                  |
+| `/precios`               | Planes de suscripción                                       |
+| `/registro`              | Registro de artistas                                        |
+| `/login`                 | Acceso a cuenta                                             |
+| `/_authenticated/panel`  | Panel de control del artista                                |
+| `/_authenticated/perfil` | Edición del perfil                                          |
 
 ## 🔐 Seguridad
 

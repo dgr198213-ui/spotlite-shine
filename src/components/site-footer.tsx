@@ -10,7 +10,8 @@ export function SiteFooter() {
           <div>
             <img src={logo} alt="Telón" className="h-14 w-auto object-contain mix-blend-normal" />
             <p className="mt-3 text-sm text-muted-foreground">
-              La plataforma donde artistas encuentran su público y los eventos encuentran talento excepcional. Publica gratis y contrata sin comisiones.
+              La plataforma donde artistas encuentran su público y los eventos encuentran talento
+              excepcional. Publica gratis y contrata sin comisiones.
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
               <Mail className="h-3.5 w-3.5" />

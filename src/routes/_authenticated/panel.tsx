@@ -33,10 +33,7 @@ function DashboardPage() {
     queryKey: ["media-stats", user?.id],
     enabled: !!user,
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("media")
-        .select("type")
-        .eq("user_id", user!.id);
+      const { data, error } = await supabase.from("media").select("type").eq("user_id", user!.id);
       if (error) throw error;
       const images = data?.filter((m) => m.type === "image").length ?? 0;
       const videos = data?.filter((m) => m.type === "video").length ?? 0;
@@ -141,9 +138,7 @@ function DashboardPage() {
               variant={currentPlan === "spark" ? "gold" : "outline"}
               className="mt-5 w-full rounded-full"
             >
-              <Link to="/precios">
-                {currentPlan === "spark" ? "Mejorar plan" : "Ver planes"}
-              </Link>
+              <Link to="/precios">{currentPlan === "spark" ? "Mejorar plan" : "Ver planes"}</Link>
             </Button>
           </Panel>
         </section>
@@ -160,9 +155,24 @@ function DashboardPage() {
         <section className="mt-10">
           <h2 className="mb-4 font-display text-2xl">Accesos rápidos</h2>
           <div className="grid gap-4 sm:grid-cols-3">
-            <QuickLink to="/perfil" icon={Pencil} title="Editar perfil" desc="Actualiza tu bio, fotos y precio" />
-            <QuickLink to="/explorar" icon={Crown} title="Ver el explorador" desc="Así te ven los organizadores" />
-            <QuickLink to="/precios" icon={Crown} title="Ver planes" desc="Compara Free, Standard y Pro" />
+            <QuickLink
+              to="/perfil"
+              icon={Pencil}
+              title="Editar perfil"
+              desc="Actualiza tu bio, fotos y precio"
+            />
+            <QuickLink
+              to="/explorar"
+              icon={Crown}
+              title="Ver el explorador"
+              desc="Así te ven los organizadores"
+            />
+            <QuickLink
+              to="/precios"
+              icon={Crown}
+              title="Ver planes"
+              desc="Compara Free, Standard y Pro"
+            />
           </div>
         </section>
       </main>
@@ -176,7 +186,7 @@ function Stat({
   value,
   hint,
 }: {
-  icon: any;
+  icon: React.ElementType;
   label: string;
   value: string;
   hint: string;
@@ -202,9 +212,22 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
   );
 }
 
-function QuickLink({ to, icon: Icon, title, desc }: { to: string; icon: any; title: string; desc: string }) {
+function QuickLink({
+  to,
+  icon: Icon,
+  title,
+  desc,
+}: {
+  to: string;
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+}) {
   return (
-    <Link to={to} className="group rounded-2xl border border-border bg-card p-4 transition-colors hover:border-gold/50 hover:bg-gold/5">
+    <Link
+      to={to}
+      className="group rounded-2xl border border-border bg-card p-4 transition-colors hover:border-gold/50 hover:bg-gold/5"
+    >
       <Icon className="mb-3 h-5 w-5 text-gold" />
       <h3 className="font-display font-medium transition-colors group-hover:text-gold">{title}</h3>
       <p className="mt-1 text-xs text-muted-foreground">{desc}</p>
