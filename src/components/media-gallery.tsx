@@ -138,10 +138,10 @@ export function MediaGallery({ userId, plan }: Props) {
           <h2 className="font-display text-2xl">Tu fotografía</h2>
           <p className="text-sm text-muted-foreground">
             {plan === "spark"
-              ? "Telón Free · 1 imagen de presentación"
+              ? "TUESDI Free · 1 imagen de presentación"
               : plan === "spotlight"
-                ? "Telón Standard · 6 imágenes + 1 vídeo (8s)"
-                : "Telón Pro · Imágenes y vídeos ilimitados"}
+                ? "TUESDI Standard · 6 imágenes + 1 vídeo (8s)"
+                : "TUESDI Pro · Imágenes y vídeos ilimitados"}
           </p>
         </div>
         <div className="flex gap-2">
@@ -204,7 +204,7 @@ export function MediaGallery({ userId, plan }: Props) {
             fotografía + descripción + precio + exigencias. Los vídeos llegarán muy pronto con el
             plan{" "}
             <a href="/precios" className="text-gold hover:underline">
-              Telón Standard (6€/mes)
+              TUESDI Standard (6€/mes)
             </a>
             .
           </span>

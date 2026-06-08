@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/privacidad")({
   head: () => ({
     meta: [
-      { title: "Política de Privacidad — Spot&Shows" },
+      { title: "Política de Privacidad — TUESDI" },
       {
         name: "description",
-        content: "Política de privacidad y protección de datos de Spot&Shows conforme a RGPD.",
+        content: "Política de privacidad y protección de datos de TUESDI conforme a RGPD.",
       },
     ],
   }),
@@ -29,7 +29,7 @@ function PrivacidadPage() {
           <section>
             <h2 className="font-display text-2xl">1. Responsable del Tratamiento</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows ("nosotros" o "la Plataforma") es responsable del tratamiento de tus datos
+              TUESDI ("nosotros" o "la Plataforma") es responsable del tratamiento de tus datos
               personales conforme a la Ley Orgánica de Protección de Datos Personales (LOPDGDD) y el
               Reglamento General de Protección de Datos (RGPD).
             </p>

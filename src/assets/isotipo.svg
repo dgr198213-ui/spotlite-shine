@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" fill="none" role="img" aria-label="TUESDI - Tú Escenario Digital">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
     <!-- Filtro de brillo Neón Eléctrico -->
     <filter id="neon-glow" x="-30%" y="-30%" width="160%" height="160%">
@@ -23,34 +23,27 @@
       <stop offset="55%" stop-color="#D1D9E6" />
       <stop offset="100%" stop-color="#8A99AD" />
     </linearGradient>
-    
-    <!-- Degradado para el texto DI -->
-    <linearGradient id="blue-di" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00F0FF" />
-      <stop offset="100%" stop-color="#0066FF" />
-    </linearGradient>
   </defs>
 
-  <!-- Isotipo T -->
-  <g transform="translate(10, 15) scale(0.25)">
+  <!-- Contenedor del Isotipo -->
+  <g transform="translate(45, 40)">
+    <!-- Capas traseras y pliegues del TUESDI Azul de la T -->
     <path d="M 125,225 C 105,300 115,350 110,400 L 145,395 C 150,340 145,290 155,225 Z" fill="#002288" opacity="0.7" />
     <path d="M 150,200 C 120,290 140,360 120,420 L 165,415 C 185,350 170,270 185,200 Z" fill="url(#blue-curtain-main)" />
     <path d="M 180,185 C 160,260 215,350 180,420 L 225,410 C 250,340 210,260 220,185 Z" fill="url(#blue-curtain-main)" />
+
+    <!-- Estructura Cromada de la "T" con bisel y estética afilada -->
     <path d="M 60,225 C 75,185 130,145 230,145 L 350,145 C 375,145 365,175 345,215 L 320,245 L 225,245 L 180,415 C 175,435 150,435 135,415 L 100,245 L 60,225 Z" fill="url(#chrome-t-3d)" stroke="#FFFFFF" stroke-width="1.5" />
+    
+    <!-- Brillo del perfil superior -->
     <path d="M 85,210 C 120,165 180,155 240,155 L 340,155" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" filter="url(#neon-glow)" opacity="0.6" />
+
+    <!-- Botón de Play Neón situado en la parte inferior derecha de la T -->
     <g transform="translate(145, 125)">
       <circle cx="160" cy="220" r="48" fill="#03091F" stroke="#00F0FF" stroke-width="6" filter="url(#neon-glow)" />
+      <circle cx="160" cy="220" r="42" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.4" />
+      <polygon points="146,198 184,220 146,242" fill="#FFFFFF" filter="url(#neon-glow)" opacity="0.9" />
       <polygon points="146,198 184,220 146,242" fill="#00F0FF" />
     </g>
   </g>
-
-  <!-- Texto TUESDI -->
-  <text x="120" y="85" font-family="Arial Black, sans-serif" font-size="72" font-weight="900">
-    <tspan fill="url(#chrome-t-3d)">TUES</tspan><tspan fill="url(#blue-di)">DI</tspan>
-  </text>
-
-  <!-- Subtítulo -->
-  <text x="125" y="125" font-family="Georgia, serif" font-size="28" font-style="italic" fill="#FFFFFF">
-    Tú Escenario Digital
-  </text>
 </svg>

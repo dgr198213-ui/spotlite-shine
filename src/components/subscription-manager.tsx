@@ -16,9 +16,9 @@ interface Subscription {
 }
 
 const PLAN_DETAILS: Record<string, { name: string; price: number }> = {
-  spark: { name: "Escénika Free", price: 0 },
-  spotlight: { name: "Escénika Standard", price: 6 },
-  headliner: { name: "Escénika Pro", price: 19 },
+  spark: { name: "TUESDI Free", price: 0 },
+  spotlight: { name: "TUESDI Standard", price: 6 },
+  headliner: { name: "TUESDI Pro", price: 19 },
 };
 
 export function SubscriptionManager() {
@@ -94,7 +94,7 @@ export function SubscriptionManager() {
           <div>
             <h3 className="font-semibold">Sin suscripción activa</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Estás usando el plan <strong>Escénika Free</strong>. Actualiza a Escénika Standard o
+              Estás usando el plan <strong>TUESDI Free</strong>. Actualiza a TUESDI Standard o
               Pro para acceder a más funcionalidades multimedia.
             </p>
           </div>

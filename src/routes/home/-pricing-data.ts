@@ -22,7 +22,7 @@ export interface PlanData {
 export const pricingPlans: PlanData[] = [
   {
     icon: SparklesIcon,
-    name: "Telón Free",
+    name: "TUESDI Free",
     badge: "Beta · Disponible",
     price: "0€",
     desc: "Empieza con nosotros durante el lanzamiento",
@@ -38,7 +38,7 @@ export const pricingPlans: PlanData[] = [
   },
   {
     icon: Star,
-    name: "Telón Standard",
+    name: "TUESDI Standard",
     badge: "Recomendado",
     price: "6€",
     desc: "Para destacar de verdad",
@@ -53,7 +53,7 @@ export const pricingPlans: PlanData[] = [
   },
   {
     icon: Crown,
-    name: "Telón Pro",
+    name: "TUESDI Pro",
     badge: "Profesional",
     price: "19€",
     desc: "Para artistas profesionales",

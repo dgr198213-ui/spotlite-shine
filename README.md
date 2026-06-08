@@ -1,10 +1,10 @@
-# Escénika — La Plataforma para Artistas y Eventos
+# TUESDI — La Plataforma para Artistas y Eventos
 
-**Escénika** es una plataforma web moderna diseñada para conectar artistas talentosos con su audiencia y oportunidades de actuación. Nuestra misión es simplificar la visibilidad artística, permitir la publicación gratuita de eventos y ofrecer un espacio sin comisiones donde el talento prospera.
+**TUESDI** es una plataforma web moderna diseñada para conectar artistas talentosos con su audiencia y oportunidades de actuación. Nuestra misión es simplificar la visibilidad artística, permitir la publicación gratuita de eventos y ofrecer un espacio sin comisiones donde el talento prospera.
 
 ## 🎯 Visión
 
-Escénika democratiza el acceso a oportunidades artísticas. Los artistas pueden mostrar su talento sin barreras, los eventos se publican de forma gratuita para atraer talento, y todo sucede sin intermediarios ni comisiones.
+TUESDI democratiza el acceso a oportunidades artísticas. Los artistas pueden mostrar su talento sin barreras, los eventos se publican de forma gratuita para atraer talento, y todo sucede sin intermediarios ni comisiones.
 
 ## 🚀 Características Principales
 
@@ -106,7 +106,7 @@ La aplicación estará disponible en `http://localhost:5173`
 
 ## 🚢 Despliegue en Vercel
 
-Escénika está optimizado para funcionar en Vercel con **SSR (Server-Side Rendering)**.
+TUESDI está optimizado para funcionar en Vercel con **SSR (Server-Side Rendering)**.
 
 ### Pasos para desplegar
 
@@ -173,8 +173,8 @@ Las migraciones se encuentran en `supabase/migrations/`. Para ejecutarlas:
 
 ## 📞 Contacto y Soporte
 
-- **Email:** [hola@escenika.com](mailto:hola@escenika.com)
-- **Web:** [escenika.com](https://escenika.com)
+- **Email:** [hola@tuesdi.com](mailto:hola@tuesdi.com)
+- **Web:** [tuesdi.com](https://tuesdi.com)
 - **GitHub:** [dgr198213-ui/spotlite-shine](https://github.com/dgr198213-ui/spotlite-shine)
 
 ## 📄 Legal y Privacidad
@@ -197,10 +197,10 @@ El proyecto incluye páginas legales completas adaptadas al RGPD:
 
 ## 📝 Licencia
 
-Este proyecto es propietario. Todos los derechos reservados © 2024 Escénika.
+Este proyecto es propietario. Todos los derechos reservados © 2024 TUESDI.
 
 ---
 
 **Hecho con ♥ para artistas de España.**
 
-Escénika: Donde el talento encuentra su escenario.
+TUESDI: Donde el talento encuentra su escenario.

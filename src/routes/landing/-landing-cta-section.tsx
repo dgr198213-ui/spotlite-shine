@@ -15,7 +15,7 @@ export function LandingCtaSection() {
           <span className="text-gradient-gold italic">empieza aquí.</span>
         </h2>
         <p className="mx-auto mt-4 max-w-[500px] text-muted-foreground">
-          Únete a miles de artistas que ya confían en Escénika para conectar con su audiencia y
+          Únete a miles de artistas que ya confían en TUESDI para conectar con su audiencia y
           encontrar escenarios reales.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">

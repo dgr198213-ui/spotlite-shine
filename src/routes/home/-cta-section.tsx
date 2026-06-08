@@ -8,7 +8,7 @@ export function CtaSection() {
       <div className="overflow-hidden rounded-3xl border border-gold/30 gradient-card p-10 text-center shadow-glow md:p-16">
         <h2 className="font-display text-4xl md:text-5xl">¿Listo para brillar?</h2>
         <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-          Ya seas un artista buscando brillar o alguien con un evento que organizar, Escénika es tu
+          Ya seas un artista buscando brillar o alguien con un evento que organizar, TUESDI es tu
           lugar. Publica eventos gratis o crea tu perfil profesional hoy mismo.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">

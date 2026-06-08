@@ -61,7 +61,7 @@ export function MarketingSidebar({ role }: MarketingSidebarProps) {
   return (
     <>
       <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-card/50 px-4 py-1.5 text-xs uppercase tracking-wider text-gold backdrop-blur">
-        <Sparkles className="h-3.5 w-3.5" /> Escénika · Plataforma de talento
+        <Sparkles className="h-3.5 w-3.5" /> TUESDI · Plataforma de talento
       </span>
 
       <h1 className="mt-6 font-display text-5xl leading-[1.05]">
@@ -70,7 +70,7 @@ export function MarketingSidebar({ role }: MarketingSidebarProps) {
       </h1>
 
       <p className="mt-5 max-w-md text-muted-foreground">
-        Estamos lanzando Escénika. Durante la beta, los artistas se publican gratis. Nosotros somos
+        Estamos lanzando TUESDI. Durante la beta, los artistas se publican gratis. Nosotros somos
         solo intermediarios: tú cobras directamente del cliente.
       </p>
 

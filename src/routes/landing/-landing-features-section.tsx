@@ -6,7 +6,7 @@ export function LandingFeaturesSection() {
     <section className="mx-auto max-w-[1180px] px-6 py-20" id="features">
       <div className="text-center">
         <span className="text-xs font-semibold uppercase tracking-wider text-gold">
-          ¿Por qué Escénika?
+          ¿Por qué TUESDI?
         </span>
         <h2 className="mt-4 font-display text-4xl md:text-5xl">
           La plataforma que los

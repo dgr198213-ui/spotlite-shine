@@ -34,7 +34,7 @@ export const features = [
   {
     icon: CreditCard,
     title: "Sin comisiones ocultas",
-    desc: "Los artistas cobran el 100% de lo acordado. Escénika funciona con planes de suscripción transparentes.",
+    desc: "Los artistas cobran el 100% de lo acordado. TUESDI funciona con planes de suscripción transparentes.",
   },
   {
     icon: CheckCircle,
@@ -68,7 +68,7 @@ export const steps = [
 
 export const plans = [
   {
-    name: "✦ Escénika Free",
+    name: "✦ TUESDI Free",
     price: "0€",
     period: "/ siempre",
     desc: "Para empezar a ganar visibilidad online.",
@@ -84,7 +84,7 @@ export const plans = [
     featured: false,
   },
   {
-    name: "✦ Escénika Standard",
+    name: "✦ TUESDI Standard",
     price: "6€",
     period: "/ mes",
     desc: "Para artistas que quieren destacar de verdad.",
@@ -102,7 +102,7 @@ export const plans = [
     badge: "⭐ Recomendado",
   },
   {
-    name: "✦ Escénika Pro",
+    name: "✦ TUESDI Pro",
     price: "19€",
     period: "/ mes",
     desc: "Para artistas profesionales con ambición.",
@@ -122,19 +122,19 @@ export const plans = [
 
 export const testimonials = [
   {
-    text: "Llevaba años actuando en bares pequeños. A los dos meses de crear mi perfil en Escénika tenía la agenda completa con bodas y eventos corporativos. Es la plataforma que siempre necesité.",
+    text: "Llevaba años actuando en bares pequeños. A los dos meses de crear mi perfil en TUESDI tenía la agenda completa con bodas y eventos corporativos. Es la plataforma que siempre necesité.",
     name: "Sofía García",
     role: "Cantante de jazz · Madrid",
     initials: "SG",
   },
   {
-    text: "Organizo eventos para empresas del Ibex y la calidad de los artistas en Escénika es impresionante. El contacto directo me ahorra semanas de negociación con agencias.",
+    text: "Organizo eventos para empresas del Ibex y la calidad de los artistas en TUESDI es impresionante. El contacto directo me ahorra semanas de negociación con agencias.",
     name: "Marcos Rodríguez",
     role: "Event Manager · Barcelona",
     initials: "MR",
   },
   {
-    text: "El plan Spotlight se pagó solo con la primera actuación que conseguí. Ahora tengo más trabajo del que puedo gestionar. Escénika cambió mi carrera.",
+    text: "El plan Spotlight se pagó solo con la primera actuación que conseguí. Ahora tengo más trabajo del que puedo gestionar. TUESDI cambió mi carrera.",
     name: "Alejandro López",
     role: "Pianista · Valencia",
     initials: "AL",

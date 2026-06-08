@@ -8,7 +8,7 @@ import { Eye, Video, MessageCircle, Star, Pencil, Crown } from "lucide-react";
 import { SubscriptionManager } from "@/components/subscription-manager";
 
 export const Route = createFileRoute("/_authenticated/panel")({
-  head: () => ({ meta: [{ title: "Mi panel — Spot&Shows" }] }),
+  head: () => ({ meta: [{ title: "Mi panel — TUESDI" }] }),
   component: DashboardPage,
 });
 
@@ -56,9 +56,9 @@ function DashboardPage() {
   });
 
   const planLabel: Record<string, string> = {
-    spark: "Escénika Free",
-    spotlight: "Escénika Standard",
-    headliner: "Escénika Pro",
+    spark: "TUESDI Free",
+    spotlight: "TUESDI Standard",
+    headliner: "TUESDI Pro",
   };
 
   const planColor: Record<string, string> = {

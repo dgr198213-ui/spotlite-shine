@@ -8,15 +8,15 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <img src={logo} alt="Telón" className="h-14 w-auto object-contain mix-blend-normal" />
+            <img src={logo} alt="TUESDI" className="h-16 w-auto object-contain" />
             <p className="mt-3 text-sm text-muted-foreground">
               La plataforma donde artistas encuentran su público y los eventos encuentran talento
               excepcional. Publica gratis y contrata sin comisiones.
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
               <Mail className="h-3.5 w-3.5" />
-              <a href="mailto:hola@telon.app" className="hover:text-foreground">
-                hola@telon.app
+              <a href="mailto:hola@tuesdi.es" className="hover:text-foreground">
+                hola@tuesdi.es
               </a>
             </div>
           </div>
@@ -47,7 +47,7 @@ export function SiteFooter() {
           />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Telón. Hecho con ♥ para artistas de España.</span>
+          <span>© {new Date().getFullYear()} TUESDI. Hecho con ♥ para artistas de España.</span>
           <span>Versión 2.0</span>
         </div>
       </div>

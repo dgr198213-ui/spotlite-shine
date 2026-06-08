@@ -27,7 +27,7 @@ import logo from "@/assets/logo.svg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Telón — Tu escenario, tu audiencia, tu momento" },
+      { title: "TUESDI — Tú Escenario Digital" },
       {
         name: "description",
         content:
@@ -254,7 +254,7 @@ function HomePage() {
             <SparklesIcon className="h-3.5 w-3.5 text-gold" /> En directo
           </span>
           <h2 className="mt-5 font-display text-4xl md:text-5xl">
-            Así se ven los escenarios en Telón
+            Así se ven los escenarios en TUESDI
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
             Una muestra del tipo de vídeos que los artistas podrán publicar en sus perfiles con el
@@ -297,7 +297,7 @@ function HomePage() {
           {[
             {
               icon: SparklesIcon,
-              name: "Telón Free",
+              name: "TUESDI Free",
               badge: "Beta · Disponible",
               price: "0€",
               desc: "Empieza con nosotros durante el lanzamiento",
@@ -313,7 +313,7 @@ function HomePage() {
             },
             {
               icon: Star,
-              name: "Telón Standard",
+              name: "TUESDI Standard",
               badge: "Próximamente",
               price: "6€",
               desc: "Para destacar de verdad",
@@ -329,7 +329,7 @@ function HomePage() {
             },
             {
               icon: Crown,
-              name: "Telón Pro",
+              name: "TUESDI Pro",
               badge: "Próximamente",
               price: "—",
               desc: "Para artistas profesionales",

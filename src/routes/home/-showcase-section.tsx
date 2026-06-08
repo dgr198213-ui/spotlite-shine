@@ -11,10 +11,10 @@ export function ShowCaseSection() {
           <SparklesIcon className="h-3.5 w-3.5 text-gold" /> En directo
         </span>
         <h2 className="mt-5 font-display text-4xl md:text-5xl">
-          Así se ven los escenarios en Escénika
+          Así se ven los escenarios en TUESDI
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Una muestra del talento que brilla en nuestra comunidad. Con el plan Escénika Standard o
+          Una muestra del talento que brilla en nuestra comunidad. Con el plan TUESDI Standard o
           Pro, podrás mostrar tus mejores vídeos directamente en tu perfil.
         </p>
       </div>

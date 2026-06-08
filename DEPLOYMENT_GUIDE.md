@@ -1,4 +1,4 @@
-# Guía de Despliegue - Spot&Shows
+# Guía de Despliegue - TUESDI
 
 ## 🚀 Estado del Despliegue
 

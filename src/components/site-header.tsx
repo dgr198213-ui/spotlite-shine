@@ -14,10 +14,10 @@ export function SiteHeader() {
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
           <img
             src={logo}
-            alt="Telón"
-            className="h-14 md:h-16 w-auto object-contain mix-blend-multiply"
+            alt="TUESDI"
+            className="h-14 md:h-16 w-auto object-contain"
           />
-          <span className="sr-only">Telón</span>
+          <span className="sr-only">TUESDI</span>
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
           <Link

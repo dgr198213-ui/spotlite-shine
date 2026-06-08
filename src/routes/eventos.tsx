@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/eventos")({
   head: () => ({
     meta: [
-      { title: "Explorar eventos — Escénika" },
+      { title: "Explorar eventos — Tú Escenario Digital" },
       {
         name: "description",
         content:

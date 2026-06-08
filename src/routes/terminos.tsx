@@ -5,10 +5,10 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/terminos")({
   head: () => ({
     meta: [
-      { title: "Términos y Condiciones — Spot&Shows" },
+      { title: "Términos y Condiciones — TUESDI" },
       {
         name: "description",
-        content: "Términos y condiciones de uso de la plataforma Spot&Shows.",
+        content: "Términos y condiciones de uso de la plataforma TUESDI.",
       },
     ],
   }),
@@ -29,7 +29,7 @@ function TerminosPage() {
           <section>
             <h2 className="font-display text-2xl">1. Aceptación de los Términos</h2>
             <p className="mt-3 text-muted-foreground">
-              Al acceder y utilizar Spot&Shows ("la Plataforma"), aceptas estar vinculado por estos
+              Al acceder y utilizar TUESDI ("la Plataforma"), aceptas estar vinculado por estos
               Términos y Condiciones. Si no estás de acuerdo con alguno de estos términos, no debes
               utilizar la Plataforma.
             </p>
@@ -38,8 +38,8 @@ function TerminosPage() {
           <section>
             <h2 className="font-display text-2xl">2. Descripción del Servicio</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows es una plataforma digital que facilita la conexión entre artistas y
-              promotores de eventos. Spot&Shows actúa únicamente como intermediario y no es
+              TUESDI es una plataforma digital que facilita la conexión entre artistas y
+              promotores de eventos. TUESDI actúa únicamente como intermediario y no es
               responsable de:
             </p>
             <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
@@ -90,7 +90,7 @@ function TerminosPage() {
           <section>
             <h2 className="font-display text-2xl">6. Limitaciones de Responsabilidad</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows se proporciona "tal cual" sin garantías de ningún tipo. No somos
+              TUESDI se proporciona "tal cual" sin garantías de ningún tipo. No somos
               responsables de:
             </p>
             <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
@@ -116,7 +116,7 @@ function TerminosPage() {
           <section>
             <h2 className="font-display text-2xl">8. Terminación de Cuenta</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows se reserva el derecho de suspender o eliminar tu cuenta si:
+              TUESDI se reserva el derecho de suspender o eliminar tu cuenta si:
             </p>
             <ul className="mt-3 space-y-2 text-muted-foreground list-disc list-inside">
               <li>Incumples estos Términos</li>
@@ -129,7 +129,7 @@ function TerminosPage() {
           <section>
             <h2 className="font-display text-2xl">9. Cambios en los Términos</h2>
             <p className="mt-3 text-muted-foreground">
-              Spot&Shows se reserva el derecho de modificar estos Términos en cualquier momento. Los
+              TUESDI se reserva el derecho de modificar estos Términos en cualquier momento. Los
               cambios entrarán en vigor inmediatamente. Tu uso continuado de la Plataforma
               constituye aceptación de los términos modificados.
             </p>

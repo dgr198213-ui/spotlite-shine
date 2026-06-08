@@ -1,40 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none" role="img" aria-label="Telón">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" fill="none" role="img" aria-label="TUESDI - Tú Escenario Digital">
   <defs>
-    <linearGradient id="spotGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff4500"/>
-      <stop offset="50%" stop-color="#ffa500"/>
-      <stop offset="100%" stop-color="#ffd700"/>
+    <!-- Filtro de brillo Neón Eléctrico -->
+    <filter id="neon-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Degradados para el TUESDI Azul -->
+    <linearGradient id="blue-curtain-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="50%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#0022AA" />
     </linearGradient>
-    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffd700"/>
-      <stop offset="100%" stop-color="#ff8c00"/>
+
+    <!-- Degradado Cromado 3D para la "T" -->
+    <linearGradient id="chrome-t-3d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="45%" stop-color="#F0F4F8" />
+      <stop offset="55%" stop-color="#D1D9E6" />
+      <stop offset="100%" stop-color="#8A99AD" />
+    </linearGradient>
+    
+    <!-- Degradado para el texto DI -->
+    <linearGradient id="blue-di" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#0066FF" />
     </linearGradient>
   </defs>
 
-  <!-- Spotlight Icon (foco de teatro) -->
-  <g transform="translate(20, 15)">
-    <!-- Main spotlight cone -->
-    <path d="M40 0 L75 50 L65 90 L40 70 L15 90 L5 50 Z" fill="url(#spotGradient)" opacity="0.9"/>
-
-    <!-- Star (estrella central) -->
-    <path d="M40 28 L43 38 L53 38 L45 44 L48 54 L40 48 L32 54 L35 44 L27 38 L37 38 Z" fill="#ffd700"/>
-
-    <!-- Stage curtains hint (cortinas de escenario) -->
-    <path d="M10 70 Q20 65 30 70 Q40 65 50 70 Q60 65 70 70" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.6"/>
-
-    <!-- Sparkles (destellos) -->
-    <circle cx="12" cy="18" r="2.5" fill="#fff"/>
-    <circle cx="68" cy="12" r="2" fill="#ffd700"/>
-    <circle cx="5" cy="40" r="1.5" fill="#fff" opacity="0.8"/>
+  <!-- Isotipo T -->
+  <g transform="translate(10, 15) scale(0.25)">
+    <path d="M 125,225 C 105,300 115,350 110,400 L 145,395 C 150,340 145,290 155,225 Z" fill="#002288" opacity="0.7" />
+    <path d="M 150,200 C 120,290 140,360 120,420 L 165,415 C 185,350 170,270 185,200 Z" fill="url(#blue-curtain-main)" />
+    <path d="M 180,185 C 160,260 215,350 180,420 L 225,410 C 250,340 210,260 220,185 Z" fill="url(#blue-curtain-main)" />
+    <path d="M 60,225 C 75,185 130,145 230,145 L 350,145 C 375,145 365,175 345,215 L 320,245 L 225,245 L 180,415 C 175,435 150,435 135,415 L 100,245 L 60,225 Z" fill="url(#chrome-t-3d)" stroke="#FFFFFF" stroke-width="1.5" />
+    <path d="M 85,210 C 120,165 180,155 240,155 L 340,155" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" filter="url(#neon-glow)" opacity="0.6" />
+    <g transform="translate(145, 125)">
+      <circle cx="160" cy="220" r="48" fill="#03091F" stroke="#00F0FF" stroke-width="6" filter="url(#neon-glow)" />
+      <polygon points="146,198 184,220 146,242" fill="#00F0FF" />
+    </g>
   </g>
 
-  <!-- Text "Telón" -->
-  <text x="110" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="bold" fill="url(#goldGradient)" letter-spacing="-1">
-    Telón
+  <!-- Texto TUESDI -->
+  <text x="120" y="85" font-family="Arial Black, sans-serif" font-size="72" font-weight="900">
+    <tspan fill="url(#chrome-t-3d)">TUES</tspan><tspan fill="url(#blue-di)">DI</tspan>
   </text>
 
-  <!-- Tagline -->
-  <text x="110" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#a0a0c0" letter-spacing="2">
-    ARTISTAS · EVENTOS · ESCENARIO
+  <!-- Subtítulo -->
+  <text x="125" y="125" font-family="Georgia, serif" font-size="28" font-style="italic" fill="#FFFFFF">
+    Tú Escenario Digital
   </text>
 </svg>

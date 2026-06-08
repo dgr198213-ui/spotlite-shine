@@ -11,7 +11,7 @@ import logo from "@/assets/logo.svg";
 export const Route = createFileRoute("/precios")({
   head: () => ({
     meta: [
-      { title: "Planes y Precios — Telón" },
+      { title: "Planes y Precios — Tú Escenario Digital" },
       {
         name: "description",
         content:
@@ -39,7 +39,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     icon: Sparkles,
-    name: "Telón Free",
+    name: "TUESDI Free",
     badge: "Disponible ahora",
     price: "0€",
     period: "/mes",
@@ -59,7 +59,7 @@ const plans: Plan[] = [
   },
   {
     icon: Star,
-    name: "Telón Standard",
+    name: "TUESDI Standard",
     badge: "Recomendado",
     price: "6€",
     period: "/mes",
@@ -78,7 +78,7 @@ const plans: Plan[] = [
   },
   {
     icon: Crown,
-    name: "Telón Pro",
+    name: "TUESDI Pro",
     badge: "Profesional",
     price: "19€",
     period: "/mes",
@@ -236,7 +236,7 @@ function PricingPage() {
             <div>
               <h3 className="font-display text-lg">Sin comisiones</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Tú cobras directamente del cliente. Telón solo cobra la suscripción opcional.
+                Tú cobras directamente del cliente. TUESDI solo cobra la suscripción opcional.
               </p>
             </div>
             <div>
@@ -257,8 +257,8 @@ function PricingPage() {
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
             ¿Preguntas? Contáctanos en{" "}
-            <a href="mailto:hola@telon.app" className="text-gold hover:underline">
-              hola@telon.app
+            <a href="mailto:hola@tuesdi.es" className="text-gold hover:underline">
+              hola@tuesdi.es
             </a>
           </p>
         </div>

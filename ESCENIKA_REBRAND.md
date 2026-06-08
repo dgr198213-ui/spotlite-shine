@@ -1,3 +1,3 @@
-# Escénika
+# TUESDI
 
-Rebrand desde Spot&Shows
+Rebrand desde TUESDI

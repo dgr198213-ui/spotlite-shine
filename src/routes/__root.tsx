@@ -59,13 +59,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Telón — Tu escenario, tu audiencia, tu momento" },
+      { title: "TUESDI — Tú Escenario Digital" },
       {
         name: "description",
         content:
           "La plataforma donde artistas de España encuentran su público y los eventos encuentran talento excepcional. Sin comisiones.",
       },
-      { property: "og:title", content: "Telón — Tu escenario, tu audiencia, tu momento" },
+      { property: "og:title", content: "TUESDI — Tú Escenario Digital" },
       {
         property: "og:description",
         content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones.",
@@ -73,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Telón — Tu escenario, tu audiencia, tu momento" },
+      { name: "twitter:title", content: "TUESDI — Tú Escenario Digital" },
       {
         name: "twitter:description",
         content: "La plataforma donde artistas y eventos se encuentran. Sin comisiones.",
